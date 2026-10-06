@@ -726,247 +726,7 @@ footer .disclaimer {
 
     <div class="leaderboard">
 
-        <!-- HEADER -->
-
-        <div class="leaderboard-row header">
-
-            <div>
-                #
-            </div>
-
-            <div>
-                PLAYER
-            </div>
-
-            <div>
-                RANK
-            </div>
-
-            <div class="wins">
-                WINS
-            </div>
-
-        </div>
-
-        <!-- #1 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                1
-            </div>
-
-            <div class="player">
-                Player 1
-            </div>
-
-            <div class="rank ht1">
-                HT1
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #2 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                2
-            </div>
-
-            <div class="player">
-                Player 2
-            </div>
-
-            <div class="rank lt1">
-                LT1
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #3 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                3
-            </div>
-
-            <div class="player">
-                Player 3
-            </div>
-
-            <div class="rank lt1">
-                LT1
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #4 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                4
-            </div>
-
-            <div class="player">
-                Player 4
-            </div>
-
-            <div class="rank ht2">
-                HT2
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #5 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                5
-            </div>
-
-            <div class="player">
-                Player 5
-            </div>
-
-            <div class="rank ht2">
-                HT2
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #6 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                6
-            </div>
-
-            <div class="player">
-                Player 6
-            </div>
-
-            <div class="rank lt2">
-                LT2
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #7 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                7
-            </div>
-
-            <div class="player">
-                Player 7
-            </div>
-
-            <div class="rank lt2">
-                LT2
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #8 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                8
-            </div>
-
-            <div class="player">
-                Player 8
-            </div>
-
-            <div class="rank ht3">
-                HT3
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #9 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                9
-            </div>
-
-            <div class="player">
-                Player 9
-            </div>
-
-            <div class="rank ht3">
-                HT3
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
-
-        <!-- #10 -->
-
-        <div class="leaderboard-row">
-
-            <div class="position">
-                10
-            </div>
-
-            <div class="player">
-                Player 10
-            </div>
-
-            <div class="rank lt3">
-                LT3
-            </div>
-
-            <div class="wins">
-                0
-            </div>
-
-        </div>
+        <!-- The Top 10 is generated automatically from rankings-data.js -->
 
     </div>
 
@@ -1485,6 +1245,68 @@ footer .disclaimer {
     </div>
 
 </footer>
+
+<script src="rankings-data.js"></script>
+
+<script>
+
+const leaderboard = document.querySelector(".leaderboard");
+
+if (leaderboard && typeof top10 !== "undefined") {
+
+    leaderboard.innerHTML = `
+        <div class="leaderboard-row header">
+
+            <div>
+                #
+            </div>
+
+            <div>
+                PLAYER
+            </div>
+
+            <div>
+                RANK
+            </div>
+
+            <div class="wins">
+                WINS
+            </div>
+
+        </div>
+    `;
+
+    top10.forEach((player, index) => {
+
+        leaderboard.innerHTML += `
+
+            <div class="leaderboard-row">
+
+                <div class="position">
+                    ${index + 1}
+                </div>
+
+                <div class="player">
+                    ${player.name}
+                </div>
+
+                <div class="rank ${player.tier.toLowerCase()}">
+                    ${player.tier}
+                </div>
+
+                <div class="wins">
+                    ${player.wins}
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+</script>
 
 </body>
 </html>
