@@ -878,83 +878,6 @@ footer {
 
     <div class="rankings-preview">
 
-        <div class="ranking-row header">
-            <div>#</div>
-            <div>PLAYER</div>
-            <div>RANK</div>
-            <div class="wins">WINS</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">1</div>
-            <div class="player-name">Player 1</div>
-            <div class="player-tier ht1">HT1</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">2</div>
-            <div class="player-name">Player 2</div>
-            <div class="player-tier lt1">LT1</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">3</div>
-            <div class="player-name">Player 3</div>
-            <div class="player-tier lt1">LT1</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">4</div>
-            <div class="player-name">Player 4</div>
-            <div class="player-tier ht2">HT2</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">5</div>
-            <div class="player-name">Player 5</div>
-            <div class="player-tier ht2">HT2</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">6</div>
-            <div class="player-name">Player 6</div>
-            <div class="player-tier lt2">LT2</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">7</div>
-            <div class="player-name">Player 7</div>
-            <div class="player-tier lt2">LT2</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">8</div>
-            <div class="player-name">Player 8</div>
-            <div class="player-tier ht3">HT3</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">9</div>
-            <div class="player-name">Player 9</div>
-            <div class="player-tier ht3">HT3</div>
-            <div class="wins">0</div>
-        </div>
-
-        <div class="ranking-row">
-            <div class="rank-number">10</div>
-            <div class="player-name">Player 10</div>
-            <div class="player-tier lt3">LT3</div>
-            <div class="wins">0</div>
-        </div>
-
     </div>
 
     <div class="view-rankings">
@@ -1413,6 +1336,40 @@ footer {
     </div>
 
 </footer>
+
+<script src="rankings-data.js"></script>
+
+<script>
+
+const homepageRankings = document.querySelector(".rankings-preview");
+
+if (homepageRankings) {
+
+    homepageRankings.innerHTML = `
+        <div class="ranking-row header">
+            <div>#</div>
+            <div>PLAYER</div>
+            <div>RANK</div>
+            <div class="wins">WINS</div>
+        </div>
+    `;
+
+    top10.forEach((player, index) => {
+
+        homepageRankings.innerHTML += `
+            <div class="ranking-row">
+                <div class="rank-number">${index + 1}</div>
+                <div class="player-name">${player.name}</div>
+                <div class="player-tier ${player.tier.toLowerCase()}">${player.tier}</div>
+                <div class="wins">${player.wins}</div>
+            </div>
+        `;
+
+    });
+
+}
+
+</script>
 
 </body>
 </html>
