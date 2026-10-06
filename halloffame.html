@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,91 +21,112 @@ html {
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
+    color: white;
 
     background:
         linear-gradient(
-            rgba(20, 15, 10, 0.48),
-            rgba(10, 20, 25, 0.55)
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.6)
         ),
         url("https://upload.wikimedia.org/wikipedia/commons/6/6f/Minecraft_landscape.png");
 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-
-    color: white;
-    min-height: 100vh;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
 nav {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    width: 100%;
+    height: 70px;
+
+    background: rgba(5,5,5,0.75);
+    backdrop-filter: blur(12px);
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
-    padding: 18px 7%;
+    padding: 0 50px;
 
-    background: rgba(20, 25, 28, 0.72);
-    backdrop-filter: blur(15px);
+    z-index: 1000;
 
-    border-bottom: 1px solid rgba(255,255,255,0.25);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .logo {
-    font-family: "Anton", sans-serif;
-    font-size: 30px;
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
     letter-spacing: 2px;
 }
 
 .logo .lb {
-    color: #ff3030;
+    color: #e32626;
 }
 
 .logo .bw {
-    color: #3b82f6;
+    color: #287cff;
 }
 
-nav ul {
+.nav-links {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     list-style: none;
 }
 
-nav a {
-    color: white;
+.nav-links a {
+    color: #ddd;
     text-decoration: none;
-    font-weight: 700;
 
-    transition: 0.2s;
+    font-weight: 600;
+    font-size: 14px;
+
+    transition: 0.25s;
 }
 
-nav a:hover {
-    color: #ffd700;
+.nav-links a:hover {
+    color: white;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
+    min-height: 470px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    padding: 100px 20px 70px;
+
+    padding: 80px 20px;
+}
+
+.hero-content {
+    max-width: 900px;
 }
 
 .hero h1 {
-    font-family: "Anton", sans-serif;
+    font-family: 'Anton', sans-serif;
 
-    font-size: clamp(65px, 11vw, 125px);
+    font-size: clamp(65px, 10vw, 120px);
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
+
+    line-height: 0.95;
+
+    margin-bottom: 25px;
 
     text-shadow:
-        0 4px 20px rgba(0,0,0,0.8),
-        0 0 25px rgba(255,215,0,0.35);
+        0 5px 20px rgba(0,0,0,0.5);
 }
 
 .hero h1 span {
@@ -114,250 +134,373 @@ nav a:hover {
 }
 
 .hero p {
-    max-width: 750px;
-    margin: 20px auto 0;
-
-    font-size: 18px;
-    line-height: 1.7;
-
-    color: #f0f0f0;
-
-    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-}
-
-/* CONTAINER */
-
-.container {
-    width: 90%;
-    max-width: 1200px;
+    max-width: 700px;
 
     margin: auto;
-}
 
-/* HALL OF FAME */
-
-.hall {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
-
-    gap: 25px;
-
-    padding-bottom: 100px;
-}
-
-/* PLAYER CARD */
-
-.player-card {
-    position: relative;
-
-    padding: 35px 25px;
-
-    text-align: center;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.28),
-            rgba(255,255,255,0.08)
-        );
-
-    backdrop-filter: blur(12px);
-
-    border: 2px solid rgba(255,255,255,0.5);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,0.35);
-
-    transition: 0.3s;
-}
-
-.player-card:hover {
-    transform: translateY(-8px) scale(1.02);
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,0.5);
-}
-
-/* PLACEHOLDER AVATAR */
-
-.avatar {
-    width: 95px;
-    height: 95px;
-
-    margin: 0 auto 20px;
-
-    border-radius: 14px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: "Anton", sans-serif;
-
-    font-size: 35px;
-
-    background: rgba(0,0,0,0.35);
-
-    border: 3px solid white;
-
-    box-shadow:
-        0 0 20px rgba(255,255,255,0.4);
-}
-
-.player-name {
-    font-size: 25px;
-    font-weight: 800;
-
-    margin-bottom: 8px;
-}
-
-.achievement {
     color: #eee;
 
-    font-size: 14px;
+    font-size: 17px;
 
-    margin-bottom: 18px;
+    line-height: 1.7;
 }
 
-/* TIER */
+/* =========================
+   HALL OF FAME
+========================= */
 
-.tier {
-    display: inline-block;
+.hall-section {
+    padding: 70px 7% 110px;
 
-    padding: 8px 20px;
-
-    border-radius: 8px;
-
-    font-family: "Anton", sans-serif;
-
-    font-size: 22px;
-
-    letter-spacing: 1px;
-
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.12);
 }
-
-/* TIER COLORS */
-
-.ht1 {
-    color: #ffd700;
-
-    border-color: #ffd700;
-
-    box-shadow:
-        0 0 20px rgba(255,215,0,0.55);
-}
-
-.lt1 {
-    color: #e6d65c;
-
-    border-color: #e6d65c;
-
-    box-shadow:
-        0 0 18px rgba(230,214,92,0.45);
-}
-
-.ht2 {
-    color: #ff8c00;
-
-    border-color: #ff8c00;
-
-    box-shadow:
-        0 0 18px rgba(255,140,0,0.45);
-}
-
-.lt2 {
-    color: #c65f00;
-
-    border-color: #c65f00;
-
-    box-shadow:
-        0 0 18px rgba(198,95,0,0.4);
-}
-
-.ht3 {
-    color: #b87945;
-
-    border-color: #b87945;
-
-    box-shadow:
-        0 0 18px rgba(184,121,69,0.4);
-}
-
-.lt3,
-.ht4,
-.lt4,
-.ht5,
-.lt5 {
-    color: #ddd;
-
-    border-color: #ddd;
-}
-
-/* SECTION */
 
 .section-title {
     text-align: center;
 
-    font-family: "Anton", sans-serif;
+    margin-bottom: 55px;
+}
 
-    font-size: 38px;
+.section-title h2 {
+    font-family: 'Anton', sans-serif;
+
+    font-size: 55px;
 
     letter-spacing: 2px;
 
-    margin-bottom: 30px;
-
     text-shadow:
-        0 3px 10px rgba(0,0,0,0.8);
+        0 4px 15px rgba(0,0,0,0.5);
 }
 
-/* FOOTER */
+.section-title p {
+    color: #ddd;
+
+    margin-top: 10px;
+
+    font-size: 15px;
+}
+
+/* =========================
+   PLAYER GRID
+========================= */
+
+.hof-grid {
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+/* =========================
+   PLAYER CARDS
+========================= */
+
+.player-card {
+    position: relative;
+
+    background: rgba(20,20,20,0.65);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    min-height: 220px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.player-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: rgba(255,255,255,0.25);
+}
+
+.player-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(255,255,255,0.4);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* =========================
+   POSITION
+========================= */
+
+.position {
+    font-family: 'Anton', sans-serif;
+
+    font-size: 42px;
+
+    color: rgba(255,255,255,0.3);
+
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+}
+
+/* =========================
+   PLAYER NAME
+========================= */
+
+.player-name {
+    font-size: 27px;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+
+    padding-right: 60px;
+}
+
+/* =========================
+   TIER
+========================= */
+
+.tier {
+    display: inline-block;
+
+    padding: 6px 13px;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 18px;
+
+    border: 2px solid;
+}
+
+/* =========================
+   TIER COLORS
+========================= */
+
+.tier.ht1 {
+    color: #ffd700;
+
+    border-color: #ffd700;
+
+    background: rgba(255,215,0,0.08);
+
+    box-shadow:
+        0 0 15px rgba(255,215,0,0.2);
+}
+
+.tier.lt1 {
+    color: #e6c84f;
+
+    border-color: #e6c84f;
+
+    background: rgba(230,200,79,0.08);
+}
+
+.tier.ht2 {
+    color: #ff9d2e;
+
+    border-color: #ff9d2e;
+
+    background: rgba(255,157,46,0.08);
+}
+
+.tier.lt2 {
+    color: #d56d17;
+
+    border-color: #d56d17;
+
+    background: rgba(213,109,23,0.08);
+}
+
+.tier.ht3 {
+    color: #a86f45;
+
+    border-color: #a86f45;
+
+    background: rgba(168,111,69,0.08);
+}
+
+.tier.lt3,
+.tier.ht4,
+.tier.lt4,
+.tier.ht5,
+.tier.lt5 {
+    color: #aaa;
+
+    border-color: #777;
+
+    background: rgba(150,150,150,0.08);
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.player-description {
+    color: #ddd;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    max-width: 500px;
+}
+
+/* =========================
+   SPECIAL CARD EFFECTS
+========================= */
+
+.player-card.legendary {
+    border-color: rgba(255,215,0,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,215,0,0.10),
+            rgba(20,20,20,0.7)
+        );
+}
+
+.player-card.legendary::before {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffd700,
+            transparent
+        );
+}
+
+.player-card.creator {
+    border-color: rgba(227,38,38,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(227,38,38,0.08),
+            rgba(20,20,20,0.7)
+        );
+}
+
+.player-card.creator::before {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #e32626,
+            transparent
+        );
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     text-align: center;
 
-    padding: 35px;
+    padding: 35px 20px;
 
-    background: rgba(10,15,18,0.7);
+    background: rgba(0,0,0,0.75);
 
-    border-top: 1px solid rgba(255,255,255,0.25);
+    color: #777;
 
-    color: #ddd;
+    font-size: 13px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-/* MOBILE */
+footer strong {
+    color: #aaa;
+}
 
-@media (max-width: 700px) {
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
 
     nav {
-        flex-direction: column;
-        gap: 15px;
-    }
+        height: auto;
 
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+        min-height: 70px;
+
+        padding: 15px 20px;
+
+        flex-direction: column;
+
         gap: 12px;
     }
 
-    .hero {
-        padding-top: 70px;
+    .nav-links {
+        gap: 14px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hof-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .hero h1 {
+        font-size: 65px;
+    }
+
+    .section-title h2 {
+        font-size: 42px;
+    }
+
+    .player-card {
+        padding: 25px;
+    }
+
+    .player-name {
+        font-size: 23px;
     }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-
-<!-- NAVBAR -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -365,7 +508,7 @@ footer {
         <span class="lb">LB</span><span class="bw">BW</span>
     </div>
 
-    <ul>
+    <ul class="nav-links">
 
         <li>
             <a href="index.html">
@@ -398,7 +541,7 @@ footer {
         </li>
 
         <li>
-            <a href="https://discord.gg/JuKMwT6PF">
+            <a href="https://discord.gg/JuKMwT6PF" target="_blank">
                 Discord
             </a>
         </li>
@@ -407,38 +550,54 @@ footer {
 
 </nav>
 
+<!-- =========================
+     HERO
+========================= -->
 
-<!-- HERO -->
+<section class="hero">
 
-<header class="hero">
+    <div class="hero-content">
 
-    <h1>
-        <span>HALL</span> OF FAME
-    </h1>
+        <h1>
+            HALL OF <span>FAME</span>
+        </h1>
 
-    <p>
-        The best of the best. Players who have reached the highest
-        levels of LBBW BedWars and earned their place in the community's history.
-    </p>
+        <p>
+            The players who have made their mark on the LBBW BedWars
+            community through skill, dedication, competition and
+            contributions to the server.
+        </p>
 
-</header>
-
-
-<div class="container">
-
-    <div class="section-title">
-        LBBW LEGENDS
     </div>
 
+</section>
 
-    <section class="hall">
+<!-- =========================
+     HALL OF FAME
+========================= -->
 
+<section class="hall-section">
 
-        <!-- PLAYER 1 -->
+    <div class="section-title">
 
-        <div class="player-card">
+        <h2>LBBW LEGENDS</h2>
 
-            <div class="avatar">
+        <p>
+            The players remembered as some of the most important
+            members of the LBBW community.
+        </p>
+
+    </div>
+
+    <div class="hof-grid">
+
+        <!-- =========================
+             #1
+        ========================= -->
+
+        <div class="player-card legendary">
+
+            <div class="position">
                 #1
             </div>
 
@@ -446,45 +605,48 @@ footer {
                 Player 1
             </div>
 
-            <div class="achievement">
-                Highest Ranked Player
+            <div class="tier ht1">
+                HT1
+            </div>
+
+            <div class="player-description">
+                One of the highest-ranked players in the LBBW community.
+            </div>
+
+        </div>
+
+        <!-- =========================
+             #2
+        ========================= -->
+
+        <div class="player-card creator">
+
+            <div class="position">
+                #2
+            </div>
+
+            <div class="player-name">
+                FluffiesMC
             </div>
 
             <div class="tier ht1">
                 HT1
             </div>
 
-        </div>
-
-
-        <!-- PLAYER 2 -->
-
-        <div class="player-card">
-
-            <div class="avatar">
-                #2
-            </div>
-
-            <div class="player-name">
-                Player 2
-            </div>
-
-            <div class="achievement">
-                Hall of Fame Member
-            </div>
-
-            <div class="tier lt1">
-                LT1
+            <div class="player-description">
+                The OG creator of the server and one of the all-time
+                best BedWars players.
             </div>
 
         </div>
 
-
-        <!-- PLAYER 3 -->
+        <!-- =========================
+             #3
+        ========================= -->
 
         <div class="player-card">
 
-            <div class="avatar">
+            <div class="position">
                 #3
             </div>
 
@@ -492,22 +654,24 @@ footer {
                 Player 3
             </div>
 
-            <div class="achievement">
-                Hall of Fame Member
-            </div>
-
             <div class="tier lt1">
                 LT1
             </div>
 
+            <div class="player-description">
+                A highly skilled competitive BedWars player
+                and respected member of the community.
+            </div>
+
         </div>
 
-
-        <!-- PLAYER 4 -->
+        <!-- =========================
+             #4
+        ========================= -->
 
         <div class="player-card">
 
-            <div class="avatar">
+            <div class="position">
                 #4
             </div>
 
@@ -515,22 +679,24 @@ footer {
                 Player 4
             </div>
 
-            <div class="achievement">
-                Hall of Fame Member
-            </div>
-
             <div class="tier ht2">
                 HT2
             </div>
 
+            <div class="player-description">
+                A strong competitive player who has earned
+                their place among the LBBW legends.
+            </div>
+
         </div>
 
-
-        <!-- PLAYER 5 -->
+        <!-- =========================
+             #5
+        ========================= -->
 
         <div class="player-card">
 
-            <div class="avatar">
+            <div class="position">
                 #5
             </div>
 
@@ -538,22 +704,24 @@ footer {
                 Player 5
             </div>
 
-            <div class="achievement">
-                Hall of Fame Member
-            </div>
-
             <div class="tier ht2">
                 HT2
             </div>
 
+            <div class="player-description">
+                Known for strong gameplay and consistent
+                competitive performance.
+            </div>
+
         </div>
 
-
-        <!-- PLAYER 6 -->
+        <!-- =========================
+             #6
+        ========================= -->
 
         <div class="player-card">
 
-            <div class="avatar">
+            <div class="position">
                 #6
             </div>
 
@@ -561,22 +729,24 @@ footer {
                 Player 6
             </div>
 
-            <div class="achievement">
-                Hall of Fame Member
-            </div>
-
             <div class="tier lt2">
                 LT2
             </div>
 
+            <div class="player-description">
+                A respected player who has competed at
+                a high level within the community.
+            </div>
+
         </div>
 
-
-        <!-- PLAYER 7 -->
+        <!-- =========================
+             #7
+        ========================= -->
 
         <div class="player-card">
 
-            <div class="avatar">
+            <div class="position">
                 #7
             </div>
 
@@ -584,51 +754,59 @@ footer {
                 Player 7
             </div>
 
-            <div class="achievement">
-                Hall of Fame Member
-            </div>
-
             <div class="tier lt2">
                 LT2
             </div>
 
+            <div class="player-description">
+                A competitive BedWars player remembered
+                for their skill and dedication.
+            </div>
+
         </div>
 
+        <!-- =========================
+             #8
+        ========================= -->
 
-        <!-- PLAYER 8 -->
+        <div class="player-card creator">
 
-        <div class="player-card">
-
-            <div class="avatar">
+            <div class="position">
                 #8
             </div>
 
             <div class="player-name">
-                Player 8
-            </div>
-
-            <div class="achievement">
-                Hall of Fame Member
+                Ouchy_Dude
             </div>
 
             <div class="tier ht3">
                 HT3
             </div>
 
+            <div class="player-description">
+                Who created this website ;)
+            </div>
+
         </div>
 
+    </div>
 
-    </section>
+</section>
 
-</div>
-
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    LBBW BedWars Community
+    <strong>LBBW BedWars Community</strong>
+
+    <br><br>
+
+    This is not an official Lifeboat server.
+    Please understand this is an unofficial Lifeboat BedWars server.
 
 </footer>
-
 
 </body>
 </html>
