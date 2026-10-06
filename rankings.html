@@ -16,206 +16,289 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: "Inter", sans-serif;
-    background:
-        linear-gradient(rgba(5,5,8,0.88), rgba(5,5,8,0.95)),
-        url("https://upload.wikimedia.org/wikipedia/commons/6/6f/Minecraft_landscape.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
     color: white;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
 nav {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    width: 100%;
+    height: 70px;
+
+    background: rgba(5,5,5,0.88);
+    backdrop-filter: blur(12px);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 18px 7%;
+    padding: 0 50px;
 
-    background: rgba(5,5,8,0.9);
-    backdrop-filter: blur(12px);
+    z-index: 1000;
 
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .logo {
-    font-family: "Anton", sans-serif;
-    font-size: 30px;
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
     letter-spacing: 2px;
 }
 
 .logo .lb {
-    color: #ff3030;
+    color: #e32626;
 }
 
 .logo .bw {
-    color: #3b82f6;
+    color: #287cff;
 }
 
-nav ul {
+.nav-links {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     list-style: none;
 }
 
-nav a {
-    color: #aaa;
+.nav-links a {
+    color: #ddd;
     text-decoration: none;
+
     font-weight: 600;
-    transition: 0.2s;
+    font-size: 14px;
+
+    transition: 0.25s;
 }
 
-nav a:hover {
+.nav-links a:hover {
     color: white;
 }
 
-/* HEADER */
+/* =========================
+   HERO
+========================= */
 
-header {
+.hero {
+    min-height: 430px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    padding: 90px 20px 55px;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.85)
+        ),
+        url("https://upload.wikimedia.org/wikipedia/commons/6/6f/Minecraft_landscape.png");
+
+    background-size: cover;
+    background-position: center;
 }
 
-header h1 {
-    font-family: "Anton", sans-serif;
-    font-size: clamp(55px, 9vw, 110px);
+.hero-content {
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-family: 'Anton', sans-serif;
+
+    font-size: clamp(65px, 11vw, 125px);
+
     letter-spacing: 4px;
+
+    line-height: 0.95;
+
+    margin-bottom: 25px;
 }
 
-header p {
-    margin-top: 12px;
-    color: #aaa;
-    font-size: 16px;
+.hero h1 .lb {
+    color: #e32626;
 }
 
-/* TOP 10 */
+.hero h1 .bw {
+    color: #287cff;
+}
 
-.container {
-    width: 90%;
-    max-width: 1100px;
+.hero p {
+    color: #ddd;
+
+    font-size: 17px;
+
+    max-width: 650px;
+
     margin: auto;
+
+    line-height: 1.7;
+}
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+section {
+    padding: 90px 7%;
 }
 
 .section-title {
-    font-family: "Anton", sans-serif;
-    font-size: 36px;
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-family: 'Anton', sans-serif;
+
+    font-size: 52px;
+
     letter-spacing: 2px;
-    margin-bottom: 20px;
 }
 
-.top-ten {
-    display: grid;
-    gap: 10px;
+.section-title p {
+    color: #999;
+
+    margin-top: 10px;
+
+    font-size: 15px;
 }
 
-.player {
+/* =========================
+   TOP 10
+========================= */
+
+.top-ten-section {
+    background: #0a0a0a;
+}
+
+.leaderboard {
+    max-width: 1000px;
+
+    margin: auto;
+
+    background: #111;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.25);
+}
+
+.leaderboard-row {
     display: grid;
-    grid-template-columns: 70px 1fr 150px 100px;
+
+    grid-template-columns:
+        80px
+        1fr
+        150px
+        120px;
+
     align-items: center;
 
-    padding: 18px 22px;
+    padding: 18px 25px;
 
-    background: rgba(20,20,25,0.9);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 
     transition: 0.2s;
 }
 
-.player:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255,255,255,0.25);
+.leaderboard-row:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-row:not(.header):hover {
+    background: rgba(255,255,255,0.035);
+}
+
+.leaderboard-row.header {
+    background: #181818;
+
+    color: #777;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
 }
 
 .position {
-    font-family: "Anton", sans-serif;
-    font-size: 28px;
+    font-family: 'Anton', sans-serif;
+
+    font-size: 23px;
 }
 
-.player-name {
+.player {
     font-weight: 700;
+
+    font-size: 15px;
 }
 
-.label {
-    color: #777;
-    font-size: 12px;
-    text-transform: uppercase;
-    margin-bottom: 3px;
+.rank {
+    font-weight: 800;
 }
 
 .wins {
-    color: #ccc;
-}
-
-/* TIERS */
-
-.tiers {
-    margin-top: 70px;
-    margin-bottom: 80px;
-}
-
-.tier-section {
-    margin-bottom: 35px;
-}
-
-.tier-title {
-    font-family: "Anton", sans-serif;
-    font-size: 28px;
-    letter-spacing: 1px;
-
-    margin-bottom: 12px;
-}
-
-.tier-players {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 10px;
-}
-
-.tier-player {
-    background: rgba(18,18,22,0.92);
-    border: 1px solid rgba(255,255,255,0.08);
-
-    padding: 15px 18px;
-    border-radius: 10px;
+    color: #aaa;
 
     font-weight: 600;
-
-    transition: 0.2s;
 }
 
-.tier-player:hover {
-    transform: translateY(-2px);
+/* =========================
+   TOP 3 COLORS
+========================= */
+
+.leaderboard-row:nth-child(2) .position {
+    color: #ffd700;
 }
 
-/* TIER COLORS */
+.leaderboard-row:nth-child(3) .position {
+    color: #c0c0c0;
+}
+
+.leaderboard-row:nth-child(4) .position {
+    color: #cd7f32;
+}
+
+/* =========================
+   TIER COLORS
+========================= */
 
 .ht1 {
     color: #ffd700;
 }
 
 .lt1 {
-    color: #e6d65c;
+    color: #e6c84f;
 }
 
 .ht2 {
-    color: #ff8c00;
+    color: #ff9d2e;
 }
 
 .lt2 {
-    color: #c65f00;
+    color: #d56d17;
 }
 
 .ht3 {
-    color: #9b6a3a;
+    color: #a86f45;
 }
 
 .lt3,
@@ -223,42 +306,320 @@ header p {
 .lt4,
 .ht5,
 .lt5 {
-    color: #999;
+    color: #aaa;
 }
 
-/* FOOTER */
+/* =========================
+   TOP TEN NOTE
+========================= */
+
+.leaderboard-note {
+    max-width: 900px;
+
+    margin: 25px auto 0;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   CURRENT TIERS
+========================= */
+
+.tiers-section {
+    background: #0d0d0d;
+}
+
+.tier-groups {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+/* =========================
+   TIER GROUP
+========================= */
+
+.tier-group {
+    background: #141414;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transition: 0.25s;
+}
+
+.tier-group:hover {
+    border-color: rgba(255,255,255,0.18);
+
+    transform: translateY(-2px);
+}
+
+.tier-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 18px 22px;
+
+    background: #191919;
+}
+
+.tier-title {
+    font-family: 'Anton', sans-serif;
+
+    font-size: 27px;
+
+    letter-spacing: 1px;
+}
+
+.tier-placement {
+    color: #777;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+.tier-players {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 20px;
+}
+
+/* =========================
+   PLAYER TAGS
+========================= */
+
+.player-tag {
+    padding: 10px 15px;
+
+    background: #1b1b1b;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.player-tag:hover {
+    background: #232323;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   TIER GROUP COLORS
+========================= */
+
+.tier-group.ht1 {
+    border-left: 4px solid #ffd700;
+}
+
+.tier-group.lt1 {
+    border-left: 4px solid #e6c84f;
+}
+
+.tier-group.ht2 {
+    border-left: 4px solid #ff9d2e;
+}
+
+.tier-group.lt2 {
+    border-left: 4px solid #d56d17;
+}
+
+.tier-group.ht3 {
+    border-left: 4px solid #a86f45;
+}
+
+.tier-group.lt3,
+.tier-group.ht4,
+.tier-group.lt4,
+.tier-group.ht5,
+.tier-group.lt5 {
+    border-left: 4px solid #777;
+}
+
+/* =========================
+   TIER DESCRIPTIONS
+========================= */
+
+.tier-description {
+    padding: 0 20px 18px;
+
+    color: #777;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+/* =========================
+   INFO SECTION
+========================= */
+
+.info-section {
+    background: #0a0a0a;
+
+    text-align: center;
+}
+
+.info-box {
+    max-width: 850px;
+
+    margin: auto;
+
+    background: #111;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
+    padding: 30px;
+}
+
+.info-box h3 {
+    font-size: 22px;
+
+    margin-bottom: 12px;
+}
+
+.info-box p {
+    color: #999;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     text-align: center;
-    padding: 35px;
+
+    padding: 35px 20px;
+
+    background: #050505;
+
     color: #666;
+
+    font-size: 13px;
+
     border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-/* MOBILE */
+footer .disclaimer {
+    margin-top: 8px;
 
-@media (max-width: 700px) {
+    color: #444;
+
+    font-size: 11px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
 
     nav {
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 15px 20px;
+
         flex-direction: column;
-        gap: 15px;
+
+        gap: 12px;
     }
 
-    nav ul {
-        gap: 12px;
+    .nav-links {
+        gap: 14px;
+
         flex-wrap: wrap;
+
         justify-content: center;
     }
 
-    .player {
-        grid-template-columns: 45px 1fr;
-        gap: 8px;
+    .leaderboard-row {
+        grid-template-columns:
+            55px
+            1fr
+            100px
+            80px;
+
+        padding: 16px;
     }
 
-    .player .rank,
-    .player .wins {
-        grid-column: 2;
+}
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 70px;
     }
+
+    section {
+        padding: 70px 5%;
+    }
+
+    .section-title h2 {
+        font-size: 42px;
+    }
+
+    .leaderboard-row {
+        grid-template-columns:
+            45px
+            1fr
+            75px;
+    }
+
+    .leaderboard-row .wins {
+        display: none;
+    }
+
+    .leaderboard-row.header .wins {
+        display: none;
+    }
+
+    .tier-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+    }
+
 }
 
 </style>
@@ -266,7 +627,9 @@ footer {
 
 <body>
 
-<!-- NAVBAR -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -274,517 +637,852 @@ footer {
         <span class="lb">LB</span><span class="bw">BW</span>
     </div>
 
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="rankings.html">Rankings</a></li>
-        <li><a href="index.html#testing">Tier Testing</a></li>
-        <li><a href="index.html#staff">Staff</a></li>
-        <li><a href="index.html#rules">Rules</a></li>
-        <li><a href="https://discord.gg/JuKMwT6PF">Discord</a></li>
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="rankings.html">
+                Rankings
+            </a>
+        </li>
+
+        <li>
+            <a href="halloffame.html">
+                Hall of Fame
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#testing">
+                Tier Testing
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#staff">
+                Staff
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#rules">
+                Rules
+            </a>
+        </li>
+
+        <li>
+            <a href="https://discord.gg/JuKMwT6PF" target="_blank">
+                Discord
+            </a>
+        </li>
+
     </ul>
 
 </nav>
 
+<!-- =========================
+     HERO
+========================= -->
 
-<!-- HEADER -->
+<section class="hero">
 
-<header>
+    <div class="hero-content">
 
-    <h1>LBBW RANKINGS</h1>
+        <h1>
+            <span class="lb">LB</span><span class="bw">BW</span>
+            RANKINGS
+        </h1>
 
-    <p>
-        Competitive rankings based on tier testing and community performance.
-    </p>
+        <p>
+            Track the best BedWars players in the LBBW community.
+            The Top 10 leaderboard is determined by wins, while
+            current tiers represent each player's competitive skill.
+        </p>
 
-</header>
+    </div>
 
+</section>
 
-<div class="container">
+<!-- =========================
+     TOP 10 LEADERBOARD
+========================= -->
 
-    <!-- TOP 10 -->
+<section class="top-ten-section">
 
-    <section>
+    <div class="section-title">
 
-        <div class="section-title">
-            TOP 10
-        </div>
+        <h2>TOP 10 LEADERBOARD</h2>
 
-        <div class="top-ten">
+        <p>
+            Ranked by total verified wins.
+        </p>
 
-            <div class="player">
-                <div class="position">#1</div>
+    </div>
 
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 1</div>
-                </div>
+    <div class="leaderboard">
 
-                <div class="rank ht1">
-                    <div class="label">Rank</div>
-                    HT1
-                </div>
+        <!-- HEADER -->
 
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
+        <div class="leaderboard-row header">
+
+            <div>
+                #
             </div>
 
-
-            <div class="player">
-                <div class="position">#2</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 2</div>
-                </div>
-
-                <div class="rank lt1">
-                    <div class="label">Rank</div>
-                    LT1
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
+            <div>
+                PLAYER
             </div>
 
-
-            <div class="player">
-                <div class="position">#3</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 3</div>
-                </div>
-
-                <div class="rank lt1">
-                    <div class="label">Rank</div>
-                    LT1
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
+            <div>
+                RANK
             </div>
 
-
-            <div class="player">
-                <div class="position">#4</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 4</div>
-                </div>
-
-                <div class="rank ht2">
-                    <div class="label">Rank</div>
-                    HT2
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
-            </div>
-
-
-            <div class="player">
-                <div class="position">#5</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 5</div>
-                </div>
-
-                <div class="rank ht2">
-                    <div class="label">Rank</div>
-                    HT2
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
-            </div>
-
-
-            <div class="player">
-                <div class="position">#6</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 6</div>
-                </div>
-
-                <div class="rank lt2">
-                    <div class="label">Rank</div>
-                    LT2
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
-            </div>
-
-
-            <div class="player">
-                <div class="position">#7</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 7</div>
-                </div>
-
-                <div class="rank lt2">
-                    <div class="label">Rank</div>
-                    LT2
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
-            </div>
-
-
-            <div class="player">
-                <div class="position">#8</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 8</div>
-                </div>
-
-                <div class="rank ht3">
-                    <div class="label">Rank</div>
-                    HT3
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
-            </div>
-
-
-            <div class="player">
-                <div class="position">#9</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 9</div>
-                </div>
-
-                <div class="rank ht3">
-                    <div class="label">Rank</div>
-                    HT3
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
-            </div>
-
-
-            <div class="player">
-                <div class="position">#10</div>
-
-                <div>
-                    <div class="label">Player</div>
-                    <div class="player-name">Player 10</div>
-                </div>
-
-                <div class="rank lt3">
-                    <div class="label">Rank</div>
-                    LT3
-                </div>
-
-                <div class="wins">
-                    <div class="label">Wins</div>
-                    0
-                </div>
+            <div class="wins">
+                WINS
             </div>
 
         </div>
 
-    </section>
+        <!-- #1 -->
 
+        <div class="leaderboard-row">
 
-    <!-- ALL TIERS -->
+            <div class="position">
+                1
+            </div>
 
-    <section class="tiers">
+            <div class="player">
+                Player 1
+            </div>
 
-        <div class="section-title">
-            ALL RANKINGS
-        </div>
-
-
-        <!-- HT1 -->
-
-        <div class="tier-section">
-
-            <div class="tier-title ht1">
+            <div class="rank ht1">
                 HT1
             </div>
 
-            <div class="tier-players">
-
-                <div class="tier-player">
-                    Player 1
-                </div>
-
-                <div class="tier-player">
-                    Placeholder
-                </div>
-
-                <div class="tier-player">
-                    Placeholder
-                </div>
-
+            <div class="wins">
+                0
             </div>
 
         </div>
 
+        <!-- #2 -->
 
-        <!-- LT1 -->
+        <div class="leaderboard-row">
 
-        <div class="tier-section">
+            <div class="position">
+                2
+            </div>
 
-            <div class="tier-title lt1">
+            <div class="player">
+                Player 2
+            </div>
+
+            <div class="rank lt1">
                 LT1
             </div>
 
-            <div class="tier-players">
-
-                <div class="tier-player">
-                    Player 2
-                </div>
-
-                <div class="tier-player">
-                    Player 3
-                </div>
-
-                <div class="tier-player">
-                    Placeholder
-                </div>
-
+            <div class="wins">
+                0
             </div>
 
         </div>
 
+        <!-- #3 -->
 
-        <!-- HT2 -->
+        <div class="leaderboard-row">
 
-        <div class="tier-section">
+            <div class="position">
+                3
+            </div>
 
-            <div class="tier-title ht2">
+            <div class="player">
+                Player 3
+            </div>
+
+            <div class="rank lt1">
+                LT1
+            </div>
+
+            <div class="wins">
+                0
+            </div>
+
+        </div>
+
+        <!-- #4 -->
+
+        <div class="leaderboard-row">
+
+            <div class="position">
+                4
+            </div>
+
+            <div class="player">
+                Player 4
+            </div>
+
+            <div class="rank ht2">
                 HT2
             </div>
 
-            <div class="tier-players">
-
-                <div class="tier-player">
-                    Player 4
-                </div>
-
-                <div class="tier-player">
-                    Player 5
-                </div>
-
-                <div class="tier-player">
-                    Placeholder
-                </div>
-
+            <div class="wins">
+                0
             </div>
 
         </div>
 
+        <!-- #5 -->
 
-        <!-- LT2 -->
+        <div class="leaderboard-row">
 
-        <div class="tier-section">
+            <div class="position">
+                5
+            </div>
 
-            <div class="tier-title lt2">
+            <div class="player">
+                Player 5
+            </div>
+
+            <div class="rank ht2">
+                HT2
+            </div>
+
+            <div class="wins">
+                0
+            </div>
+
+        </div>
+
+        <!-- #6 -->
+
+        <div class="leaderboard-row">
+
+            <div class="position">
+                6
+            </div>
+
+            <div class="player">
+                Player 6
+            </div>
+
+            <div class="rank lt2">
                 LT2
             </div>
 
-            <div class="tier-players">
-
-                <div class="tier-player">
-                    Player 6
-                </div>
-
-                <div class="tier-player">
-                    Player 7
-                </div>
-
-                <div class="tier-player">
-                    Placeholder
-                </div>
-
+            <div class="wins">
+                0
             </div>
 
         </div>
 
+        <!-- #7 -->
 
-        <!-- HT3 -->
+        <div class="leaderboard-row">
 
-        <div class="tier-section">
+            <div class="position">
+                7
+            </div>
 
-            <div class="tier-title ht3">
+            <div class="player">
+                Player 7
+            </div>
+
+            <div class="rank lt2">
+                LT2
+            </div>
+
+            <div class="wins">
+                0
+            </div>
+
+        </div>
+
+        <!-- #8 -->
+
+        <div class="leaderboard-row">
+
+            <div class="position">
+                8
+            </div>
+
+            <div class="player">
+                Player 8
+            </div>
+
+            <div class="rank ht3">
                 HT3
             </div>
 
-            <div class="tier-players">
-
-                <div class="tier-player">
-                    Player 8
-                </div>
-
-                <div class="tier-player">
-                    Player 9
-                </div>
-
-                <div class="tier-player">
-                    Placeholder
-                </div>
-
+            <div class="wins">
+                0
             </div>
 
         </div>
 
+        <!-- #9 -->
 
-        <!-- LT3 -->
+        <div class="leaderboard-row">
 
-        <div class="tier-section">
+            <div class="position">
+                9
+            </div>
 
-            <div class="tier-title lt3">
+            <div class="player">
+                Player 9
+            </div>
+
+            <div class="rank ht3">
+                HT3
+            </div>
+
+            <div class="wins">
+                0
+            </div>
+
+        </div>
+
+        <!-- #10 -->
+
+        <div class="leaderboard-row">
+
+            <div class="position">
+                10
+            </div>
+
+            <div class="player">
+                Player 10
+            </div>
+
+            <div class="rank lt3">
                 LT3
             </div>
 
+            <div class="wins">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="leaderboard-note">
+
+        The Top 10 leaderboard is based on verified wins and is
+        separate from tier placement. Wins can be updated as players
+        submit valid proof of their games.
+
+    </div>
+
+</section>
+
+<!-- =========================
+     CURRENT TIER RANKINGS
+========================= -->
+
+<section class="tiers-section">
+
+    <div class="section-title">
+
+        <h2>CURRENT TIER RANKINGS</h2>
+
+        <p>
+            Every currently ranked player in the LBBW community.
+        </p>
+
+    </div>
+
+    <div class="tier-groups">
+
+        <!-- =========================
+             HT1
+        ========================= -->
+
+        <div class="tier-group ht1">
+
+            <div class="tier-header">
+
+                <div class="tier-title ht1">
+                    HT1
+                </div>
+
+                <div class="tier-placement">
+                    TOP 3
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Highest competitive tier. Reserved for the strongest
+                players in the community.
+            </div>
+
             <div class="tier-players">
 
-                <div class="tier-player">
-                    Player 10
+                <div class="player-tag">
+                    Rust
                 </div>
 
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    Dark
                 </div>
 
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    DayTexing
+                </div>
+
+                <div class="player-tag">
+                    FluffiesMC
                 </div>
 
             </div>
 
         </div>
 
+        <!-- =========================
+             LT1
+        ========================= -->
 
-        <!-- HT4 -->
+        <div class="tier-group lt1">
 
-        <div class="tier-section">
+            <div class="tier-header">
 
-            <div class="tier-title ht4">
-                HT4
+                <div class="tier-title lt1">
+                    LT1
+                </div>
+
+                <div class="tier-placement">
+                    TOP 10
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Elite competitive players just below HT1.
             </div>
 
             <div class="tier-players">
 
-                <div class="tier-player">
-                    Placeholder
-                </div>
-
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    cianites
                 </div>
 
             </div>
 
         </div>
 
+        <!-- =========================
+             HT2
+        ========================= -->
 
-        <!-- LT4 -->
+        <div class="tier-group ht2">
 
-        <div class="tier-section">
+            <div class="tier-header">
 
-            <div class="tier-title lt4">
-                LT4
+                <div class="tier-title ht2">
+                    HT2
+                </div>
+
+                <div class="tier-placement">
+                    TOP 20
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Highly skilled competitive players with strong
+                overall BedWars ability.
             </div>
 
             <div class="tier-players">
 
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    c
                 </div>
 
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    Omar
+                </div>
+
+                <div class="player-tag">
+                    welltag
+                </div>
+
+                <div class="player-tag">
+                    Thelyric
                 </div>
 
             </div>
 
         </div>
 
+        <!-- =========================
+             LT2
+        ========================= -->
 
-        <!-- HT5 -->
+        <div class="tier-group lt2">
 
-        <div class="tier-section">
+            <div class="tier-header">
 
-            <div class="tier-title ht5">
-                HT5
+                <div class="tier-title lt2">
+                    LT2
+                </div>
+
+                <div class="tier-placement">
+                    TOP 50
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Strong competitive players with consistent
+                high-level performance.
             </div>
 
             <div class="tier-players">
 
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    DKnoxbox
                 </div>
 
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    Carved
+                </div>
+
+                <div class="player-tag">
+                    malloy75
+                </div>
+
+                <div class="player-tag">
+                    NO one
+                </div>
+
+                <div class="player-tag">
+                    RedHeadGamer
+                </div>
+
+                <div class="player-tag">
+                    Louigi787
                 </div>
 
             </div>
 
         </div>
 
+        <!-- =========================
+             HT3
+        ========================= -->
 
-        <!-- LT5 -->
+        <div class="tier-group ht3">
 
-        <div class="tier-section">
+            <div class="tier-header">
 
-            <div class="tier-title lt5">
-                LT5
+                <div class="tier-title ht3">
+                    HT3
+                </div>
+
+                <div class="tier-placement">
+                    TOP 200
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Competitive players with strong fundamentals
+                and proven BedWars skill.
             </div>
 
             <div class="tier-players">
 
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    Fluffie
                 </div>
 
-                <div class="tier-player">
-                    Placeholder
+                <div class="player-tag">
+                    baloni
+                </div>
+
+                <div class="player-tag">
+                    yook
+                </div>
+
+                <div class="player-tag">
+                    sala
+                </div>
+
+                <div class="player-tag">
+                    Eytomar
+                </div>
+
+                <div class="player-tag">
+                    Void
+                </div>
+
+                <div class="player-tag">
+                    Ouch_Dude
+                </div>
+
+                <div class="player-tag">
+                    lkuder
+                </div>
+
+                <div class="player-tag">
+                    Twirly
+                </div>
+
+                <div class="player-tag">
+                    CAMDYN
                 </div>
 
             </div>
 
         </div>
 
-    </section>
+        <!-- =========================
+             LT3
+        ========================= -->
 
-</div>
+        <div class="tier-group lt3">
 
+            <div class="tier-header">
+
+                <div class="tier-title lt3">
+                    LT3
+                </div>
+
+                <div class="tier-placement">
+                    TOP 500
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Experienced competitive players with developing
+                high-level consistency.
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-tag">
+                    Acutepaper
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =========================
+             HT4
+        ========================= -->
+
+        <div class="tier-group ht4">
+
+            <div class="tier-header">
+
+                <div class="tier-title ht4">
+                    HT4
+                </div>
+
+                <div class="tier-placement">
+                    TOP 600
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Skilled players with solid fundamentals and
+                competitive experience.
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-tag">
+                    Psyduck?
+                </div>
+
+                <div class="player-tag">
+                    Sans-Sama
+                </div>
+
+                <div class="player-tag">
+                    Vanta
+                </div>
+
+                <div class="player-tag">
+                    Babyradar01
+                </div>
+
+                <div class="player-tag">
+                    LJ
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =========================
+             LT4
+        ========================= -->
+
+        <div class="tier-group lt4">
+
+            <div class="tier-header">
+
+                <div class="tier-title lt4">
+                    LT4
+                </div>
+
+                <div class="tier-placement">
+                    TOP 800
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Developing competitive players with a solid
+                understanding of BedWars.
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-tag">
+                    Chumply
+                </div>
+
+                <div class="player-tag">
+                    Robotic
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =========================
+             HT5
+        ========================= -->
+
+        <div class="tier-group ht5">
+
+            <div class="tier-header">
+
+                <div class="tier-title ht5">
+                    HT5
+                </div>
+
+                <div class="tier-placement">
+                    TOP 1,000
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Competitive players building their skills and
+                gaining more testing experience.
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-tag">
+                    Unknownghost
+                </div>
+
+                <div class="player-tag">
+                    T-man3030
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =========================
+             LT5
+        ========================= -->
+
+        <div class="tier-group lt5">
+
+            <div class="tier-header">
+
+                <div class="tier-title lt5">
+                    LT5
+                </div>
+
+                <div class="tier-placement">
+                    TOP 10,000
+                </div>
+
+            </div>
+
+            <div class="tier-description">
+                Entry-level competitive tier for players who have
+                completed testing and entered the LBBW ranking system.
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-tag">
+                    Dev
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     RANKING INFORMATION
+========================= -->
+
+<section class="info-section">
+
+    <div class="section-title">
+
+        <h2>HOW RANKINGS WORK</h2>
+
+        <p>
+            Tier placement and leaderboard position are two different things.
+        </p>
+
+    </div>
+
+    <div class="info-box">
+
+        <h3>
+            Tiers vs. Wins
+        </h3>
+
+        <p>
+            A player's tier represents their competitive skill and is
+            determined through tier testing. The Top 10 leaderboard is
+            separate and is based on verified wins. This means a player
+            can have a high competitive tier without being in the Top 10,
+            while another player can climb the leaderboard through wins.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    LBBW BedWars Community
+    <div>
+        LBBW BedWars Community
+    </div>
+
+    <div class="disclaimer">
+        This is not an official Lifeboat server.
+        Please understand this is an unofficial Lifeboat BedWars server.
+    </div>
 
 </footer>
 
