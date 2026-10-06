@@ -1,777 +1,1364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LBBW | Lifeboat BedWars</title>
+<title>LBBW | Lifeboat BedWars</title>
+<meta name="description" content="LBBW - Lifeboat BedWars Community and Tier Testing">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap');
 
-        html {
-            scroll-behavior: smooth;
-        }
+:root {
+    --bg: #050505;
+    --bg-light: #0d0d0d;
+    --panel: #111111;
+    --panel-hover: #171717;
+    --border: #242424;
+    --white: #ffffff;
+    --muted: #a1a1a1;
+    --red: #e53935;
+    --red-dark: #9e1c1c;
+    --blue: #287be5;
+    --blue-dark: #1451a0;
+    --green: #35c759;
+    --gold: #f5c542;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0a0a0d;
-            color: #f5f5f5;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        /* ---------- NAVBAR ---------- */
+body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    line-height: 1.6;
+}
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            background: rgba(10, 10, 13, 0.82);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            z-index: 1000;
-        }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 2px;
-        }
+button {
+    font-family: inherit;
+}
 
-        .logo span {
-            color: #6c63ff;
-        }
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-        }
+/* =========================
+   NAVBAR
+========================= */
 
-        .nav-links a {
-            color: #bdbdc7;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.25s ease;
-        }
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    z-index: 1000;
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+}
 
-        .nav-links a:hover {
-            color: white;
-        }
+.nav-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        /* ---------- HERO ---------- */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Anton", sans-serif;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 20px 80px;
-            position: relative;
-            overflow: hidden;
-        }
+.logo-lb {
+    color: var(--red);
+}
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: #6c63ff;
-            opacity: 0.08;
-            filter: blur(120px);
-            border-radius: 50%;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+.logo-bw {
+    color: var(--blue);
+}
 
-        .hero-content {
-            position: relative;
-            max-width: 850px;
-            animation: fadeUp 0.8s ease;
-        }
+.logo-divider {
+    color: #444;
+}
 
-        .tag {
-            display: inline-block;
-            padding: 7px 14px;
-            border: 1px solid rgba(108,99,255,0.35);
-            background: rgba(108,99,255,0.08);
-            border-radius: 999px;
-            color: #aaa5ff;
-            font-size: 13px;
-            margin-bottom: 22px;
-        }
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
 
-        .hero h1 {
-            font-size: clamp(55px, 10vw, 100px);
-            line-height: 0.95;
-            letter-spacing: -5px;
-            margin-bottom: 22px;
-        }
+.nav-links a {
+    color: #bbb;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
 
-        .hero h1 span {
-            color: #6c63ff;
-        }
+.nav-links a:hover {
+    color: white;
+}
 
-        .hero p {
-            color: #aaaab5;
-            font-size: 18px;
-            max-width: 650px;
-            margin: 0 auto 35px;
-        }
+.nav-discord {
+    background: #5865F2;
+    padding: 9px 16px;
+    border-radius: 7px;
+    color: white !important;
+}
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
+/* =========================
+   HERO
+========================= */
 
-        .btn {
-            display: inline-block;
-            padding: 13px 22px;
-            border-radius: 9px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: 0.25s ease;
-        }
+.hero {
+    min-height: 760px;
+    padding-top: 72px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 25% 50%, rgba(229,57,53,0.14), transparent 32%),
+        radial-gradient(circle at 75% 50%, rgba(40,123,229,0.14), transparent 32%);
+}
 
-        .btn-primary {
-            background: #6c63ff;
-            color: white;
-        }
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+}
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(108,99,255,0.25);
-        }
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+}
 
-        .btn-secondary {
-            border: 1px solid #303039;
-            color: white;
-            background: #111116;
-        }
+.brand-mark {
+    font-family: "Anton", sans-serif;
+    font-size: clamp(90px, 17vw, 190px);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+    animation: fadeUp 0.8s ease;
+}
 
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            border-color: #555563;
-        }
+.brand-mark .red {
+    color: var(--red);
+}
 
-        /* ---------- SECTIONS ---------- */
+.brand-mark .blue {
+    color: var(--blue);
+}
 
-        section {
-            padding: 100px 7%;
-            max-width: 1400px;
-            margin: auto;
-        }
+.brand-mark .slash {
+    color: #333;
+    margin: 0 7px;
+}
 
-        .section-title {
-            margin-bottom: 45px;
-        }
+.hero h1 {
+    font-size: clamp(32px, 5vw, 58px);
+    line-height: 1.05;
+    margin-bottom: 18px;
+    animation: fadeUp 0.9s ease;
+}
 
-        .section-title h2 {
-            font-size: 38px;
-            margin-bottom: 8px;
-        }
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 17px;
+    animation: fadeUp 1s ease;
+}
 
-        .section-title p {
-            color: #888894;
-        }
+.hero-buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
 
-        /* ---------- CARDS ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 23px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.2s;
+    border: 1px solid transparent;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+.btn:hover {
+    transform: translateY(-2px);
+}
 
-        .card {
-            background: #111116;
-            border: 1px solid #22222b;
-            border-radius: 16px;
-            padding: 28px;
-            transition: transform 0.25s ease,
-                        border-color 0.25s ease,
-                        box-shadow 0.25s ease;
-        }
+.btn-primary {
+    background: var(--red);
+    color: white;
+}
 
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: #373344;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-        }
+.btn-primary:hover {
+    background: #f04440;
+}
 
-        .card-icon {
-            font-size: 30px;
-            margin-bottom: 18px;
-        }
+.btn-secondary {
+    background: var(--panel);
+    border-color: var(--border);
+}
 
-        .card h3 {
-            margin-bottom: 9px;
-            font-size: 20px;
-        }
+.btn-secondary:hover {
+    background: var(--panel-hover);
+}
 
-        .card p {
-            color: #888894;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
+/* =========================
+   GENERAL
+========================= */
 
-        .card-link {
-            color: #8d87ff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
-        }
+section {
+    padding: 95px 0;
+}
 
-        /* ---------- RANKINGS ---------- */
+.section-header {
+    margin-bottom: 45px;
+}
 
-        .ranking-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+.section-label {
+    color: var(--red);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
 
-        .player {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            padding: 18px 20px;
-            background: #111116;
-            border: 1px solid #22222b;
-            border-radius: 12px;
-            transition: 0.2s ease;
-        }
+.section-header h2 {
+    font-size: clamp(30px, 5vw, 45px);
+    line-height: 1.1;
+}
 
-        .player:hover {
-            transform: translateX(5px);
-            border-color: #373344;
-        }
+.section-header p {
+    color: var(--muted);
+    margin-top: 10px;
+    max-width: 650px;
+}
 
-        .placement {
-            width: 35px;
-            font-weight: 800;
-            color: #777783;
-        }
+/* =========================
+   STATS
+========================= */
 
-        .avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #6c63ff, #35304f);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-        }
+.stats {
+    padding: 0 0 40px;
+}
 
-        .player-info {
-            flex: 1;
-        }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
 
-        .player-name {
-            font-weight: 700;
-        }
+.stat {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
 
-        .player-rank {
-            color: #888894;
-            font-size: 13px;
-        }
+.stat-number {
+    font-size: 30px;
+    font-weight: 800;
+}
 
-        .tier {
-            padding: 6px 11px;
-            background: rgba(108,99,255,0.12);
-            border: 1px solid rgba(108,99,255,0.25);
-            color: #aaa5ff;
-            border-radius: 7px;
-            font-size: 12px;
-            font-weight: 800;
-        }
+.stat-label {
+    color: var(--muted);
+    font-size: 13px;
+}
 
-        /* ---------- CTA ---------- */
+/* =========================
+   CARDS
+========================= */
 
-        .cta {
-            text-align: center;
-            background: linear-gradient(
-                135deg,
-                #111116,
-                #15131e
-            );
-            border: 1px solid #282532;
-            border-radius: 20px;
-            padding: 70px 30px;
-        }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
 
-        .cta h2 {
-            font-size: 38px;
-            margin-bottom: 12px;
-        }
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    transition: 0.25s;
+}
 
-        .cta p {
-            color: #92929e;
-            max-width: 600px;
-            margin: 0 auto 25px;
-        }
+.card:hover {
+    transform: translateY(-4px);
+    background: var(--panel-hover);
+    border-color: #333;
+}
 
-        /* ---------- FOOTER ---------- */
+.card-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 18px;
+    background: rgba(229,57,53,0.12);
+}
 
-        footer {
-            border-top: 1px solid #1d1d24;
-            padding: 35px 7%;
-            color: #666671;
-            font-size: 13px;
-            text-align: center;
-        }
+.card h3 {
+    margin-bottom: 8px;
+    font-size: 19px;
+}
 
-        /* ---------- ANIMATION ---------- */
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+}
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+/* =========================
+   RANKINGS
+========================= */
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.rankings {
+    background: #080808;
+}
 
-        /* ---------- MOBILE ---------- */
+.leaderboard {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
 
-        @media (max-width: 850px) {
+.rank-row {
+    display: grid;
+    grid-template-columns: 70px 1fr 130px;
+    align-items: center;
+    padding: 17px 22px;
+    border-bottom: 1px solid var(--border);
+    transition: 0.2s;
+}
 
-            .nav-links {
-                display: none;
-            }
+.rank-row:last-child {
+    border-bottom: none;
+}
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
+.rank-row:hover {
+    background: var(--panel-hover);
+}
 
-            .hero h1 {
-                letter-spacing: -3px;
-            }
+.rank-number {
+    font-weight: 800;
+    color: #777;
+}
 
-            section {
-                padding: 75px 5%;
-            }
-        }
-    </style>
+.rank-player {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    background: #242424;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.rank-name {
+    font-weight: 700;
+}
+
+.rank-tier {
+    text-align: right;
+    font-weight: 800;
+}
+
+.tier-ht1 {
+    color: var(--gold);
+}
+
+.tier-ht3 {
+    color: var(--red);
+}
+
+.tier-lt2 {
+    color: var(--blue);
+}
+
+/* =========================
+   TIERS
+========================= */
+
+.tier-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.tier {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.tier strong {
+    font-size: 20px;
+}
+
+.tier span {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* =========================
+   STAFF
+========================= */
+
+.staff-category {
+    margin-bottom: 40px;
+}
+
+.staff-category h3 {
+    margin-bottom: 15px;
+    font-size: 21px;
+}
+
+.staff-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.staff-member {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 12px 17px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.staff-member.owner {
+    border-color: rgba(245,197,66,0.45);
+}
+
+.staff-member.admin {
+    border-color: rgba(229,57,53,0.4);
+}
+
+/* =========================
+   RULES
+========================= */
+
+.rules {
+    background: #080808;
+}
+
+.rule-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.rule {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 21px;
+}
+
+.rule-number {
+    color: var(--red);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.rule h3 {
+    font-size: 16px;
+    margin: 3px 0 6px;
+}
+
+.rule p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================
+   DISCLAIMER
+========================= */
+
+.disclaimer {
+    border: 1px solid rgba(245,197,66,0.3);
+    background: rgba(245,197,66,0.05);
+    border-radius: 10px;
+    padding: 20px;
+    color: #d5d5d5;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+/* =========================
+   DISCORD CTA
+========================= */
+
+.discord-section {
+    text-align: center;
+    background:
+        radial-gradient(circle at center, rgba(88,101,242,0.12), transparent 50%),
+        #070707;
+}
+
+.discord-section h2 {
+    font-size: clamp(32px, 5vw, 50px);
+    margin-bottom: 12px;
+}
+
+.discord-section p {
+    color: var(--muted);
+    max-width: 600px;
+    margin: auto;
+}
+
+.discord-btn {
+    margin-top: 25px;
+    background: #5865F2;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 35px 0;
+    color: #777;
+    font-size: 13px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-family: "Anton", sans-serif;
+    font-size: 24px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+    .nav-links {
+        display: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .tier-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: 650px;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+
+    .brand-mark {
+        font-size: 85px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .rank-row {
+        grid-template-columns: 45px 1fr 75px;
+        padding: 14px;
+    }
+
+    .rule-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tier-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <nav>
-        <div class="logo">
-            LBBW<span>.</span>
+<nav class="navbar">
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            <span class="logo-lb">LB</span>
+            <span class="logo-divider">|</span>
+            <span class="logo-bw">BW</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#rankings">Rankings</a>
+            <a href="#testing">Tier Testing</a>
+            <a href="#staff">Staff</a>
+            <a href="#rules">Rules</a>
+            <a href="https://discord.gg/JuKMwT6PF" target="_blank" class="nav-discord">Discord</a>
         </div>
 
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#rankings">Rankings</a></li>
-            <li><a href="#testing">Tier Testing</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#staff">Staff</a></li>
-            <li><a href="#rules">Rules</a></li>
-        </ul>
-    </nav>
+    </div>
+</nav>
 
 
-    <!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
-    <main id="home">
+<section class="hero" id="home">
+    <div class="container hero-content">
 
-        <div class="hero">
-            <div class="hero-content">
+        <div class="brand-mark">
+            <span class="red">LB</span>
+            <span class="slash">|</span>
+            <span class="blue">BW</span>
+        </div>
 
-                <div class="tag">
-                    LIFeboat BEDWARS COMMUNITY
+        <h1>Lifeboat BedWars Community</h1>
+
+        <p>
+            A fun, friendly, and welcoming BedWars community focused on
+            competition, tier testing, events, and good sportsmanship.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#testing" class="btn btn-primary">Tier Testing</a>
+            <a href="https://discord.gg/JuKMwT6PF" target="_blank" class="btn btn-secondary">
+                Join the Discord
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+    <div class="container">
+
+        <div class="stats-grid">
+
+            <div class="stat">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Tier Testers</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">11</div>
+                <div class="stat-label">In-Game Moderators</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">13</div>
+                <div class="stat-label">Community Rules</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">BedWars Games</div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     RANKINGS
+========================= -->
+
+<section class="rankings" id="rankings">
+
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Competitive</div>
+            <h2>Rankings</h2>
+            <p>
+                Player rankings and tiers. Individual player ranks can be
+                added and updated as the community grows.
+            </p>
+        </div>
+
+        <div class="leaderboard">
+
+            <div class="rank-row">
+                <div class="rank-number">#1</div>
+
+                <div class="rank-player">
+                    <div class="avatar">?</div>
+                    <div class="rank-name">Rankings Coming Soon</div>
                 </div>
 
-                <h1>
-                    LBBW<span>.</span>
-                </h1>
+                <div class="rank-tier tier-ht1">HT1</div>
+            </div>
 
+            <div class="rank-row">
+                <div class="rank-number">#2</div>
+
+                <div class="rank-player">
+                    <div class="avatar">?</div>
+                    <div class="rank-name">Player</div>
+                </div>
+
+                <div class="rank-tier tier-ht3">HT3</div>
+            </div>
+
+            <div class="rank-row">
+                <div class="rank-number">#3</div>
+
+                <div class="rank-player">
+                    <div class="avatar">?</div>
+                    <div class="rank-name">Player</div>
+                </div>
+
+                <div class="rank-tier tier-lt2">LT2</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TIER TESTING
+========================= -->
+
+<section id="testing">
+
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Competitive Testing</div>
+            <h2>Tier Testing</h2>
+            <p>
+                LBBW tier testing evaluates players and assigns an
+                approximate skill tier based on their performance.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">⚔️</div>
+                <h3>Solo Testing</h3>
                 <p>
-                    A competitive BedWars community built around
-                    tier testing, rankings, events, and players.
+                    Test your individual BedWars skill against a Tier Tester
+                    in a controlled match.
                 </p>
+            </div>
 
-                <div class="buttons">
-                    <a href="#rankings" class="btn btn-primary">
-                        View Rankings
-                    </a>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Team Testing</h3>
+                <p>
+                    Team testing can evaluate coordination, communication,
+                    PvP, pressure, defense, and overall team performance.
+                </p>
+            </div>
 
-                    <a href="#testing" class="btn btn-secondary">
-                        Tier Testing
-                    </a>
+            <div class="card">
+                <div class="card-icon">🏆</div>
+                <h3>Fair Rankings</h3>
+                <p>
+                    Testing is designed to give players a fair and consistent
+                    assessment of their BedWars skill.
+                </p>
+            </div>
 
-                    <a href="#discord" class="btn btn-secondary">
-                        Join Discord
-                    </a>
+        </div>
+
+
+        <div style="margin-top:50px;">
+
+            <div class="section-header">
+                <div class="section-label">Tier System</div>
+                <h2>Tier Rankings</h2>
+            </div>
+
+            <div class="tier-grid">
+
+                <div class="tier">
+                    <strong class="tier-ht1">HT1</strong>
+                    <span>Top 3</span>
                 </div>
+
+                <div class="tier">
+                    <strong>LT1</strong>
+                    <span>Top 10</span>
+                </div>
+
+                <div class="tier">
+                    <strong>HT2</strong>
+                    <span>Top 20</span>
+                </div>
+
+                <div class="tier">
+                    <strong class="tier-lt2">LT2</strong>
+                    <span>Top 50</span>
+                </div>
+
+                <div class="tier">
+                    <strong class="tier-ht3">HT3</strong>
+                    <span>Top 200</span>
+                </div>
+
+                <div class="tier">
+                    <strong>LT3</strong>
+                    <span>Top 500</span>
+                </div>
+
+                <div class="tier">
+                    <strong>HT4</strong>
+                    <span>Top 600</span>
+                </div>
+
+                <div class="tier">
+                    <strong>LT4</strong>
+                    <span>Top 800</span>
+                </div>
+
+                <div class="tier">
+                    <strong>HT5</strong>
+                    <span>Top 1,000</span>
+                </div>
+
+                <div class="tier">
+                    <strong>LT5</strong>
+                    <span>Top 10,000</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STAFF
+========================= -->
+
+<section id="staff" class="rankings">
+
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Leadership</div>
+            <h2>Staff Team</h2>
+            <p>
+                Meet the people helping run and moderate the LBBW community.
+            </p>
+        </div>
+
+
+        <div class="staff-category">
+            <h3>Owner</h3>
+
+            <div class="staff-grid">
+                <div class="staff-member owner">FluffiesMC</div>
+            </div>
+        </div>
+
+
+        <div class="staff-category">
+            <h3>Co-Owners</h3>
+
+            <div class="staff-grid">
+                <div class="staff-member owner">Malloy</div>
+                <div class="staff-member owner">RedHeadGamer</div>
+            </div>
+        </div>
+
+
+        <div class="staff-category">
+            <h3>Admin</h3>
+
+            <div class="staff-grid">
+                <div class="staff-member admin">Ouchy_Dude</div>
+            </div>
+        </div>
+
+
+        <div class="staff-category">
+            <h3>Discord Moderators</h3>
+
+            <div class="staff-grid">
+                <div class="staff-member">Dev</div>
+                <div class="staff-member">Psyduck?</div>
+            </div>
+        </div>
+
+
+        <div class="staff-category">
+            <h3>In-Game Moderators</h3>
+
+            <div class="staff-grid">
+
+                <div class="staff-member">Rust</div>
+                <div class="staff-member">Asdon505</div>
+                <div class="staff-member">TheReddishSlime</div>
+                <div class="staff-member">Pandaa</div>
+                <div class="staff-member">aerie</div>
+                <div class="staff-member">malaloy</div>
+                <div class="staff-member">My1Legocraft</div>
+                <div class="staff-member">DayTexing</div>
+                <div class="staff-member">Trojan</div>
+                <div class="staff-member">Mich</div>
+                <div class="staff-member">FluffiesMC</div>
 
             </div>
         </div>
 
 
-        <!-- FEATURES -->
+        <div class="staff-category">
+            <h3>Tier Testers</h3>
 
-        <section>
+            <div class="staff-grid">
 
-            <div class="section-title">
-                <h2>Everything LBBW</h2>
+                <div class="staff-member">Baloni</div>
+                <div class="staff-member">Rust</div>
+                <div class="staff-member">Eytomar</div>
+                <div class="staff-member">Psyduck?</div>
+                <div class="staff-member">C</div>
+                <div class="staff-member">Welltag</div>
+                <div class="staff-member">CAMDYN</div>
+                <div class="staff-member">NO one</div>
+                <div class="staff-member">Louigi</div>
+                <div class="staff-member">LJ</div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RULES
+========================= -->
+
+<section class="rules" id="rules">
+
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Community Guidelines</div>
+            <h2>Community Rules</h2>
+            <p>
+                Help keep LBBW fun, friendly, and welcoming for everyone.
+            </p>
+        </div>
+
+
+        <div class="rule-grid">
+
+            <div class="rule">
+                <div class="rule-number">01</div>
+                <h3>Be Respectful</h3>
                 <p>
-                    Everything you need to compete, test, and stay involved.
+                    Treat everyone with kindness and respect. No bullying,
+                    harassment, or hateful language.
                 </p>
             </div>
 
-            <div class="cards">
-
-                <div class="card">
-                    <div class="card-icon">🏆</div>
-                    <h3>Rankings</h3>
-                    <p>
-                        See the highest-ranked players and track
-                        the competitive scene.
-                    </p>
-                    <a href="#rankings" class="card-link">
-                        View rankings →
-                    </a>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">⚔️</div>
-                    <h3>Tier Testing</h3>
-                    <p>
-                        Test your BedWars skill and earn an
-                        official LBBW tier.
-                    </p>
-                    <a href="#testing" class="card-link">
-                        Learn more →
-                    </a>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">📅</div>
-                    <h3>Events</h3>
-                    <p>
-                        Keep up with upcoming testing events
-                        and community activities.
-                    </p>
-                    <a href="#events" class="card-link">
-                        View events →
-                    </a>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- RANKINGS -->
-
-        <section id="rankings">
-
-            <div class="section-title">
-                <h2>Top Players</h2>
+            <div class="rule">
+                <div class="rule-number">02</div>
+                <h3>Keep It Family Friendly</h3>
                 <p>
-                    The current LBBW competitive rankings.
+                    Keep conversations appropriate for all ages. Avoid
+                    inappropriate, offensive, or explicit content.
                 </p>
             </div>
 
-            <div class="ranking-list">
-
-                <div class="player">
-                    <div class="placement">01</div>
-
-                    <div class="avatar">?</div>
-
-                    <div class="player-info">
-                        <div class="player-name">
-                            Player One
-                        </div>
-
-                        <div class="player-rank">
-                            Competitive Player
-                        </div>
-                    </div>
-
-                    <div class="tier">
-                        HT1
-                    </div>
-                </div>
-
-
-                <div class="player">
-                    <div class="placement">02</div>
-
-                    <div class="avatar">?</div>
-
-                    <div class="player-info">
-                        <div class="player-name">
-                            Player Two
-                        </div>
-
-                        <div class="player-rank">
-                            Competitive Player
-                        </div>
-                    </div>
-
-                    <div class="tier">
-                        HT3
-                    </div>
-                </div>
-
-
-                <div class="player">
-                    <div class="placement">03</div>
-
-                    <div class="avatar">?</div>
-
-                    <div class="player-info">
-                        <div class="player-name">
-                            Player Three
-                        </div>
-
-                        <div class="player-rank">
-                            Competitive Player
-                        </div>
-                    </div>
-
-                    <div class="tier">
-                        LT2
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- TESTING -->
-
-        <section id="testing">
-
-            <div class="section-title">
-                <h2>Tier Testing</h2>
+            <div class="rule">
+                <div class="rule-number">03</div>
+                <h3>No Cheating</h3>
                 <p>
-                    Find out where you stand.
+                    Hacks, cheats, unfair modifications, exploits, and
+                    encouraging cheats are not allowed.
                 </p>
             </div>
 
-            <div class="cards">
-
-                <div class="card">
-                    <div class="card-icon">⚔️</div>
-                    <h3>Solo Testing</h3>
-                    <p>
-                        Individual players can be tested
-                        based on their overall BedWars skill.
-                    </p>
-                    <a href="#" class="card-link">
-                        Testing information →
-                    </a>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">👥</div>
-                    <h3>Team Testing</h3>
-                    <p>
-                        Evaluate communication, coordination,
-                        PvP, pressure, and team game sense.
-                    </p>
-                    <a href="#" class="card-link">
-                        Team testing →
-                    </a>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">📋</div>
-                    <h3>Test Results</h3>
-                    <p>
-                        View official testing results and
-                        player tier history.
-                    </p>
-                    <a href="#" class="card-link">
-                        View results →
-                    </a>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- EVENTS -->
-
-        <section id="events">
-
-            <div class="section-title">
-                <h2>Events</h2>
+            <div class="rule">
+                <div class="rule-number">04</div>
+                <h3>No Spamming</h3>
                 <p>
-                    Upcoming LBBW community events.
+                    Do not flood chat with repeated messages, emojis,
+                    stickers, GIFs, excessive caps, or similar spam.
                 </p>
             </div>
 
-            <div class="cards">
-
-                <div class="card">
-                    <div class="card-icon">🗓️</div>
-                    <h3>Testing Event</h3>
-                    <p>
-                        Upcoming tier testing event.
-                    </p>
-
-                    <span class="card-link">
-                        Coming soon
-                    </span>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🏅</div>
-                    <h3>Community Event</h3>
-                    <p>
-                        More LBBW events will be announced here.
-                    </p>
-
-                    <span class="card-link">
-                        Coming soon
-                    </span>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">📢</div>
-                    <h3>Announcements</h3>
-                    <p>
-                        Important LBBW updates and announcements.
-                    </p>
-
-                    <span class="card-link">
-                        Coming soon
-                    </span>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- STAFF -->
-
-        <section id="staff">
-
-            <div class="section-title">
-                <h2>Staff</h2>
+            <div class="rule">
+                <div class="rule-number">05</div>
+                <h3>Voice Chat</h3>
                 <p>
-                    The people helping run the LBBW community.
+                    Be respectful while speaking and avoid disruptive noises
+                    or inappropriate microphone use.
                 </p>
             </div>
 
-            <div class="cards">
-
-                <div class="card">
-                    <div class="card-icon">🛡️</div>
-                    <h3>Lead Tier Testers</h3>
-                    <p>
-                        Manage testing and officially post
-                        tier results.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">⚔️</div>
-                    <h3>Tier Testers</h3>
-                    <p>
-                        Conduct fair and unbiased player tests.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🔨</div>
-                    <h3>Moderators</h3>
-                    <p>
-                        Help keep the community safe,
-                        friendly, and welcoming.
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- RULES -->
-
-        <section id="rules">
-
-            <div class="cta">
-
-                <h2>Community Rules</h2>
-
+            <div class="rule">
+                <div class="rule-number">06</div>
+                <h3>Use the Right Channels</h3>
                 <p>
-                    LBBW is built around a fun, friendly,
-                    and welcoming community. Respect others,
-                    play fairly, and keep the community enjoyable.
+                    Keep discussions in their appropriate channels.
                 </p>
-
-                <a href="#" class="btn btn-primary">
-                    View Full Rules
-                </a>
-
             </div>
 
-        </section>
-
-
-        <!-- DISCORD -->
-
-        <section id="discord">
-
-            <div class="cta">
-
-                <h2>Join the Community</h2>
-
+            <div class="rule">
+                <div class="rule-number">07</div>
+                <h3>Advertising</h3>
                 <p>
-                    Join the LBBW Discord to keep up with
-                    testing, events, rankings, and announcements.
+                    Do not advertise other Discord servers, websites, or
+                    social media without staff approval.
                 </p>
-
-                <a href="#" class="btn btn-primary">
-                    Join Discord
-                </a>
-
             </div>
 
-        </section>
+            <div class="rule">
+                <div class="rule-number">08</div>
+                <h3>Fair Play</h3>
+                <p>
+                    Play fairly and be a good teammate. Do not intentionally
+                    ruin games for others.
+                </p>
+            </div>
 
-    </main>
+            <div class="rule">
+                <div class="rule-number">09</div>
+                <h3>Profiles</h3>
+                <p>
+                    Usernames, profile pictures, and statuses should be
+                    appropriate for everyone.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">10</div>
+                <h3>Respect Privacy</h3>
+                <p>
+                    Never share another person's private information.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">11</div>
+                <h3>Listen to Staff</h3>
+                <p>
+                    Follow staff instructions and discuss disagreements
+                    politely through the proper channels.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">12</div>
+                <h3>Reporting Issues</h3>
+                <p>
+                    Report rule-breaking through the correct channels and
+                    provide honest information.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">13</div>
+                <h3>Consequences</h3>
+                <p>
+                    Consequences can include reminders, warnings, timeouts,
+                    kicks, temporary bans, or permanent bans depending on
+                    the situation.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">★</div>
+                <h3>Community Values</h3>
+                <p>
+                    Welcome new players, help others, show good sportsmanship,
+                    and have fun.
+                </p>
+            </div>
+
+        </div>
 
 
-    <!-- FOOTER -->
+        <div class="disclaimer">
+            <strong>Important:</strong> LBBW is not an official Lifeboat
+            server. This is an unofficial Lifeboat BedWars community.
+        </div>
 
-    <footer>
-        LBBW • Lifeboat BedWars Community
-        <br>
-        <span>Not affiliated with Lifeboat Network unless otherwise stated.</span>
-    </footer>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TIER TESTING RULES
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Testing Guidelines</div>
+            <h2>Tier Testing Rules</h2>
+            <p>
+                Rules and requirements for players requesting a tier test.
+            </p>
+        </div>
+
+
+        <div class="rule-grid">
+
+            <div class="rule">
+                <div class="rule-number">01</div>
+                <h3>Request a Tier Test</h3>
+                <p>
+                    Create a ticket in the tier-testing ticket channel and
+                    wait for a Tier Tester to arrange your test.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">02</div>
+                <h3>Testing Format</h3>
+                <p>
+                    Tests are first to 5 points. If the player kills the
+                    tester and destroys their bed, the player earns a point.
+                    If the tester or another player kills the testee, the
+                    tester earns a point.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">03</div>
+                <h3>No Teaming</h3>
+                <p>
+                    Teaming with other players is not allowed during testing.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">04</div>
+                <h3>No Item Restrictions</h3>
+                <p>
+                    All items and tactics are permitted unless specifically
+                    stated otherwise.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">05</div>
+                <h3>Banned Maps</h3>
+                <p>
+                    Solo tier testing does not allow Jungle, Frost Solos,
+                    or Enchanted Cavern.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">06</div>
+                <h3>Redos & Disconnections</h3>
+                <p>
+                    Redos may be granted for qualifying lag-outs with video
+                    evidence or if a hacker is present in the match.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">07</div>
+                <h3>Retesting</h3>
+                <p>
+                    Players may request another tier test 7 days after their
+                    previous test.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">08</div>
+                <h3>Fair Play</h3>
+                <p>
+                    No cheating, hacking, exploiting, intentional interference,
+                    harassment, fabricated evidence, or false accusations.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">09</div>
+                <h3>Respect Your Tester</h3>
+                <p>
+                    Do not argue with, insult, harass, or repeatedly dispute
+                    your Tier Tester's decisions during a test.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">10</div>
+                <h3>Final Notes</h3>
+                <p>
+                    Tier testing is intended to evaluate skill fairly.
+                    Winning or losing is part of the process.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DISCORD
+========================= -->
+
+<section class="discord-section">
+
+    <div class="container">
+
+        <h2>Join the Community</h2>
+
+        <p>
+            Join the LBBW Discord to request tier tests, participate in
+            events, meet other players, and stay up to date.
+        </p>
+
+        <a
+            href="https://discord.gg/JuKMwT6PF"
+            target="_blank"
+            class="btn discord-btn"
+        >
+            Join LBBW Discord
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
+            <div class="footer-logo">
+                <span style="color:#e53935;">LB</span>
+                <span style="color:#444;"> | </span>
+                <span style="color:#287be5;">BW</span>
+            </div>
+
+            <div>
+                Unofficial Lifeboat BedWars Community
+            </div>
+        </div>
+
+        <div>
+            © 2026 LBBW. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
+
 
 </body>
 </html>
