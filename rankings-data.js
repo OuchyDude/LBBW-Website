@@ -8,5 +8,5 @@ const top10 = [
     { name: "Player 7", tier: "LT2", wins: 0 },
     { name: "Player 8", tier: "HT3", wins: 0 },
     { name: "Player 9", tier: "HT3", wins: 0 },
-    { name: "Player 10", tier: "LT3", wins: 0 }
+    { name: "Turtle", tier: "LT3", wins: 0 }
 ];
