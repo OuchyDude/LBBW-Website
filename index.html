@@ -245,6 +245,192 @@ section {
 }
 
 /* =========================
+   BED BATTLE
+========================= */
+
+.bed-battle {
+    background: linear-gradient(
+        180deg,
+        #0b0e14 0%,
+        #10141c 100%
+    );
+    padding: 90px 7%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.bed-battle-title {
+    margin-bottom: 55px;
+}
+
+.bed-battle-title h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+.bed-battle-title p {
+    color: #999;
+    margin-top: 10px;
+}
+
+.bed-arena {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.bed-team {
+    width: 280px;
+    transition: transform 0.3s ease;
+}
+
+.bed-team:hover {
+    transform: translateY(-8px) scale(1.05);
+}
+
+.team-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.red-team .team-label {
+    color: #e32626;
+}
+
+.blue-team .team-label {
+    color: #287cff;
+}
+
+.minecraft-bed {
+    position: relative;
+    width: 190px;
+    height: 110px;
+    margin: auto;
+    animation: bedFloat 3s ease-in-out infinite;
+}
+
+.red-bed {
+    filter: drop-shadow(0 0 18px rgba(227,38,38,0.5));
+}
+
+.blue-bed {
+    filter: drop-shadow(0 0 18px rgba(40,124,255,0.5));
+}
+
+.bed-blanket {
+    position: absolute;
+    width: 125px;
+    height: 48px;
+    left: 35px;
+    top: 25px;
+    border-radius: 6px 6px 3px 3px;
+    transform: skewY(-8deg);
+}
+
+.red-bed .bed-blanket {
+    background: #d51f2f;
+}
+
+.blue-bed .bed-blanket {
+    background: #1769d1;
+}
+
+.bed-head {
+    position: absolute;
+    width: 62px;
+    height: 35px;
+    left: 15px;
+    top: 15px;
+    border-radius: 7px;
+    z-index: 2;
+    transform: skewY(-8deg);
+}
+
+.red-bed .bed-head {
+    background: #f04a4a;
+}
+
+.blue-bed .bed-head {
+    background: #4b9cff;
+}
+
+.bed-frame {
+    position: absolute;
+    width: 145px;
+    height: 15px;
+    left: 28px;
+    top: 67px;
+    background: #70421f;
+    border-radius: 2px;
+    transform: skewY(-8deg);
+}
+
+.bed-legs {
+    position: absolute;
+    width: 12px;
+    height: 28px;
+    left: 40px;
+    top: 78px;
+    background: #4b2b16;
+    box-shadow: 115px 0 #4b2b16;
+}
+
+.battle-center {
+    min-width: 100px;
+}
+
+.battle-vs {
+    font-family: 'Anton', sans-serif;
+    font-size: 42px;
+    color: white;
+}
+
+.battle-message {
+    margin-top: 10px;
+    color: #777;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@keyframes bedFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 700px) {
+
+    .bed-arena {
+        flex-direction: column;
+        gap: 45px;
+    }
+
+    .battle-center {
+        order: 2;
+    }
+
+    .red-team {
+        order: 1;
+    }
+
+    .blue-team {
+        order: 3;
+    }
+
+}
+
+/* =========================
    RANKINGS PREVIEW
 ========================= */
 
@@ -702,7 +888,6 @@ section {
 
 .secret-bed-team {
     width: 150px;
-    cursor: pointer;
     transition: 0.3s;
 }
 
@@ -812,10 +997,6 @@ section {
     letter-spacing: 1px;
 }
 
-.secret-bed-broken {
-    animation: secretBedBreak 0.5s ease forwards !important;
-}
-
 @keyframes secretBedFloat {
 
     0%, 100% {
@@ -824,24 +1005,6 @@ section {
 
     50% {
         transform: translateY(-5px);
-    }
-
-}
-
-@keyframes secretBedBreak {
-
-    0% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-
-    30% {
-        transform: scale(1.1) rotate(-5deg);
-    }
-
-    100% {
-        transform: scale(0) rotate(15deg);
-        opacity: 0;
     }
 
 }
@@ -1108,7 +1271,7 @@ footer {
 
     <div class="bed-arena">
 
-        <div class="bed-team red-team" onclick="breakBed('red')">
+        <div class="bed-team red-team">
 
             <div class="team-label">
                 RED
@@ -1117,11 +1280,8 @@ footer {
             <div class="minecraft-bed red-bed">
 
                 <div class="bed-head"></div>
-
                 <div class="bed-blanket"></div>
-
                 <div class="bed-frame"></div>
-
                 <div class="bed-legs"></div>
 
             </div>
@@ -1134,13 +1294,13 @@ footer {
                 VS
             </div>
 
-            <div class="battle-message" id="battleMessage">
-                READY?
+            <div class="battle-message">
+                RED VS BLUE
             </div>
 
         </div>
 
-        <div class="bed-team blue-team" onclick="breakBed('blue')">
+        <div class="bed-team blue-team">
 
             <div class="team-label">
                 BLUE
@@ -1149,11 +1309,8 @@ footer {
             <div class="minecraft-bed blue-bed">
 
                 <div class="bed-head"></div>
-
                 <div class="bed-blanket"></div>
-
                 <div class="bed-frame"></div>
-
                 <div class="bed-legs"></div>
 
             </div>
@@ -1545,10 +1702,7 @@ footer {
 
         <div class="secret-battle-arena">
 
-            <div
-                class="secret-bed-team"
-                onclick="breakSecretBed('red')"
-            >
+            <div class="secret-bed-team">
 
                 <div class="secret-team-label secret-red">
                     RED
@@ -1573,17 +1727,13 @@ footer {
 
                 <div
                     class="secret-message"
-                    id="secretBattleMessage"
                 >
-                    CLICK A BED
+                    RED VS BLUE
                 </div>
 
             </div>
 
-            <div
-                class="secret-bed-team"
-                onclick="breakSecretBed('blue')"
-            >
+            <div class="secret-bed-team">
 
                 <div class="secret-team-label secret-blue">
                     BLUE
@@ -1652,77 +1802,6 @@ if (homepageRankings) {
         `;
 
     });
-
-}
-
-/* =========================
-   BED BATTLE
-========================= */
-
-function breakBed(team) {
-
-    const bed = document.querySelector(`.${team}-bed`);
-    const message = document.getElementById("battleMessage");
-
-    if (!bed || bed.classList.contains("bed-broken")) {
-        return;
-    }
-
-    bed.classList.add("bed-broken");
-
-    message.textContent = team.toUpperCase() + " BED DESTROYED!";
-
-    message.style.color =
-        team === "red" ? "#e32626" : "#287cff";
-
-    setTimeout(() => {
-
-        bed.classList.remove("bed-broken");
-
-        message.textContent = "READY?";
-        message.style.color = "#777";
-
-    }, 1500);
-
-}
-
-/* =========================
-   SECRET BED BATTLE
-========================= */
-
-function toggleSecretBattle() {
-
-    const battle = document.getElementById("secretBattle");
-
-    battle.classList.toggle("active");
-
-}
-
-function breakSecretBed(team) {
-
-    const bed = document.querySelector(`.secret-bed.${team}`);
-    const message = document.getElementById("secretBattleMessage");
-
-    if (!bed || bed.classList.contains("secret-bed-broken")) {
-        return;
-    }
-
-    bed.classList.add("secret-bed-broken");
-
-    message.textContent =
-        team.toUpperCase() + " BED DESTROYED!";
-
-    message.style.color =
-        team === "red" ? "#e32626" : "#287cff";
-
-    setTimeout(() => {
-
-        bed.classList.remove("secret-bed-broken");
-
-        message.textContent = "CLICK A BED";
-        message.style.color = "#444";
-
-    }, 1500);
 
 }
 
