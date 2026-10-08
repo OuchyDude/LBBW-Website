@@ -285,7 +285,6 @@ section {
 
 .bed-team {
     width: 280px;
-    cursor: pointer;
     transition: transform 0.3s ease;
 }
 
@@ -407,26 +406,6 @@ section {
 
     50% {
         transform: translateY(-8px);
-    }
-}
-
-.bed-broken {
-    animation: bedBreak 0.5s ease forwards !important;
-}
-
-@keyframes bedBreak {
-    0% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-
-    30% {
-        transform: scale(1.15) rotate(-5deg);
-    }
-
-    100% {
-        transform: scale(0) rotate(20deg);
-        opacity: 0;
     }
 }
 
@@ -1019,10 +998,6 @@ section {
     letter-spacing: 1px;
 }
 
-.secret-bed-broken {
-    animation: secretBedBreak 0.5s ease forwards !important;
-}
-
 @keyframes secretBedFloat {
 
     0%, 100% {
@@ -1031,24 +1006,6 @@ section {
 
     50% {
         transform: translateY(-5px);
-    }
-
-}
-
-@keyframes secretBedBreak {
-
-    0% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-
-    30% {
-        transform: scale(1.1) rotate(-5deg);
-    }
-
-    100% {
-        transform: scale(0) rotate(15deg);
-        opacity: 0;
     }
 
 }
@@ -1210,7 +1167,11 @@ footer {
         <li><a href="#testing">Tier Testing</a></li>
         <li><a href="#staff">Staff</a></li>
         <li><a href="#rules">Rules</a></li>
-        <li><a href="https://discord.gg/JuKMwT6PF" target="_blank">Discord</a></li>
+        <li>
+            <a href="https://discord.gg/JuKMwT6PF" target="_blank">
+                Discord
+            </a>
+        </li>
     </ul>
 
 </nav>
@@ -1243,7 +1204,11 @@ footer {
                 Hall of Fame
             </a>
 
-            <a href="https://discord.gg/JuKMwT6PF" target="_blank" class="btn btn-secondary">
+            <a
+                href="https://discord.gg/JuKMwT6PF"
+                target="_blank"
+                class="btn btn-secondary"
+            >
                 Join Discord
             </a>
 
@@ -1315,7 +1280,7 @@ footer {
 
     <div class="bed-arena">
 
-        <div class="bed-team red-team" onclick="breakBed('red')">
+        <div class="bed-team red-team">
 
             <div class="team-label">
                 RED
@@ -1324,11 +1289,8 @@ footer {
             <div class="minecraft-bed red-bed">
 
                 <div class="bed-head"></div>
-
                 <div class="bed-blanket"></div>
-
                 <div class="bed-frame"></div>
-
                 <div class="bed-legs"></div>
 
             </div>
@@ -1342,12 +1304,12 @@ footer {
             </div>
 
             <div class="battle-message" id="battleMessage">
-                READY?
+                RED VS BLUE
             </div>
 
         </div>
 
-        <div class="bed-team blue-team" onclick="breakBed('blue')">
+        <div class="bed-team blue-team">
 
             <div class="team-label">
                 BLUE
@@ -1356,11 +1318,8 @@ footer {
             <div class="minecraft-bed blue-bed">
 
                 <div class="bed-head"></div>
-
                 <div class="bed-blanket"></div>
-
                 <div class="bed-frame"></div>
-
                 <div class="bed-legs"></div>
 
             </div>
@@ -1752,10 +1711,7 @@ footer {
 
         <div class="secret-battle-arena">
 
-            <div
-                class="secret-bed-team"
-                onclick="breakSecretBed('red')"
-            >
+            <div class="secret-bed-team">
 
                 <div class="secret-team-label secret-red">
                     RED
@@ -1782,15 +1738,12 @@ footer {
                     class="secret-message"
                     id="secretBattleMessage"
                 >
-                    CLICK A BED
+                    RED VS BLUE
                 </div>
 
             </div>
 
-            <div
-                class="secret-bed-team"
-                onclick="breakSecretBed('blue')"
-            >
+            <div class="secret-bed-team">
 
                 <div class="secret-team-label secret-blue">
                     BLUE
@@ -1863,37 +1816,6 @@ if (homepageRankings) {
 }
 
 /* =========================
-   BED BATTLE
-========================= */
-
-function breakBed(team) {
-
-    const bed = document.querySelector(`.${team}-bed`);
-    const message = document.getElementById("battleMessage");
-
-    if (!bed || bed.classList.contains("bed-broken")) {
-        return;
-    }
-
-    bed.classList.add("bed-broken");
-
-    message.textContent = team.toUpperCase() + " BED DESTROYED!";
-
-    message.style.color =
-        team === "red" ? "#e32626" : "#287cff";
-
-    setTimeout(() => {
-
-        bed.classList.remove("bed-broken");
-
-        message.textContent = "READY?";
-        message.style.color = "#777";
-
-    }, 1500);
-
-}
-
-/* =========================
    SECRET BED BATTLE
 ========================= */
 
@@ -1902,34 +1824,6 @@ function toggleSecretBattle() {
     const battle = document.getElementById("secretBattle");
 
     battle.classList.toggle("active");
-
-}
-
-function breakSecretBed(team) {
-
-    const bed = document.querySelector(`.secret-bed.${team}`);
-    const message = document.getElementById("secretBattleMessage");
-
-    if (!bed || bed.classList.contains("secret-bed-broken")) {
-        return;
-    }
-
-    bed.classList.add("secret-bed-broken");
-
-    message.textContent =
-        team.toUpperCase() + " BED DESTROYED!";
-
-    message.style.color =
-        team === "red" ? "#e32626" : "#287cff";
-
-    setTimeout(() => {
-
-        bed.classList.remove("secret-bed-broken");
-
-        message.textContent = "CLICK A BED";
-        message.style.color = "#444";
-
-    }, 1500);
 
 }
 
