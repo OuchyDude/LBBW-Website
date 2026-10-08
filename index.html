@@ -1,6 +1,5159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LBBW BedWars Community</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Cinzel:wght@600;700&family=Exo+2:wght@600;700&family=Montserrat:wght@600;700&family=Orbitron:wght@600;700&family=Rajdhani:wght@600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: white;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.logo .lb {
+    color: #e32626;
+}
+
+.logo .bw {
+    color: #287cff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.25s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.78)
+        ),
+        url("https://upload.wikimedia.org/wikipedia/commons/6/6f/Minecraft_landscape.png");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+    padding: 120px 20px 60px;
+}
+
+.hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(80px, 13vw, 170px);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.hero h1 .lb {
+    color: #e32626;
+}
+
+.hero h1 .bw {
+    color: #287cff;
+}
+
+.hero h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #d0d0d0;
+    font-size: 17px;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 7px;
+    font-weight: 700;
+    transition: 0.25s;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #e32626;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #ff3535;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+    margin: -55px auto 0;
+    position: relative;
+    z-index: 5;
+    gap: 18px;
+    padding: 0 20px;
+}
+
+.stat {
+    background: rgba(20,20,20,0.95);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: 0.25s;
+}
+
+.stat:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.25);
+}
+
+.stat-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 42px;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+section {
+    padding: 100px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-title h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+.section-title p {
+    color: #999;
+    margin-top: 10px;
+}
+
+/* =========================
+   RANKINGS PREVIEW
+========================= */
+
+.rankings-section {
+    background: #0a0a0a;
+}
+
+.rankings-preview {
+    max-width: 950px;
+    margin: auto;
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.ranking-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 150px 120px;
+    align-items: center;
+    padding: 18px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ranking-row:last-child {
+    border-bottom: none;
+}
+
+.ranking-row.header {
+    background: #171717;
+    color: #888;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.rank-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+}
+
+.player-name {
+    font-weight: 700;
+}
+
+.player-tier {
+    font-weight: 800;
+}
+
+.wins {
+    color: #aaa;
+}
+
+.ht1 {
+    color: #ffd700;
+}
+
+.lt1 {
+    color: #e6c84f;
+}
+
+.ht2 {
+    color: #ff9d2e;
+}
+
+.lt2 {
+    color: #d56d17;
+}
+
+.ht3 {
+    color: #a86f45;
+}
+
+.lt3,
+.ht4,
+.lt4,
+.ht5,
+.lt5 {
+    color: #aaa;
+}
+
+.view-rankings {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* =========================
+   TIER TESTING
+========================= */
+
+.testing-section {
+    background: #0d0d0d;
+}
+
+.testing-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.testing-card {
+    background: #141414;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 12px;
+    transition: 0.25s;
+}
+
+.testing-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.testing-card h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.testing-card p {
+    color: #999;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* =========================
+   STAFF
+========================= */
+
+.staff-section {
+    background: #0a0a0a;
+}
+
+.staff-sections {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.staff-group {
+    position: relative;
+    background: #111;
+    border-radius: 14px;
+    padding: 28px;
+    overflow: hidden;
+    border: 2px solid white;
+}
+
+/* =========================
+   ROLE BORDER ANIMATIONS
+========================= */
+
+.role-owner {
+    animation: ownerGlow 4s ease-in-out infinite;
+}
+
+.role-co-owner {
+    animation: coOwnerGlow 4s ease-in-out infinite;
+}
+
+.role-admin {
+    animation: adminGlow 4s ease-in-out infinite;
+}
+
+.role-discord-mod {
+    animation: discordModGlow 4s ease-in-out infinite;
+}
+
+.role-ingame-mod {
+    animation: ingameModGlow 4s ease-in-out infinite;
+}
+
+.role-tester {
+    animation: testerGlow 4s ease-in-out infinite;
+}
+
+@keyframes ownerGlow {
+    0%, 100% {
+        border-color: white;
+        box-shadow: 0 0 0 rgba(125,211,252,0);
+    }
+    50% {
+        border-color: #7dd3fc;
+        box-shadow: 0 0 18px rgba(125,211,252,0.35);
+    }
+}
+
+@keyframes coOwnerGlow {
+    0%, 100% {
+        border-color: white;
+        box-shadow: 0 0 0 rgba(125,211,252,0);
+    }
+    50% {
+        border-color: #7dd3fc;
+        box-shadow: 0 0 18px rgba(125,211,252,0.35);
+    }
+}
+
+@keyframes adminGlow {
+    0%, 100% {
+        border-color: white;
+        box-shadow: 0 0 0 rgba(227,38,38,0);
+    }
+    50% {
+        border-color: #e32626;
+        box-shadow: 0 0 18px rgba(227,38,38,0.35);
+    }
+}
+
+@keyframes discordModGlow {
+    0%, 100% {
+        border-color: white;
+        box-shadow: 0 0 0 rgba(37,99,235,0);
+    }
+    50% {
+        border-color: #2563eb;
+        box-shadow: 0 0 18px rgba(37,99,235,0.35);
+    }
+}
+
+@keyframes ingameModGlow {
+    0%, 100% {
+        border-color: white;
+        box-shadow: 0 0 0 rgba(168,85,247,0);
+    }
+    50% {
+        border-color: #a855f7;
+        box-shadow: 0 0 18px rgba(168,85,247,0.35);
+    }
+}
+
+@keyframes testerGlow {
+    0%, 100% {
+        border-color: white;
+        box-shadow: 0 0 0 rgba(249,115,22,0);
+    }
+    50% {
+        border-color: #f97316;
+        box-shadow: 0 0 18px rgba(249,115,22,0.35);
+    }
+}
+
+/* =========================
+   ROLE HEADERS
+========================= */
+
+.role-header {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+/* CUSTOM FONT FOR EVERY ROLE */
+
+.role-owner .role-header {
+    font-family: 'Cinzel', serif;
+    color: #7dd3fc;
+}
+
+.role-co-owner .role-header {
+    font-family: 'Montserrat', sans-serif;
+    color: #7dd3fc;
+}
+
+.role-admin .role-header {
+    font-family: 'Rajdhani', sans-serif;
+    color: #e32626;
+    letter-spacing: 2px;
+}
+
+.role-discord-mod .role-header {
+    font-family: 'Orbitron', sans-serif;
+    color: #2563eb;
+    letter-spacing: 1px;
+}
+
+.role-ingame-mod .role-header {
+    font-family: 'Exo 2', sans-serif;
+    color: #a855f7;
+}
+
+.role-tester .role-header {
+    font-family: 'Saira Condensed', sans-serif;
+    color: #f97316;
+    letter-spacing: 2px;
+}
+
+.role-count {
+    color: #777;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin-left: 8px;
+}
+
+.staff-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.staff-member {
+    background: #181818;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: #eee;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.staff-member:hover {
+    background: #202020;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RULES
+========================= */
+
+.rules-section {
+    background: #0d0d0d;
+}
+
+.rules-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.rule {
+    background: #141414;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 22px;
+}
+
+.rule h3 {
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.rule p {
+    color: #999;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* =========================
+   DISCORD
+========================= */
+
+.discord-section {
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #101010,
+        #151515
+    );
+}
+
+.discord-section h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.discord-section p {
+    color: #aaa;
+    max-width: 650px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #050505;
+    color: #666;
+    font-size: 13px;
+}
+
+.disclaimer {
+    margin-top: 8px;
+    color: #444;
+    font-size: 11px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        padding: 0 25px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .testing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+    }
+
+    .ranking-row {
+        grid-template-columns: 55px 1fr 90px 70px;
+        padding: 15px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    nav {
+        height: auto;
+        min-height: 70px;
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero {
+        min-height: 700px;
+    }
+
+    .hero-content {
+        padding-top: 170px;
+    }
+
+    .hero h1 {
+        font-size: 80px;
+    }
+
+    .hero h2 {
+        font-size: 22px;
+    }
+
+    .ranking-row {
+        grid-template-columns: 45px 1fr 75px;
+    }
+
+    .ranking-row .wins {
+        display: none;
+    }
+
+    .ranking-row.header .wins {
+        display: none;
+    }
+
+    .rules-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 75px 5%;
+    }
+
+    .section-title h2 {
+        font-size: 40px;
+    }
+
+}
+
+/* =========================
+   SMALL SCREEN STAFF
+========================= */
+
+@media (max-width: 500px) {
+
+    .staff-list {
+        grid-template-columns: 1fr;
+    }
+
+    .staff-group {
+        padding: 22px;
+    }
+
+    .role-header {
+        font-size: 21px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        <span class="lb">LB</span><span class="bw">BW</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="rankings.html">Rankings</a></li>
+        <li><a href="halloffame.html">Hall of Fame</a></li>
+        <li><a href="tips.html">Tips & Tricks</a></li>
+        <li><a href="#testing">Tier Testing</a></li>
+        <li><a href="#staff">Staff</a></li>
+        <li><a href="#rules">Rules</a></li>
+        <li><a href="https://discord.gg/JuKMwT6PF" target="_blank">Discord</a></li>
+    </ul>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            <span class="lb">LB</span><span class="bw">BW</span>
+        </h1>
+
+        <h2>Lifeboat BedWars Community</h2>
+
+        <p>
+            Competitive BedWars. Tier Testing. Rankings. Community.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="rankings.html" class="btn btn-primary">
+                View Rankings
+            </a>
+
+            <a href="halloffame.html" class="btn btn-secondary">
+                Hall of Fame
+            </a>
+
+            <a href="https://discord.gg/JuKMwT6PF" target="_blank" class="btn btn-secondary">
+                Join Discord
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     STATS
+========================= -->
+
+<div class="stats">
+
+    <div class="stat">
+
+        <div class="stat-number">
+            10
+        </div>
+
+        <div class="stat-label">
+            COMPETITIVE TIERS
+        </div>
+
+    </div>
+
+    <div class="stat">
+
+        <div class="stat-number">
+            ∞
+        </div>
+
+        <div class="stat-label">
+            INFINITE BEDWARS GAMES
+        </div>
+
+    </div>
+
+    <div class="stat">
+
+        <div class="stat-number">
+            27
+        </div>
+
+        <div class="stat-label">
+            STAFF MEMBERS
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     RANKINGS
+========================= -->
+
+<section class="rankings-section">
+
+    <div class="section-title">
+
+        <h2>RANKINGS</h2>
+
+        <p>
+            The top competitive players in the LBBW community.
+        </p>
+
+    </div>
+
+    <div class="rankings-preview">
+
+    </div>
+
+    <div class="view-rankings">
+
+        <a href="rankings.html" class="btn btn-secondary">
+            View Full Rankings
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     TIER TESTING
+========================= -->
+
+<section class="testing-section" id="testing">
+
+    <div class="section-title">
+
+        <h2>TIER TESTING</h2>
+
+        <p>
+            Prove your skill and earn your place among the best.
+        </p>
+
+    </div>
+
+    <div class="testing-grid">
+
+        <div class="testing-card">
+
+            <h3>Solo Testing</h3>
+
+            <p>
+                Test your individual BedWars skills through our
+                competitive tier testing system.
+            </p>
+
+        </div>
+
+        <div class="testing-card">
+
+            <h3>Team Testing</h3>
+
+            <p>
+                Duos and quads testing focused on teamwork,
+                coordination, PvP, pressure and game sense.
+            </p>
+
+        </div>
+
+        <div class="testing-card">
+
+            <h3>Competitive Tiers</h3>
+
+            <p>
+                Earn a placement from LT5 all the way to HT1
+                based on your performance during testing.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     STAFF
+========================= -->
+
+<section class="staff-section" id="staff">
+
+    <div class="section-title">
+
+        <h2>STAFF</h2>
+
+        <p>
+            Meet the people who keep the LBBW community running.
+        </p>
+
+    </div>
+
+    <div class="staff-sections">
+
+        <!-- OWNER -->
+
+        <div class="staff-group role-owner">
+
+            <div class="role-header">
+                OWNER
+                <span class="role-count">1 STAFF MEMBER</span>
+            </div>
+
+            <div class="staff-list">
+
+                <div class="staff-member">
+                    FluffiesMC
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CO-OWNERS -->
+
+        <div class="staff-group role-co-owner">
+
+            <div class="role-header">
+                CO-OWNERS
+                <span class="role-count">2 STAFF MEMBERS</span>
+            </div>
+
+            <div class="staff-list">
+
+                <div class="staff-member">
+                    Malloy
+                </div>
+
+                <div class="staff-member">
+                    RedHeadGamer
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ADMINS -->
+
+        <div class="staff-group role-admin">
+
+            <div class="role-header">
+                ADMINS
+                <span class="role-count">1 STAFF MEMBER</span>
+            </div>
+
+            <div class="staff-list">
+
+                <div class="staff-member">
+                    Ouchy_Dude
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DISCORD MODERATORS -->
+
+        <div class="staff-group role-discord-mod">
+
+            <div class="role-header">
+                DISCORD MODERATORS
+                <span class="role-count">2 STAFF MEMBERS</span>
+            </div>
+
+            <div class="staff-list">
+
+                <div class="staff-member">
+                    Dev
+                </div>
+
+                <div class="staff-member">
+                    Psyduck?
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- IN-GAME MODERATORS -->
+
+        <div class="staff-group role-ingame-mod">
+
+            <div class="role-header">
+                IN-GAME MODERATORS
+                <span class="role-count">11 STAFF MEMBERS</span>
+            </div>
+
+            <div class="staff-list">
+
+                <div class="staff-member">
+                    Rust
+                </div>
+
+                <div class="staff-member">
+                    Asdon505
+                </div>
+
+                <div class="staff-member">
+                    TheReddishSlime
+                </div>
+
+                <div class="staff-member">
+                    Pandaa
+                </div>
+
+                <div class="staff-member">
+                    aerie
+                </div>
+
+                <div class="staff-member">
+                    Malloy
+                </div>
+
+                <div class="staff-member">
+                    My1Legocraft
+                </div>
+
+                <div class="staff-member">
+                    DayTexing
+                </div>
+
+                <div class="staff-member">
+                    Trojan
+                </div>
+
+                <div class="staff-member">
+                    Mich
+                </div>
+
+                <div class="staff-member">
+                    FluffiesMC
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TIER TESTERS -->
+
+        <div class="staff-group role-tester">
+
+            <div class="role-header">
+                TIER TESTERS
+                <span class="role-count">10 STAFF MEMBERS</span>
+            </div>
+
+            <div class="staff-list">
+
+                <div class="staff-member">
+                    Baloni
+                </div>
+
+                <div class="staff-member">
+                    Rust
+                </div>
+
+                <div class="staff-member">
+                    Eytomar
+                </div>
+
+                <div class="staff-member">
+                    Psyduck?
+                </div>
+
+                <div class="staff-member">
+                    C
+                </div>
+
+                <div class="staff-member">
+                    Welltag
+                </div>
+
+                <div class="staff-member">
+                    CAMDYN
+                </div>
+
+                <div class="staff-member">
+                    NO one
+                </div>
+
+                <div class="staff-member">
+                    Louigi
+                </div>
+
+                <div class="staff-member">
+                    LJ
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     RULES
+========================= -->
+
+<section class="rules-section" id="rules">
+
+    <div class="section-title">
+
+        <h2>COMMUNITY RULES</h2>
+
+        <p>
+            Keep the community competitive, fair and welcoming.
+        </p>
+
+    </div>
+
+    <div class="rules-grid">
+
+        <div class="rule">
+
+            <h3>01. Be Respectful</h3>
+
+            <p>
+                Treat everyone with kindness and respect.
+                Bullying, harassment and hateful language are not allowed.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>02. Keep It Family Friendly</h3>
+
+            <p>
+                Keep conversations appropriate for all ages.
+                Avoid inappropriate, offensive or explicit content.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>03. No Cheating</h3>
+
+            <p>
+                Hacks, cheats, unfair modifications and exploits
+                are strictly prohibited.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>04. No Spamming</h3>
+
+            <p>
+                Do not flood channels with repeated messages,
+                emojis, stickers, GIFs or excessive caps.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>05. Voice Chat</h3>
+
+            <p>
+                Keep voice chat respectful and appropriate.
+                Avoid shouting or disruptive noises.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>06. Use The Right Channels</h3>
+
+            <p>
+                Keep discussions in the appropriate channels
+                so the server stays organized.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>07. No Unauthorized Advertising</h3>
+
+            <p>
+                Do not advertise other Discord servers,
+                websites or social media without staff approval.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>08. Fair Play</h3>
+
+            <p>
+                Play fairly, be a good teammate and do not
+                intentionally ruin another player's experience.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>09. Respect Privacy</h3>
+
+            <p>
+                Never share another person's private information
+                without their permission.
+            </p>
+
+        </div>
+
+        <div class="rule">
+
+            <h3>10. Listen To Staff</h3>
+
+            <p>
+                Follow reasonable staff instructions and handle
+                disagreements through the proper channels.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     DISCORD
+========================= -->
+
+<section class="discord-section">
+
+    <h2>JOIN THE COMMUNITY</h2>
+
+    <p>
+        Join the LBBW Discord to participate in tier testing,
+        events, rankings, announcements and the wider BedWars community.
+    </p>
+
+    <a
+        href="https://discord.gg/JuKMwT6PF"
+        target="_blank"
+        class="btn btn-primary"
+    >
+        Join Discord
+    </a>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        LBBW BedWars Community
+    </div>
+
+    <div class="disclaimer">
+        This is not an official Lifeboat server.
+        Please understand this is an unofficial Lifeboat BedWars server.
+    </div>
+
+</footer>
+
+<script src="rankings-data.js"></script>
+
+<script>
+
+const homepageRankings = document.querySelector(".rankings-preview");
+
+if (homepageRankings) {
+
+    homepageRankings.innerHTML = `
+        <div class="ranking-row header">
+            <div>#</div>
+            <div>PLAYER</div>
+            <div>RANK</div>
+            <div class="wins">WINS</div>
+        </div>
+    `;
+
+    top10.forEach((player, index) => {
+
+        homepageRankings.innerHTML += `
+            <div class="ranking-row">
+                <div class="rank-number">${index + 1}</div>
+                <div class="player-name">${player.name}</div>
+                <div class="player-tier ${player.tier.toLowerCase()}">${player.tier}</div>
+                <div class="wins">${player.wins}</div>
+            </div>
+        `;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
+
+Important: this version requires the separate rankings-data.js file in the same GitHub repository/folder as index.html. The homepage will then pull the Top 10 from that file automatically.
+
+do the same for the ranked section now
+
+Yep. For rankings.html, we'll make the Top 10 use the exact same rankings-data.js file, while leaving the rest of the rankings page alone.
+
+That means you will only edit the Top 10 in one place:
+
+rankings-data.js
+
+Both index.html and rankings.html will update from it. Humanity has finally achieved database synchronization. Sort of.
+
+rankings.html
+
+Use this full code:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LBBW Rankings</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Cinzel:wght@600;700&family=Exo+2:wght@600;700&family=Montserrat:wght@600;700&family=Orbitron:wght@600;700&family=Rajdhani:wght@600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: white;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(5,5,5,0.92);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.logo .lb {
+    color: #e32626;
+}
+
+.logo .bw {
+    color: #287cff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.25s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.82)
+        ),
+        url("https://upload.wikimedia.org/wikipedia/commons/6/6f/Minecraft_landscape.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 900px;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(70px, 11vw, 130px);
+    letter-spacing: 4px;
+    line-height: 0.9;
+    margin-bottom: 20px;
+}
+
+.hero h1 .lb {
+    color: #e32626;
+}
+
+.hero h1 .bw {
+    color: #287cff;
+}
+
+.hero p {
+    color: #ccc;
+    font-size: 17px;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section {
+    padding: 90px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+.section-title p {
+    color: #999;
+    margin-top: 10px;
+}
+
+/* =========================
+   TOP 10
+========================= */
+
+.top10-section {
+    background: #0a0a0a;
+}
+
+.leaderboard {
+    max-width: 1000px;
+    margin: auto;
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.ranking-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 150px 120px;
+    align-items: center;
+    padding: 19px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ranking-row:last-child {
+    border-bottom: none;
+}
+
+.ranking-row.header {
+    background: #171717;
+    color: #888;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.rank-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 23px;
+}
+
+.player-name {
+    font-weight: 700;
+}
+
+.player-tier {
+    font-weight: 800;
+}
+
+.wins {
+    color: #aaa;
+}
+
+.ht1 {
+    color: #ffd700;
+}
+
+.lt1 {
+    color: #e6c84f;
+}
+
+.ht2 {
+    color: #ff9d2e;
+}
+
+.lt2 {
+    color: #d56d17;
+}
+
+.ht3 {
+    color: #a86f45;
+}
+
+.lt3,
+.ht4,
+.lt4,
+.ht5,
+.lt5 {
+    color: #aaa;
+}
+
+/* =========================
+   TIER RANKINGS
+========================= */
+
+.tier-section {
+    background: #0d0d0d;
+}
+
+.tier-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tier-group {
+    background: #141414;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tier-header {
+    padding: 18px 25px;
+    background: #181818;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tier-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+}
+
+.tier-placement {
+    color: #777;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tier-players {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 10px;
+    padding: 18px;
+}
+
+.player-card {
+    background: #1b1b1b;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.player-card:hover {
+    background: #222;
+    transform: translateY(-2px);
+}
+
+/* TIER COLORS */
+
+.tier-ht1 .tier-title {
+    color: #ffd700;
+}
+
+.tier-lt1 .tier-title {
+    color: #e6c84f;
+}
+
+.tier-ht2 .tier-title {
+    color: #ff9d2e;
+}
+
+.tier-lt2 .tier-title {
+    color: #d56d17;
+}
+
+.tier-ht3 .tier-title {
+    color: #a86f45;
+}
+
+.tier-lt3 .tier-title,
+.tier-ht4 .tier-title,
+.tier-lt4 .tier-title,
+.tier-ht5 .tier-title,
+.tier-lt5 .tier-title {
+    color: #aaa;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info-section {
+    background: #0a0a0a;
+    text-align: center;
+}
+
+.info-section p {
+    max-width: 750px;
+    margin: auto;
+    color: #999;
+    line-height: 1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #050505;
+    color: #666;
+    font-size: 13px;
+}
+
+.disclaimer {
+    margin-top: 8px;
+    color: #444;
+    font-size: 11px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        padding: 0 25px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .ranking-row {
+        grid-template-columns: 55px 1fr 90px 70px;
+        padding: 15px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    nav {
+        height: auto;
+        min-height: 70px;
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero {
+        min-height: 400px;
+    }
+
+    .hero-content {
+        padding-top: 100px;
+    }
+
+    .hero h1 {
+        font-size: 75px;
+    }
+
+    .ranking-row {
+        grid-template-columns: 45px 1fr 75px;
+    }
+
+    .ranking-row .wins {
+        display: none;
+    }
+
+    .ranking-row.header .wins {
+        display: none;
+    }
+
+    section {
+        padding: 70px 5%;
+    }
+
+    .section-title h2 {
+        font-size: 40px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        <span class="lb">LB</span><span class="bw">BW</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="rankings.html">Rankings</a></li>
+        <li><a href="halloffame.html">Hall of Fame</a></li>
+        <li><a href="tips.html">Tips & Tricks</a></li>
+        <li><a href="index.html#testing">Tier Testing</a></li>
+        <li><a href="index.html#staff">Staff</a></li>
+        <li><a href="index.html#rules">Rules</a></li>
+        <li><a href="https://discord.gg/JuKMwT6PF" target="_blank">Discord</a></li>
+    </ul>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            <span class="lb">LB</span><span class="bw">BW</span>
+        </h1>
+
+        <p>
+            Competitive BedWars rankings and tier placements.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     TOP 10
+========================= -->
+
+<section class="top10-section">
+
+    <div class="section-title">
+
+        <h2>TOP 10 LEADERBOARD</h2>
+
+        <p>
+            The highest-win players in the LBBW community.
+        </p>
+
+    </div>
+
+    <div class="leaderboard">
+
+    </div>
+
+</section>
+
+<!-- =========================
+     CURRENT TIER RANKINGS
+========================= -->
+
+<section class="tier-section">
+
+    <div class="section-title">
+
+        <h2>CURRENT TIER RANKINGS</h2>
+
+        <p>
+            Players currently placed within the LBBW tier system.
+        </p>
+
+    </div>
+
+    <div class="tier-container">
+
+        <!-- HT1 -->
+
+        <div class="tier-group tier-ht1">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    HT1
+                </div>
+
+                <div class="tier-placement">
+                    TOP 3
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">Rust</div>
+                <div class="player-card">Dark</div>
+                <div class="player-card">DayTexing</div>
+                <div class="player-card">FluffiesMC</div>
+
+            </div>
+
+        </div>
+
+        <!-- LT1 -->
+
+        <div class="tier-group tier-lt1">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    LT1
+                </div>
+
+                <div class="tier-placement">
+                    TOP 10
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">cianites</div>
+
+            </div>
+
+        </div>
+
+        <!-- HT2 -->
+
+        <div class="tier-group tier-ht2">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    HT2
+                </div>
+
+                <div class="tier-placement">
+                    TOP 20
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">c</div>
+                <div class="player-card">Omar</div>
+                <div class="player-card">welltag</div>
+                <div class="player-card">Thelyric</div>
+
+            </div>
+
+        </div>
+
+        <!-- LT2 -->
+
+        <div class="tier-group tier-lt2">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    LT2
+                </div>
+
+                <div class="tier-placement">
+                    TOP 50
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">DKnoxbox</div>
+                <div class="player-card">Carved</div>
+                <div class="player-card">malloy75</div>
+                <div class="player-card">NO one</div>
+                <div class="player-card">RedHeadGamer</div>
+                <div class="player-card">Louigi787</div>
+
+            </div>
+
+        </div>
+
+        <!-- HT3 -->
+
+        <div class="tier-group tier-ht3">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    HT3
+                </div>
+
+                <div class="tier-placement">
+                    TOP 200
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">Fluffie</div>
+                <div class="player-card">baloni</div>
+                <div class="player-card">yook</div>
+                <div class="player-card">sala</div>
+                <div class="player-card">Eytomar</div>
+                <div class="player-card">Void</div>
+                <div class="player-card">Ouch_Dude</div>
+                <div class="player-card">lkuder</div>
+                <div class="player-card">Twirly</div>
+                <div class="player-card">CAMDYN</div>
+
+            </div>
+
+        </div>
+
+        <!-- LT3 -->
+
+        <div class="tier-group tier-lt3">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    LT3
+                </div>
+
+                <div class="tier-placement">
+                    TOP 500
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">Acutepaper</div>
+
+            </div>
+
+        </div>
+
+        <!-- HT4 -->
+
+        <div class="tier-group tier-ht4">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    HT4
+                </div>
+
+                <div class="tier-placement">
+                    TOP 600
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">Psyduck?</div>
+                <div class="player-card">Sans-Sama</div>
+                <div class="player-card">Vanta</div>
+                <div class="player-card">Babyradar01</div>
+                <div class="player-card">LJ</div>
+
+            </div>
+
+        </div>
+
+        <!-- LT4 -->
+
+        <div class="tier-group tier-lt4">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    LT4
+                </div>
+
+                <div class="tier-placement">
+                    TOP 800
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">Chumply</div>
+                <div class="player-card">Robotic</div>
+
+            </div>
+
+        </div>
+
+        <!-- HT5 -->
+
+        <div class="tier-group tier-ht5">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    HT5
+                </div>
+
+                <div class="tier-placement">
+                    TOP 1,000
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">Unknownghost</div>
+                <div class="player-card">T-man3030</div>
+
+            </div>
+
+        </div>
+
+        <!-- LT5 -->
+
+        <div class="tier-group tier-lt5">
+
+            <div class="tier-header">
+
+                <div class="tier-title">
+                    LT5
+                </div>
+
+                <div class="tier-placement">
+                    TOP 10,000
+                </div>
+
+            </div>
+
+            <div class="tier-players">
+
+                <div class="player-card">Dev</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     INFORMATION
+========================= -->
+
+<section class="info-section">
+
+    <div class="section-title">
+
+        <h2>ABOUT THE RANKINGS</h2>
+
+    </div>
+
+    <p>
+        The Top 10 leaderboard is based on recorded wins.
+        Current tier placements are determined through LBBW tier testing
+        and community ranking criteria. Tier placement represents an
+        approximate competitive ranking and does not mean every player
+        has been individually ranked against every other player.
+    </p>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        LBBW BedWars Community
+    </div>
+
+    <div class="disclaimer">
+        This is not an official Lifeboat server.
+        Please understand this is an unofficial Lifeboat BedWars server.
+    </div>
+
+</footer>
+
+<!-- =========================
+     RANKINGS DATA
+========================= -->
+
+<script src="rankings-data.js"></script>
+
+<script>
+
+const leaderboard = document.querySelector(".leaderboard");
+
+if (leaderboard) {
+
+    leaderboard.innerHTML = `
+        <div class="ranking-row header">
+            <div>#</div>
+            <div>PLAYER</div>
+            <div>RANK</div>
+            <div class="wins">WINS</div>
+        </div>
+    `;
+
+    top10.forEach((player, index) => {
+
+        leaderboard.innerHTML += `
+            <div class="ranking-row">
+                <div class="rank-number">${index + 1}</div>
+                <div class="player-name">${player.name}</div>
+                <div class="player-tier ${player.tier.toLowerCase()}">${player.tier}</div>
+                <div class="wins">${player.wins}</div>
+            </div>
+        `;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
+
+Now the setup is:
+
+LBBW-Website/
+│
+├── index.html
+├── rankings.html
+├── rankings-data.js   ← ONLY EDIT TOP 10 HERE
+├── halloffame.html
+└── tips.html
+
+Your rankings-data.js stays like this:
+
+const top10 = [
+    { name: "Player 1", tier: "HT1", wins: 0 },
+    { name: "Player 2", tier: "LT1", wins: 0 },
+    { name: "Player 3", tier: "LT1", wins: 0 },
+    { name: "Player 4", tier: "HT2", wins: 0 },
+    { name: "Player 5", tier: "HT2", wins: 0 },
+    { name: "Player 6", tier: "LT2", wins: 0 },
+    { name: "Player 7", tier: "LT2", wins: 0 },
+    { name: "Player 8", tier: "HT3", wins: 0 },
+    { name: "Player 9", tier: "HT3", wins: 0 },
+    { name: "Player 10", tier: "LT3", wins: 0 }
+];
+
+So later you change only that file, and both the homepage preview and full Rankings Top 10 change automatically.
+
+Yep. You want the entire Bed Battle section deleted, including the RED/BLUE text. Then the page should flow naturally from Stats → Rankings, with a more tasteful color palette across the site.
+
+I’d use deep charcoal + muted blue + purple + teal accents, while keeping red/blue reserved for the LBBW logo and tier colors. That keeps it gaming-themed without making the homepage look like a rainbow got trapped in a Minecraft server.
+
+Delete the entire Bed Battle section
+
+Remove everything from:
+
+<section class="bed-battle">
+
+through its closing:
+
+</section>
+
+Also remove all CSS related to it, starting with:
+
+/* =========================
+   BED BATTLE
+========================= */
+
+through the end of its mobile media query.
+
+Then use these tasteful section colors
+
+Replace your current section background CSS with this:
+
+/* =========================
+   COLOR SYSTEM
+========================= */
+
+:root {
+    --bg-main: #080a0f;
+    --bg-dark: #0b0e14;
+    --bg-section: #10141d;
+    --bg-section-alt: #121827;
+    --card: #151b27;
+    --card-hover: #1a2230;
+
+    --blue: #4f8cff;
+    --purple: #8b6cff;
+    --teal: #38c6b0;
+    --cyan: #55b8ff;
+
+    --text: #f5f7fb;
+    --muted: #9aa3b2;
+}
+
+/* =========================
+   GENERAL BODY
+========================= */
+
+body {
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(79,140,255,0.05),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(139,108,255,0.05),
+            transparent 30%
+        ),
+        var(--bg-main);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stat {
+    background: rgba(17,22,32,0.96);
+    border: 1px solid rgba(79,140,255,0.12);
+}
+
+.stat:hover {
+    border-color: rgba(79,140,255,0.35);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.stat-number {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #7fa9ff
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   RANKINGS
+========================= */
+
+.rankings-section {
+    background:
+        linear-gradient(
+            180deg,
+            #0d1119 0%,
+            #111725 100%
+        );
+}
+
+.rankings-preview {
+    background: #121824;
+    border-color: rgba(79,140,255,0.12);
+}
+
+.ranking-row.header {
+    background:
+        linear-gradient(
+            90deg,
+            #151d2c,
+            #191b2d
+        );
+}
+
+.ranking-row:hover {
+    background: rgba(79,140,255,0.035);
+}
+
+/* =========================
+   TIER TESTING
+========================= */
+
+.testing-section {
+    background:
+        linear-gradient(
+            180deg,
+            #111725 0%,
+            #151326 100%
+        );
+}
+
+.testing-card {
+    background:
+        linear-gradient(
+            145deg,
+            #171d2a,
+            #171827
+        );
+    border-color: rgba(139,108,255,0.12);
+}
+
+.testing-card:hover {
+    border-color: rgba(139,108,255,0.45);
+    box-shadow: 0 10px 35px rgba(139,108,255,0.08);
+}
+
+.testing-card h3 {
+    color: #dcd6ff;
+}
+
+/* =========================
+   STAFF
+========================= */
+
+.staff-section {
+    background:
+        linear-gradient(
+            180deg,
+            #151326 0%,
+            #101923 100%
+        );
+}
+
+.staff-group {
+    background: #121a24;
+}
+
+/* =========================
+   RULES
+========================= */
+
+.rules-section {
+    background:
+        linear-gradient(
+            180deg,
+            #101923 0%,
+            #101b20 100%
+        );
+}
+
+.rule {
+    background:
+        linear-gradient(
+            145deg,
+            #172029,
+            #151d25
+        );
+    border-color: rgba(56,198,176,0.10);
+    transition: 0.25s;
+}
+
+.rule:hover {
+    border-color: rgba(56,198,176,0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(56,198,176,0.05);
+}
+
+.rule h3 {
+    color: #d8fff8;
+}
+
+/* =========================
+   DISCORD
+========================= */
+
+.discord-section {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(79,140,255,0.10),
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            #101b20 0%,
+            #0c1018 100%
+        );
+}
+
+.discord-section h2 {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #6fa4ff,
+        #a98cff
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   SECTION TITLES
+========================= */
+
+.section-title h2 {
+    color: #f5f7fb;
+}
+
+.section-title h2::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 3px;
+    margin: 14px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        #4f8cff,
+        #8b6cff
+    );
+    box-shadow:
+        0 0 12px rgba(79,140,255,0.35);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-primary {
+    background: linear-gradient(
+        135deg,
+        #e32626,
+        #b91c35
+    );
+    box-shadow: 0 5px 20px rgba(227,38,38,0.18);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(
+        135deg,
+        #ff3d3d,
+        #d62645
+    );
+    box-shadow: 0 8px 25px rgba(227,38,38,0.28);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.045);
+    border-color: rgba(255,255,255,0.12);
+}
+
+.btn-secondary:hover {
+    border-color: rgba(79,140,255,0.4);
+    background: rgba(79,140,255,0.08);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #06080c;
+    border-top: 1px solid rgba(79,140,255,0.08);
+}
+Also remove the Secret Bed Battle
+
+Since you said the whole section, I would remove this too:
+
+<section class="secret-battle">
+
+and everything inside it, all the way through its closing </section>.
+
+Then delete its CSS beginning with:
+
+/* =========================
+   SECRET BED BATTLE
+========================= */
+
+and ending after:
+
+@media (max-width: 600px) {
+    .secret-battle-arena {
+        gap: 15px;
+    }
+}
+
+And your page will go:
+
+Hero → Stats → Rankings → Tier Testing → Staff → Rules → Discord → Footer
+
+No beds.
+No RED VS BLUE section.
+No secret bed section.
+No leftover bed CSS or animations.
+
+The new colors are deliberately restrained: blue/purple for competitive sections, teal for community/rules, and red/blue only where they actually belong, so the whole thing should look much more like a polished gaming community site.
+
+cool put that into the index code 
+\<!DOCTYPE html>
+
+\<html lang="en">
+
+\<head>
+
+\<meta charset="UTF-8">
+
+\<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+\<title>LBBW BedWars Community\</title>
+
+\<link rel="icon" type="image/png" href="red-envelope.png">
+
+\<link href="[https://fonts.googleapis.com/css2?family=Anton&family=Inter\:wght@400;500;600;700;800&family=Cinzel\:wght@600;700&family=Exo+2\:wght@600;700&family=Montserrat\:wght@600;700&family=Orbitron\:wght@600;700&family=Rajdhani\:wght@600;700&family=Saira+Condensed\:wght@600;700&display=swap](https://fonts.googleapis.com/css2?family=Anton\&family=Inter\:wght@400;500;600;700;800\&family=Cinzel\:wght@600;700\&family=Exo+2\:wght@600;700\&family=Montserrat\:wght@600;700\&family=Orbitron\:wght@600;700\&family=Rajdhani\:wght@600;700\&family=Saira+Condensed\:wght@600;700\&display=swap)" rel="stylesheet">
+
+\<style>
+
+\* {
+
+margin: 0;
+
+padding: 0;
+
+box-sizing: border-box;
+
+}
+
+html {
+
+scroll-behavior: smooth;
+
+}
+
+body {
+
+font-family: 'Inter', sans-serif;
+
+background: #08090D;
+
+color: white;
+
+}
+
+/\* =========================
+
+NAVBAR
+
+\========================= \*/
+
+nav {
+
+position: fixed;
+
+top: 0;
+
+left: 0;
+
+width: 100%;
+
+height: 70px;
+
+background: #050505;
+
+backdrop-filter: blur(10px);
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+padding: 0 50px;
+
+z-index: 1000;
+
+border-bottom: 1px solid rgba(255,255,255,0.08);
+
+}
+
+.logo {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 32px;
+
+letter-spacing: 2px;
+
+}
+
+.logo .lb {
+
+color: #e32626;
+
+}
+
+.logo .bw {
+
+color: #287cff;
+
+}
+
+.nav-links {
+
+display: flex;
+
+gap: 30px;
+
+list-style: none;
+
+}
+
+.nav-links a {
+
+color: #ddd;
+
+text-decoration: none;
+
+font-weight: 600;
+
+font-size: 14px;
+
+transition: 0.25s;
+
+}
+
+.nav-links a\:hover {
+
+color: white;
+
+}
+
+/\* =========================
+
+HERO
+
+\========================= \*/
+
+.hero {
+
+min-height: 720px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+text-align: center;
+
+position: relative;
+
+overflow: hidden;
+
+
+background:
+    linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(8,9,13,0.90)
+    ),
+    url("[https://upload.wikimedia.org/wikipedia/commons/6/6f/Minecraft_landscape.png](https://upload.wikimedia.org/wikipedia/commons/6/6f/Minecraft_landscape.png)");
+
+background-size: cover;
+background-position: center;
+
+
+}
+
+.hero-content {
+
+position: relative;
+
+z-index: 2;
+
+max-width: 950px;
+
+padding: 120px 20px 60px;
+
+}
+
+.hero h1 {
+
+font-family: 'Anton', sans-serif;
+
+font-size: clamp(80px, 13vw, 170px);
+
+line-height: 0.9;
+
+letter-spacing: 4px;
+
+margin-bottom: 25px;
+
+}
+
+.hero h1 .lb {
+
+color: #e32626;
+
+}
+
+.hero h1 .bw {
+
+color: #287cff;
+
+}
+
+.hero h2 {
+
+font-size: 28px;
+
+font-weight: 800;
+
+margin-bottom: 15px;
+
+}
+
+.hero p {
+
+color: #d0d0d0;
+
+font-size: 17px;
+
+max-width: 650px;
+
+margin: auto;
+
+line-height: 1.7;
+
+}
+
+.hero-buttons {
+
+display: flex;
+
+justify-content: center;
+
+gap: 15px;
+
+margin-top: 35px;
+
+flex-wrap: wrap;
+
+}
+
+.btn {
+
+text-decoration: none;
+
+padding: 14px 25px;
+
+border-radius: 7px;
+
+font-weight: 700;
+
+transition: 0.25s;
+
+display: inline-block;
+
+}
+
+.btn-primary {
+
+background: #e32626;
+
+color: white;
+
+}
+
+.btn-primary\:hover {
+
+background: #ff3535;
+
+transform: translateY(-2px);
+
+}
+
+.btn-secondary {
+
+background: rgba(255,255,255,0.08);
+
+color: white;
+
+border: 1px solid rgba(255,255,255,0.2);
+
+}
+
+.btn-secondary\:hover {
+
+background: rgba(255,255,255,0.15);
+
+transform: translateY(-2px);
+
+}
+
+/\* =========================
+
+STATS
+
+\========================= \*/
+
+.stats {
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+max-width: 1000px;
+
+margin: -55px auto 0;
+
+position: relative;
+
+z-index: 5;
+
+gap: 18px;
+
+padding: 0 20px;
+
+}
+
+.stat {
+
+background: rgba(20,20,20,0.95);
+
+border: 1px solid rgba(255,255,255,0.1);
+
+border-radius: 12px;
+
+padding: 28px 20px;
+
+text-align: center;
+
+transition: 0.25s;
+
+}
+
+.stat\:hover {
+
+transform: translateY(-5px);
+
+border-color: rgba(255,255,255,0.25);
+
+}
+
+.stat-number {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 42px;
+
+margin-bottom: 5px;
+
+}
+
+.stat-label {
+
+color: #aaa;
+
+font-size: 13px;
+
+font-weight: 700;
+
+letter-spacing: 1px;
+
+}
+
+/\* =========================
+
+GENERAL SECTIONS
+
+\========================= \*/
+
+section {
+
+padding: 100px 7%;
+
+}
+
+.section-title {
+
+text-align: center;
+
+margin-bottom: 55px;
+
+}
+
+.section-title h2 {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 48px;
+
+letter-spacing: 2px;
+
+}
+
+.section-title p {
+
+color: #999;
+
+margin-top: 10px;
+
+}
+
+/\* =========================
+
+BED BATTLE
+
+\========================= \*/
+
+.bed-battle {
+
+background: linear-gradient(
+
+180deg,
+
+\#0b0e14 0%,
+
+\#10141c 100%
+
+);
+
+padding: 90px 7%;
+
+text-align: center;
+
+overflow: hidden;
+
+}
+
+.bed-battle-title {
+
+margin-bottom: 55px;
+
+}
+
+.bed-battle-title h2 {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 48px;
+
+letter-spacing: 2px;
+
+}
+
+.bed-battle-title p {
+
+color: #999;
+
+margin-top: 10px;
+
+}
+
+.bed-arena {
+
+max-width: 1000px;
+
+margin: auto;
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+gap: 30px;
+
+}
+
+.bed-team {
+
+width: 280px;
+
+transition: transform 0.3s ease;
+
+}
+
+.bed-team\:hover {
+
+transform: translateY(-8px) scale(1.05);
+
+}
+
+.team-label {
+
+font-family: 'Orbitron', sans-serif;
+
+font-size: 20px;
+
+font-weight: 700;
+
+margin-bottom: 25px;
+
+}
+
+.red-team .team-label {
+
+color: #e32626;
+
+}
+
+.blue-team .team-label {
+
+color: #287cff;
+
+}
+
+.minecraft-bed {
+
+position: relative;
+
+width: 190px;
+
+height: 110px;
+
+margin: auto;
+
+animation: bedFloat 3s ease-in-out infinite;
+
+}
+
+.red-bed {
+
+filter: drop-shadow(0 0 18px rgba(227,38,38,0.5));
+
+}
+
+.blue-bed {
+
+filter: drop-shadow(0 0 18px rgba(40,124,255,0.5));
+
+}
+
+.bed-blanket {
+
+position: absolute;
+
+width: 125px;
+
+height: 48px;
+
+left: 35px;
+
+top: 25px;
+
+border-radius: 6px 6px 3px 3px;
+
+transform: skewY(-8deg);
+
+}
+
+.red-bed .bed-blanket {
+
+background: #d51f2f;
+
+}
+
+.blue-bed .bed-blanket {
+
+background: #1769d1;
+
+}
+
+.bed-head {
+
+position: absolute;
+
+width: 62px;
+
+height: 35px;
+
+left: 15px;
+
+top: 15px;
+
+border-radius: 7px;
+
+z-index: 2;
+
+transform: skewY(-8deg);
+
+}
+
+.red-bed .bed-head {
+
+background: #f04a4a;
+
+}
+
+.blue-bed .bed-head {
+
+background: #4b9cff;
+
+}
+
+.bed-frame {
+
+position: absolute;
+
+width: 145px;
+
+height: 15px;
+
+left: 28px;
+
+top: 67px;
+
+background: #70421f;
+
+border-radius: 2px;
+
+transform: skewY(-8deg);
+
+}
+
+.bed-legs {
+
+position: absolute;
+
+width: 12px;
+
+height: 28px;
+
+left: 40px;
+
+top: 78px;
+
+background: #4b2b16;
+
+box-shadow: 115px 0 #4b2b16;
+
+}
+
+.battle-center {
+
+min-width: 100px;
+
+}
+
+.battle-vs {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 42px;
+
+color: white;
+
+}
+
+.battle-message {
+
+margin-top: 10px;
+
+color: #777;
+
+font-family: 'Orbitron', sans-serif;
+
+font-size: 11px;
+
+letter-spacing: 2px;
+
+}
+
+@keyframes bedFloat {
+
+0%, 100% {
+
+transform: translateY(0);
+
+}
+
+
+50% {
+    transform: translateY(-8px);
+}
+
+
+}
+
+@media (max-width: 700px) {
+
+
+.bed-arena {
+    flex-direction: column;
+    gap: 45px;
+}
+
+.battle-center {
+    order: 2;
+}
+
+.red-team {
+    order: 1;
+}
+
+.blue-team {
+    order: 3;
+}
+
+
+}
+
+/\* =========================
+
+RANKINGS PREVIEW
+
+\========================= \*/
+
+.rankings-section {
+
+background: linear-gradient(
+
+180deg,
+
+\#10141c 0%,
+
+\#111722 100%
+
+);
+
+}
+
+.rankings-preview {
+
+max-width: 950px;
+
+margin: auto;
+
+background: #11151d;
+
+border: 1px solid rgba(255,255,255,0.08);
+
+border-radius: 14px;
+
+overflow: hidden;
+
+}
+
+.ranking-row {
+
+display: grid;
+
+grid-template-columns: 80px 1fr 150px 120px;
+
+align-items: center;
+
+padding: 18px 25px;
+
+border-bottom: 1px solid rgba(255,255,255,0.06);
+
+}
+
+.ranking-row\:last-child {
+
+border-bottom: none;
+
+}
+
+.ranking-row\.header {
+
+background: #171d28;
+
+color: #888;
+
+font-size: 12px;
+
+font-weight: 800;
+
+letter-spacing: 1px;
+
+}
+
+.rank-number {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 22px;
+
+}
+
+.player-name {
+
+font-weight: 700;
+
+}
+
+.player-tier {
+
+font-weight: 800;
+
+}
+
+.wins {
+
+color: #aaa;
+
+}
+
+.ht1 {
+
+color: #ffd700;
+
+}
+
+.lt1 {
+
+color: #e6c84f;
+
+}
+
+.ht2 {
+
+color: #ff9d2e;
+
+}
+
+.lt2 {
+
+color: #d56d17;
+
+}
+
+.ht3 {
+
+color: #a86f45;
+
+}
+
+.lt3,
+
+.ht4,
+
+.lt4,
+
+.ht5,
+
+.lt5 {
+
+color: #aaa;
+
+}
+
+.view-rankings {
+
+text-align: center;
+
+margin-top: 30px;
+
+}
+
+/\* =========================
+
+TIER TESTING
+
+\========================= \*/
+
+.testing-section {
+
+background: linear-gradient(
+
+180deg,
+
+\#111722 0%,
+
+\#141922 100%
+
+);
+
+}
+
+.testing-grid {
+
+max-width: 1100px;
+
+margin: auto;
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 20px;
+
+}
+
+.testing-card {
+
+background: #171c25;
+
+border: 1px solid rgba(255,255,255,0.08);
+
+padding: 30px;
+
+border-radius: 12px;
+
+transition: 0.25s;
+
+}
+
+.testing-card\:hover {
+
+transform: translateY(-5px);
+
+border-color: rgba(255,138,61,0.35);
+
+}
+
+.testing-card h3 {
+
+margin-bottom: 12px;
+
+font-size: 20px;
+
+}
+
+.testing-card p {
+
+color: #999;
+
+line-height: 1.7;
+
+font-size: 14px;
+
+}
+
+/\* =========================
+
+STAFF
+
+\========================= \*/
+
+.staff-section {
+
+background: linear-gradient(
+
+180deg,
+
+\#141922 0%,
+
+\#101820 100%
+
+);
+
+}
+
+.staff-sections {
+
+max-width: 1100px;
+
+margin: auto;
+
+display: flex;
+
+flex-direction: column;
+
+gap: 25px;
+
+}
+
+.staff-group {
+
+position: relative;
+
+background: #111820;
+
+border-radius: 14px;
+
+padding: 28px;
+
+overflow: hidden;
+
+border: 2px solid white;
+
+}
+
+/\* =========================
+
+ROLE BORDER ANIMATIONS
+
+\========================= \*/
+
+.role-owner {
+
+animation: ownerGlow 4s ease-in-out infinite;
+
+}
+
+.role-co-owner {
+
+animation: coOwnerGlow 4s ease-in-out infinite;
+
+}
+
+.role-admin {
+
+animation: adminGlow 4s ease-in-out infinite;
+
+}
+
+.role-discord-mod {
+
+animation: discordModGlow 4s ease-in-out infinite;
+
+}
+
+.role-ingame-mod {
+
+animation: ingameModGlow 4s ease-in-out infinite;
+
+}
+
+.role-tester {
+
+animation: testerGlow 4s ease-in-out infinite;
+
+}
+
+@keyframes ownerGlow {
+
+0%, 100% {
+
+border-color: white;
+
+box-shadow: 0 0 0 rgba(125,211,252,0);
+
+}
+
+
+50% {
+    border-color: #7dd3fc;
+    box-shadow: 0 0 18px rgba(125,211,252,0.35);
+}
+
+
+}
+
+@keyframes coOwnerGlow {
+
+0%, 100% {
+
+border-color: white;
+
+box-shadow: 0 0 0 rgba(125,211,252,0);
+
+}
+
+
+50% {
+    border-color: #7dd3fc;
+    box-shadow: 0 0 18px rgba(125,211,252,0.35);
+}
+
+
+}
+
+@keyframes adminGlow {
+
+0%, 100% {
+
+border-color: white;
+
+box-shadow: 0 0 0 rgba(227,38,38,0);
+
+}
+
+
+50% {
+    border-color: #e32626;
+    box-shadow: 0 0 18px rgba(227,38,38,0.35);
+}
+
+
+}
+
+@keyframes discordModGlow {
+
+0%, 100% {
+
+border-color: white;
+
+box-shadow: 0 0 0 rgba(37,99,235,0);
+
+}
+
+
+50% {
+    border-color: #2563eb;
+    box-shadow: 0 0 18px rgba(37,99,235,0.35);
+}
+
+
+}
+
+@keyframes ingameModGlow {
+
+0%, 100% {
+
+border-color: white;
+
+box-shadow: 0 0 0 rgba(168,85,247,0);
+
+}
+
+
+50% {
+    border-color: #a855f7;
+    box-shadow: 0 0 18px rgba(168,85,247,0.35);
+}
+
+
+}
+
+@keyframes testerGlow {
+
+0%, 100% {
+
+border-color: white;
+
+box-shadow: 0 0 0 rgba(249,115,22,0);
+
+}
+
+
+50% {
+    border-color: #f97316;
+    box-shadow: 0 0 18px rgba(249,115,22,0.35);
+}
+
+
+}
+
+/\* =========================
+
+ROLE HEADERS
+
+\========================= \*/
+
+.role-header {
+
+font-size: 25px;
+
+font-weight: 700;
+
+letter-spacing: 1px;
+
+margin-bottom: 18px;
+
+}
+
+.role-owner .role-header {
+
+font-family: 'Cinzel', serif;
+
+color: #7dd3fc;
+
+}
+
+.role-co-owner .role-header {
+
+font-family: 'Montserrat', sans-serif;
+
+color: #7dd3fc;
+
+}
+
+.role-admin .role-header {
+
+font-family: 'Rajdhani', sans-serif;
+
+color: #e32626;
+
+letter-spacing: 2px;
+
+}
+
+.role-discord-mod .role-header {
+
+font-family: 'Orbitron', sans-serif;
+
+color: #2563eb;
+
+letter-spacing: 1px;
+
+}
+
+.role-ingame-mod .role-header {
+
+font-family: 'Exo 2', sans-serif;
+
+color: #a855f7;
+
+}
+
+.role-tester .role-header {
+
+font-family: 'Saira Condensed', sans-serif;
+
+color: #f97316;
+
+letter-spacing: 2px;
+
+}
+
+.role-count {
+
+color: #777;
+
+font-family: 'Inter', sans-serif;
+
+font-size: 12px;
+
+font-weight: 600;
+
+letter-spacing: 0;
+
+margin-left: 8px;
+
+}
+
+.staff-list {
+
+display: grid;
+
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+gap: 10px;
+
+}
+
+.staff-member {
+
+background: #181e26;
+
+border: 1px solid rgba(255,255,255,0.06);
+
+border-radius: 8px;
+
+padding: 12px 15px;
+
+color: #eee;
+
+font-weight: 600;
+
+transition: 0.2s;
+
+}
+
+.staff-member\:hover {
+
+background: #202832;
+
+transform: translateY(-2px);
+
+}
+
+/\* =========================
+
+RULES
+
+\========================= \*/
+
+.rules-section {
+
+background: linear-gradient(
+
+180deg,
+
+\#101820 0%,
+
+\#121a22 100%
+
+);
+
+}
+
+.rules-grid {
+
+max-width: 1100px;
+
+margin: auto;
+
+display: grid;
+
+grid-template-columns: repeat(2, 1fr);
+
+gap: 18px;
+
+}
+
+.rule {
+
+background: #171f27;
+
+border: 1px solid rgba(255,255,255,0.07);
+
+border-radius: 10px;
+
+padding: 22px;
+
+}
+
+.rule h3 {
+
+margin-bottom: 8px;
+
+font-size: 17px;
+
+}
+
+.rule p {
+
+color: #999;
+
+line-height: 1.6;
+
+font-size: 14px;
+
+}
+
+/\* =========================
+
+DISCORD
+
+\========================= \*/
+
+.discord-section {
+
+text-align: center;
+
+background: linear-gradient(
+
+180deg,
+
+\#121a22 0%,
+
+\#171827 100%
+
+);
+
+}
+
+.discord-section h2 {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 50px;
+
+margin-bottom: 15px;
+
+}
+
+.discord-section p {
+
+color: #aaa;
+
+max-width: 650px;
+
+margin: 0 auto 30px;
+
+line-height: 1.7;
+
+}
+
+/\* =========================
+
+SECRET BED BATTLE
+
+\========================= \*/
+
+.secret-battle {
+
+text-align: center;
+
+padding: 25px 20px;
+
+background: #08090D;
+
+}
+
+.secret-battle-trigger {
+
+display: inline-block;
+
+color: #555;
+
+font-size: 11px;
+
+font-weight: 700;
+
+letter-spacing: 2px;
+
+cursor: pointer;
+
+transition: 0.3s;
+
+user-select: none;
+
+}
+
+.secret-battle-trigger\:hover {
+
+color: #888;
+
+}
+
+.secret-battle-content {
+
+max-height: 0;
+
+overflow: hidden;
+
+opacity: 0;
+
+transition: max-height 0.6s ease, opacity 0.5s ease;
+
+}
+
+.secret-battle-content.active {
+
+max-height: 400px;
+
+opacity: 1;
+
+margin-top: 25px;
+
+}
+
+.secret-battle-title {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 24px;
+
+letter-spacing: 2px;
+
+margin-bottom: 20px;
+
+}
+
+.secret-battle-arena {
+
+max-width: 600px;
+
+margin: auto;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+gap: 50px;
+
+}
+
+.secret-bed-team {
+
+width: 150px;
+
+transition: 0.3s;
+
+}
+
+.secret-bed-team\:hover {
+
+transform: scale(1.08);
+
+}
+
+.secret-team-label {
+
+font-family: 'Orbitron', sans-serif;
+
+font-size: 12px;
+
+font-weight: 700;
+
+margin-bottom: 12px;
+
+}
+
+.secret-red {
+
+color: #e32626;
+
+}
+
+.secret-blue {
+
+color: #287cff;
+
+}
+
+.secret-bed {
+
+position: relative;
+
+width: 120px;
+
+height: 75px;
+
+margin: auto;
+
+animation: secretBedFloat 3s ease-in-out infinite;
+
+}
+
+.secret-bed.red {
+
+filter: drop-shadow(0 0 10px rgba(227,38,38,0.4));
+
+}
+
+.secret-bed.blue {
+
+filter: drop-shadow(0 0 10px rgba(40,124,255,0.4));
+
+}
+
+.secret-bed .blanket {
+
+position: absolute;
+
+width: 80px;
+
+height: 32px;
+
+left: 25px;
+
+top: 17px;
+
+border-radius: 5px;
+
+transform: skewY(-8deg);
+
+}
+
+.secret-bed.red .blanket {
+
+background: #d51f2f;
+
+}
+
+.secret-bed.blue .blanket {
+
+background: #1769d1;
+
+}
+
+.secret-bed .head {
+
+position: absolute;
+
+width: 40px;
+
+height: 24px;
+
+left: 10px;
+
+top: 10px;
+
+border-radius: 5px;
+
+z-index: 2;
+
+transform: skewY(-8deg);
+
+}
+
+.secret-bed.red .head {
+
+background: #f04a4a;
+
+}
+
+.secret-bed.blue .head {
+
+background: #4b9cff;
+
+}
+
+.secret-bed .frame {
+
+position: absolute;
+
+width: 95px;
+
+height: 10px;
+
+left: 20px;
+
+top: 45px;
+
+background: #70421f;
+
+transform: skewY(-8deg);
+
+}
+
+.secret-bed .legs {
+
+position: absolute;
+
+width: 8px;
+
+height: 18px;
+
+left: 28px;
+
+top: 52px;
+
+background: #4b2b16;
+
+box-shadow: 75px 0 #4b2b16;
+
+}
+
+.secret-vs {
+
+font-family: 'Anton', sans-serif;
+
+font-size: 25px;
+
+color: #444;
+
+}
+
+.secret-message {
+
+margin-top: 12px;
+
+color: #444;
+
+font-family: 'Orbitron', sans-serif;
+
+font-size: 9px;
+
+letter-spacing: 1px;
+
+}
+
+@keyframes secretBedFloat {
+
+
+0%, 100% {
+    transform: translateY(0);
+}
+
+50% {
+    transform: translateY(-5px);
+}
+
+
+}
+
+@media (max-width: 600px) {
+
+
+.secret-battle-arena {
+    gap: 15px;
+}
+
+
+}
+
+/\* =========================
+
+FOOTER
+
+\========================= \*/
+
+footer {
+
+text-align: center;
+
+padding: 30px 20px;
+
+background: #050505;
+
+color: #666;
+
+font-size: 13px;
+
+}
+
+.disclaimer {
+
+margin-top: 8px;
+
+color: #444;
+
+font-size: 11px;
+
+}
+
+/\* =========================
+
+RESPONSIVE
+
+\========================= \*/
+
+@media (max-width: 900px) {
+
+
+nav {
+    padding: 0 25px;
+}
+
+.nav-links {
+    gap: 15px;
+}
+
+.testing-grid {
+    grid-template-columns: 1fr;
+}
+
+.stats {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+}
+
+.ranking-row {
+    grid-template-columns: 55px 1fr 90px 70px;
+    padding: 15px;
+}
+
+
+}
+
+@media (max-width: 700px) {
+
+
+nav {
+    height: auto;
+    min-height: 70px;
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.hero {
+    min-height: 700px;
+}
+
+.hero-content {
+    padding-top: 170px;
+}
+
+.hero h1 {
+    font-size: 80px;
+}
+
+.hero h2 {
+    font-size: 22px;
+}
+
+.ranking-row {
+    grid-template-columns: 45px 1fr 75px;
+}
+
+.ranking-row .wins {
+    display: none;
+}
+
+.ranking-row\.header .wins {
+    display: none;
+}
+
+.rules-grid {
+    grid-template-columns: 1fr;
+}
+
+section {
+    padding: 75px 5%;
+}
+
+.section-title h2 {
+    font-size: 40px;
+}
+
+
+}
+
+/\* =========================
+
+SMALL SCREEN STAFF
+
+\========================= \*/
+
+@media (max-width: 500px) {
+
+
+.staff-list {
+    grid-template-columns: 1fr;
+}
+
+.staff-group {
+    padding: 22px;
+}
+
+.role-header {
+    font-size: 21px;
+}
+
+
+}
+
+\</style>
+
+\</head>
+
+\<body>
+
+\<!-- =========================
+
+NAVIGATION
+
+\========================= -->
+
+\<nav>
+
+
+\<div class="logo">
+    \<span class="lb">LB\</span>\<span class="bw">BW\</span>
+\</div>
+
+\<ul class="nav-links">
+    \<li>\<a href="index.html">Home\</a>\</li>
+    \<li>\<a href="rankings.html">Rankings\</a>\</li>
+    \<li>\<a href="halloffame.html">Hall of Fame\</a>\</li>
+    \<li>\<a href="tips.html">Tips & Tricks\</a>\</li>
+    \<li>\<a href="#testing">Tier Testing\</a>\</li>
+    \<li>\<a href="#staff">Staff\</a>\</li>
+    \<li>\<a href="#rules">Rules\</a>\</li>
+    \<li>\<a href="[https://discord.gg/JuKMwT6PF](https://discord.gg/JuKMwT6PF)" target="\_blank">Discord\</a>\</li>
+\</ul>
+
+
+\</nav>
+
+\<!-- =========================
+
+HERO
+
+\========================= -->
+
+\<section class="hero">
+
+
+\<div class="hero-content">
+
+    \<h1>
+        \<span class="lb">LB\</span>\<span class="bw">BW\</span>
+    \</h1>
+
+    \<h2>Lifeboat BedWars Community\</h2>
+
+    \<p>
+        Competitive BedWars. Tier Testing. Rankings. Community.
+    \</p>
+
+    \<div class="hero-buttons">
+
+        \<a href="rankings.html" class="btn btn-primary">
+            View Rankings
+        \</a>
+
+        \<a href="halloffame.html" class="btn btn-secondary">
+            Hall of Fame
+        \</a>
+
+        \<a href="[https://discord.gg/JuKMwT6PF](https://discord.gg/JuKMwT6PF)" target="\_blank" class="btn btn-secondary">
+            Join Discord
+        \</a>
+
+    \</div>
+
+\</div>
+
+
+\</section>
+
+\<!-- =========================
+
+STATS
+
+\========================= -->
+
+\<div class="stats">
+
+
+\<div class="stat">
+
+    \<div class="stat-number">
+        10
+    \</div>
+
+    \<div class="stat-label">
+        COMPETITIVE TIERS
+    \</div>
+
+\</div>
+
+\<div class="stat">
+
+    \<div class="stat-number">
+        ∞
+    \</div>
+
+    \<div class="stat-label">
+        INFINITE BEDWARS GAMES
+    \</div>
+
+\</div>
+
+\<div class="stat">
+
+    \<div class="stat-number">
+        27
+    \</div>
+
+    \<div class="stat-label">
+        STAFF MEMBERS
+    \</div>
+
+\</div>
+
+
+\</div>
+
+\<!-- =========================
+
+BED BATTLE
+
+\========================= -->
+
+\<section class="bed-battle">
+
+
+\<div class="bed-battle-title">
+
+    \<h2>BED BATTLE\</h2>
+
+    \<p>
+        Choose your side.
+    \</p>
+
+\</div>
+
+\<div class="bed-arena">
+
+    \<div class="bed-team red-team">
+
+        \<div class="team-label">
+            RED
+        \</div>
+
+        \<div class="minecraft-bed red-bed">
+
+            \<div class="bed-head">\</div>
+            \<div class="bed-blanket">\</div>
+            \<div class="bed-frame">\</div>
+            \<div class="bed-legs">\</div>
+
+        \</div>
+
+    \</div>
+
+    \<div class="battle-center">
+
+        \<div class="battle-vs">
+            VS
+        \</div>
+
+        \<div class="battle-message">
+            RED VS BLUE
+        \</div>
+
+    \</div>
+
+    \<div class="bed-team blue-team">
+
+        \<div class="team-label">
+            BLUE
+        \</div>
+
+        \<div class="minecraft-bed blue-bed">
+
+            \<div class="bed-head">\</div>
+            \<div class="bed-blanket">\</div>
+            \<div class="bed-frame">\</div>
+            \<div class="bed-legs">\</div>
+
+        \</div>
+
+    \</div>
+
+\</div>
+
+
+\</section>
+
+\<!-- =========================
+
+RANKINGS
+
+\========================= -->
+
+\<section class="rankings-section">
+
+
+\<div class="section-title">
+
+    \<h2>RANKINGS\</h2>
+
+    \<p>
+        The top competitive players in the LBBW community.
+    \</p>
+
+\</div>
+
+\<div class="rankings-preview">
+
+\</div>
+
+\<div class="view-rankings">
+
+    \<a href="rankings.html" class="btn btn-secondary">
+        View Full Rankings
+    \</a>
+
+\</div>
+
+
+\</section>
+
+\<!-- =========================
+
+TIER TESTING
+
+\========================= -->
+
+\<section class="testing-section" id="testing">
+
+
+\<div class="section-title">
+
+    \<h2>TIER TESTING\</h2>
+
+    \<p>
+        Prove your skill and earn your place among the best.
+    \</p>
+
+\</div>
+
+\<div class="testing-grid">
+
+    \<div class="testing-card">
+
+        \<h3>Solo Testing\</h3>
+
+        \<p>
+            Test your individual BedWars skills through our
+            competitive tier testing system.
+        \</p>
+
+    \</div>
+
+    \<div class="testing-card">
+
+        \<h3>Team Testing\</h3>
+
+        \<p>
+            Duos and quads testing focused on teamwork,
+            coordination, PvP, pressure and game sense.
+        \</p>
+
+    \</div>
+
+    \<div class="testing-card">
+
+        \<h3>Competitive Tiers\</h3>
+
+        \<p>
+            Earn a placement from LT5 all the way to HT1
+            based on your performance during testing.
+        \</p>
+
+    \</div>
+
+\</div>
+
+
+\</section>
+
+\<!-- =========================
+
+STAFF
+
+\========================= -->
+
+\<section class="staff-section" id="staff">
+
+
+\<div class="section-title">
+
+    \<h2>STAFF\</h2>
+
+    \<p>
+        Meet the people who keep the LBBW community running.
+    \</p>
+
+\</div>
+
+\<div class="staff-sections">
+
+    \<div class="staff-group role-owner">
+
+        \<div class="role-header">
+            OWNER
+            \<span class="role-count">1 STAFF MEMBER\</span>
+        \</div>
+
+        \<div class="staff-list">
+
+            \<div class="staff-member">
+                FluffiesMC
+            \</div>
+
+        \</div>
+
+    \</div>
+
+    \<div class="staff-group role-co-owner">
+
+        \<div class="role-header">
+            CO-OWNERS
+            \<span class="role-count">2 STAFF MEMBERS\</span>
+        \</div>
+
+        \<div class="staff-list">
+
+            \<div class="staff-member">
+                Malloy
+            \</div>
+
+            \<div class="staff-member">
+                RedHeadGamer
+            \</div>
+
+        \</div>
+
+    \</div>
+
+    \<div class="staff-group role-admin">
+
+        \<div class="role-header">
+            ADMINS
+            \<span class="role-count">1 STAFF MEMBER\</span>
+        \</div>
+
+        \<div class="staff-list">
+
+            \<div class="staff-member">
+                Ouchy_Dude
+            \</div>
+
+        \</div>
+
+    \</div>
+
+    \<div class="staff-group role-discord-mod">
+
+        \<div class="role-header">
+            DISCORD MODERATORS
+            \<span class="role-count">2 STAFF MEMBERS\</span>
+        \</div>
+
+        \<div class="staff-list">
+
+            \<div class="staff-member">
+                Dev
+            \</div>
+
+            \<div class="staff-member">
+                Psyduck?
+            \</div>
+
+        \</div>
+
+    \</div>
+
+    \<div class="staff-group role-ingame-mod">
+
+        \<div class="role-header">
+            IN-GAME MODERATORS
+            \<span class="role-count">11 STAFF MEMBERS\</span>
+        \</div>
+
+        \<div class="staff-list">
+
+            \<div class="staff-member">Rust\</div>
+            \<div class="staff-member">Asdon505\</div>
+            \<div class="staff-member">TheReddishSlime\</div>
+            \<div class="staff-member">Pandaa\</div>
+            \<div class="staff-member">aerie\</div>
+            \<div class="staff-member">Malloy\</div>
+            \<div class="staff-member">My1Legocraft\</div>
+            \<div class="staff-member">DayTexing\</div>
+            \<div class="staff-member">Trojan\</div>
+            \<div class="staff-member">Mich\</div>
+            \<div class="staff-member">FluffiesMC\</div>
+
+        \</div>
+
+    \</div>
+
+    \<div class="staff-group role-tester">
+
+        \<div class="role-header">
+            TIER TESTERS
+            \<span class="role-count">10 STAFF MEMBERS\</span>
+        \</div>
+
+        \<div class="staff-list">
+
+            \<div class="staff-member">Baloni\</div>
+            \<div class="staff-member">Rust\</div>
+            \<div class="staff-member">Eytomar\</div>
+            \<div class="staff-member">Psyduck?\</div>
+            \<div class="staff-member">C\</div>
+            \<div class="staff-member">Welltag\</div>
+            \<div class="staff-member">CAMDYN\</div>
+            \<div class="staff-member">NO one\</div>
+            \<div class="staff-member">Louigi\</div>
+            \<div class="staff-member">LJ\</div>
+
+        \</div>
+
+    \</div>
+
+\</div>
+
+
+\</section>
+
+\<!-- =========================
+
+RULES
+
+\========================= -->
+
+\<section class="rules-section" id="rules">
+
+
+\<div class="section-title">
+
+    \<h2>COMMUNITY RULES\</h2>
+
+    \<p>
+        Keep the community competitive, fair and welcoming.
+    \</p>
+
+\</div>
+
+\<div class="rules-grid">
+
+    \<div class="rule">
+        \<h3>01. Be Respectful\</h3>
+        \<p>
+            Treat everyone with kindness and respect.
+            Bullying, harassment and hateful language are not allowed.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>02. Keep It Family Friendly\</h3>
+        \<p>
+            Keep conversations appropriate for all ages.
+            Avoid inappropriate, offensive or explicit content.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>03. No Cheating\</h3>
+        \<p>
+            Hacks, cheats, unfair modifications and exploits
+            are strictly prohibited.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>04. No Spamming\</h3>
+        \<p>
+            Do not flood channels with repeated messages,
+            emojis, stickers, GIFs or excessive caps.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>05. Voice Chat\</h3>
+        \<p>
+            Keep voice chat respectful and appropriate.
+            Avoid shouting or disruptive noises.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>06. Use The Right Channels\</h3>
+        \<p>
+            Keep discussions in the appropriate channels
+            so the server stays organized.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>07. No Unauthorized Advertising\</h3>
+        \<p>
+            Do not advertise other Discord servers,
+            websites or social media without staff approval.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>08. Fair Play\</h3>
+        \<p>
+            Play fairly, be a good teammate and do not
+            intentionally ruin another player's experience.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>09. Respect Privacy\</h3>
+        \<p>
+            Never share another person's private information
+            without their permission.
+        \</p>
+    \</div>
+
+    \<div class="rule">
+        \<h3>10. Listen To Staff\</h3>
+        \<p>
+            Follow reasonable staff instructions and handle
+            disagreements through the proper channels.
+        \</p>
+    \</div>
+
+\</div>
+
+
+\</section>
+
+\<!-- =========================
+
+DISCORD
+
+\========================= -->
+
+\<section class="discord-section">
+
+
+\<h2>JOIN THE COMMUNITY\</h2>
+
+\<p>
+    Join the LBBW Discord to participate in tier testing,
+    events, rankings, announcements and the wider BedWars community.
+\</p>
+
+\<a
+    href="[https://discord.gg/JuKMwT6PF](https://discord.gg/JuKMwT6PF)"
+    target="\_blank"
+    class="btn btn-primary"
+\>
+    Join Discord
+\</a>
+
+
+\</section>
+
+\<!-- =========================
+
+SECRET BED BATTLE
+
+\========================= -->
+
+\<section class="secret-battle">
+
+
+\<div
+    class="secret-battle-trigger"
+    onclick="toggleSecretBattle()"
+\>
+    ⚔ SECRET BED BATTLE
+\</div>
+
+\<div
+    class="secret-battle-content"
+    id="secretBattle"
+\>
+
+    \<div class="secret-battle-title">
+        RED VS BLUE
+    \</div>
+
+    \<div class="secret-battle-arena">
+
+        \<div class="secret-bed-team">
+
+            \<div class="secret-team-label secret-red">
+                RED
+            \</div>
+
+            \<div class="secret-bed red">
+
+                \<div class="head">\</div>
+                \<div class="blanket">\</div>
+                \<div class="frame">\</div>
+                \<div class="legs">\</div>
+
+            \</div>
+
+        \</div>
+
+        \<div>
+
+            \<div class="secret-vs">
+                VS
+            \</div>
+
+            \<div
+                class="secret-message"
+            \>
+                RED VS BLUE
+            \</div>
+
+        \</div>
+
+        \<div class="secret-bed-team">
+
+            \<div class="secret-team-label secret-blue">
+                BLUE
+            \</div>
+
+            \<div class="secret-bed blue">
+
+                \<div class="head">\</div>
+                \<div class="blanket">\</div>
+                \<div class="frame">\</div>
+                \<div class="legs">\</div>
+
+            \</div>
+
+        \</div>
+
+    \</div>
+
+\</div>
+
+
+\</section>
+
+\<!-- =========================
+
+FOOTER
+
+\========================= -->
+
+\<footer>
+
+
+\<div>
+    LBBW BedWars Community
+\</div>
+
+\<div class="disclaimer">
+    This is not an official Lifeboat server.
+    Please understand this is an unofficial Lifeboat BedWars server.
+\</div>
+
+
+\</footer>
+
+\<script src="rankings-data.js">\</script>
+
+\<script>
+
+const homepageRankings = document.querySelector(".rankings-preview");
+
+if (homepageRankings) {
+
+
+homepageRankings.innerHTML = \`
+    \<div class="ranking-row header">
+        \<div>#\</div>
+        \<div>PLAYER\</div>
+        \<div>RANK\</div>
+        \<div class="wins">WINS\</div>
+    \</div>
+\`;
+
+top10.forEach((player, index) => {
+
+    homepageRankings.innerHTML += \`
+        \<div class="ranking-row">
+            \<div class="rank-number">${index + 1}\</div>
+            \<div class="player-name">${player.name}\</div>
+            \<div class="player-tier ${player.tier.toLowerCase()}">${player.tier}\</div>
+            \<div class="wins">${player.wins}\</div>
+        \</div>
+    \`;
+
+});
+
+
+}
+
+\</script>
+
+\</body>
+
+\</html>
+
+Yep. I removed the entire Bed Battle section from the homepage, including the red/blue beds, VS text, and its CSS. I also shifted the page into a more tasteful color progression so it doesn't look like 14 different dark rectangles fighting for custody of the website.
+
+Your pasted version also had escaped \ characters and Markdown URLs mixed into the HTML, so I cleaned those out too.
+
+show me the full index code pls
+
+Yep. Humanity has survived another website redesign. Here’s the full cleaned index.html with the main Bed Battle section removed and the page sections given more tasteful color variation. The secret Easter egg remains.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -1545,3 +6698,9 @@
 
 </body>
 </html>
+
+This version specifically removes the large BED BATTLE section from the main page, while keeping the tiny hidden ⚔ SECRET BED BATTLE Easter egg at the bottom. The page now flows more naturally:
+
+Hero → Stats → Rankings → Tier Testing → Staff → Rules → Discord → Secret → Footer
+
+And the colors shift subtly through navy, teal, purple, burgundy, and blue instead of making the whole thing look like a Minecraft-themed rainbow threw up on the CSS.
