@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>LBBW Rankings</title>
+
+<link rel="icon" type="image/png" href="red-envelope.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -36,7 +40,7 @@ nav {
     width: 100%;
     height: 70px;
 
-    background: rgba(5,5,5,0.88);
+    background: rgba(5,5,5,0.92);
     backdrop-filter: blur(12px);
 
     display: flex;
@@ -99,6 +103,9 @@ nav {
 
     padding: 80px 20px;
 
+    position: relative;
+    overflow: hidden;
+
     background:
         linear-gradient(
             rgba(0,0,0,0.55),
@@ -147,6 +154,134 @@ nav {
 }
 
 /* =========================
+   TIPS & TRICKS AD
+========================= */
+
+.tips-ad {
+    position: absolute;
+
+    top: 30px;
+    left: 30px;
+
+    width: 285px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 17px;
+
+    text-decoration: none;
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(40,124,255,0.20),
+            rgba(18,22,35,0.94)
+        );
+
+    border: 1px solid rgba(40,124,255,0.35);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35),
+        inset 0 0 25px rgba(40,124,255,0.05);
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.tips-ad:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(40,124,255,0.75);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.45),
+        0 0 25px rgba(40,124,255,0.12);
+}
+
+.tips-ad-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #287cff,
+            #174a9c
+        );
+
+    font-size: 22px;
+
+    box-shadow:
+        0 0 15px rgba(40,124,255,0.25);
+}
+
+.tips-ad-content {
+    text-align: left;
+}
+
+.tips-ad-label {
+    color: #6fa5ff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 3px;
+}
+
+.tips-ad-title {
+    font-family: 'Anton', sans-serif;
+
+    font-size: 20px;
+
+    letter-spacing: 1px;
+
+    line-height: 1;
+}
+
+.tips-ad-text {
+    color: #999;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+
+    margin-top: 6px;
+}
+
+.tips-ad-button {
+    margin-top: 8px;
+
+    color: #287cff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+/* =========================
    GENERAL SECTION
 ========================= */
 
@@ -181,7 +316,12 @@ section {
 ========================= */
 
 .top-ten-section {
-    background: #0a0a0a;
+    background:
+        linear-gradient(
+            180deg,
+            #0a0a0a 0%,
+            #10131a 100%
+        );
 }
 
 .leaderboard {
@@ -332,7 +472,12 @@ section {
 ========================= */
 
 .tiers-section {
-    background: #0d0d0d;
+    background:
+        linear-gradient(
+            180deg,
+            #10131a 0%,
+            #0d0d0d 100%
+        );
 }
 
 .tier-groups {
@@ -352,7 +497,7 @@ section {
 ========================= */
 
 .tier-group {
-    background: #141414;
+    position: relative;
 
     border: 1px solid rgba(255,255,255,0.08);
 
@@ -360,14 +505,116 @@ section {
 
     overflow: hidden;
 
-    transition: 0.25s;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .tier-group:hover {
-    border-color: rgba(255,255,255,0.18);
-
     transform: translateY(-2px);
+
+    border-color: rgba(255,255,255,0.20);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.25);
 }
+
+/* =========================
+   TIER GRADIENT BACKGROUNDS
+========================= */
+
+/* HT1 - Gold */
+
+.tier-group.ht1 {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,215,0,0.16),
+            rgba(255,215,0,0.055) 50%,
+            #141414 100%
+        );
+
+    border-left: 4px solid #ffd700;
+}
+
+/* LT1 - Yellow */
+
+.tier-group.lt1 {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(230,200,79,0.14),
+            rgba(230,200,79,0.045) 50%,
+            #141414 100%
+        );
+
+    border-left: 4px solid #e6c84f;
+}
+
+/* HT2 - Orange */
+
+.tier-group.ht2 {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,157,46,0.14),
+            rgba(255,157,46,0.045) 50%,
+            #141414 100%
+        );
+
+    border-left: 4px solid #ff9d2e;
+}
+
+/* LT2 - Dark Orange */
+
+.tier-group.lt2 {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(213,109,23,0.14),
+            rgba(213,109,23,0.045) 50%,
+            #141414 100%
+        );
+
+    border-left: 4px solid #d56d17;
+}
+
+/* HT3 - Brown */
+
+.tier-group.ht3 {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(168,111,69,0.14),
+            rgba(168,111,69,0.045) 50%,
+            #141414 100%
+        );
+
+    border-left: 4px solid #a86f45;
+}
+
+/* Lower tiers - Gray */
+
+.tier-group.lt3,
+.tier-group.ht4,
+.tier-group.lt4,
+.tier-group.ht5,
+.tier-group.lt5 {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(150,150,150,0.10),
+            rgba(150,150,150,0.025) 50%,
+            #141414 100%
+        );
+
+    border-left: 4px solid #777;
+}
+
+/* =========================
+   TIER HEADER
+========================= */
 
 .tier-header {
     display: flex;
@@ -378,7 +625,7 @@ section {
 
     padding: 18px 22px;
 
-    background: #191919;
+    background: rgba(0,0,0,0.18);
 }
 
 .tier-title {
@@ -416,7 +663,7 @@ section {
 .player-tag {
     padding: 10px 15px;
 
-    background: #1b1b1b;
+    background: rgba(20,20,20,0.75);
 
     border: 1px solid rgba(255,255,255,0.08);
 
@@ -430,41 +677,9 @@ section {
 }
 
 .player-tag:hover {
-    background: #232323;
+    background: rgba(35,35,35,0.95);
 
     transform: translateY(-2px);
-}
-
-/* =========================
-   TIER GROUP COLORS
-========================= */
-
-.tier-group.ht1 {
-    border-left: 4px solid #ffd700;
-}
-
-.tier-group.lt1 {
-    border-left: 4px solid #e6c84f;
-}
-
-.tier-group.ht2 {
-    border-left: 4px solid #ff9d2e;
-}
-
-.tier-group.lt2 {
-    border-left: 4px solid #d56d17;
-}
-
-.tier-group.ht3 {
-    border-left: 4px solid #a86f45;
-}
-
-.tier-group.lt3,
-.tier-group.ht4,
-.tier-group.lt4,
-.tier-group.ht5,
-.tier-group.lt5 {
-    border-left: 4px solid #777;
 }
 
 /* =========================
@@ -474,7 +689,7 @@ section {
 .tier-description {
     padding: 0 20px 18px;
 
-    color: #777;
+    color: #888;
 
     font-size: 12px;
 
@@ -486,7 +701,12 @@ section {
 ========================= */
 
 .info-section {
-    background: #0a0a0a;
+    background:
+        linear-gradient(
+            180deg,
+            #0d0d0d 0%,
+            #0a0a0a 100%
+        );
 
     text-align: center;
 }
@@ -571,6 +791,21 @@ footer .disclaimer {
         justify-content: center;
     }
 
+    .hero {
+        padding-top: 100px;
+    }
+
+    .tips-ad {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        margin: 0 auto 35px;
+
+        width: min(285px, 90%);
+    }
+
     .leaderboard-row {
         grid-template-columns:
             55px
@@ -623,6 +858,7 @@ footer .disclaimer {
 }
 
 </style>
+
 </head>
 
 <body>
@@ -654,6 +890,12 @@ footer .disclaimer {
         <li>
             <a href="halloffame.html">
                 Hall of Fame
+            </a>
+        </li>
+
+        <li>
+            <a href="tips.html">
+                Tips & Tricks
             </a>
         </li>
 
@@ -691,6 +933,37 @@ footer .disclaimer {
 
 <section class="hero">
 
+    <!-- TIPS & TRICKS AD -->
+
+    <a href="tips.html" class="tips-ad">
+
+        <div class="tips-ad-icon">
+            ⚔
+        </div>
+
+        <div class="tips-ad-content">
+
+            <div class="tips-ad-label">
+                LBBW GUIDE
+            </div>
+
+            <div class="tips-ad-title">
+                TIPS & TRICKS
+            </div>
+
+            <div class="tips-ad-text">
+                Improve your PvP, bed breaking,
+                game sense and more.
+            </div>
+
+            <div class="tips-ad-button">
+                VIEW GUIDE →
+            </div>
+
+        </div>
+
+    </a>
+
     <div class="hero-content">
 
         <h1>
@@ -716,7 +989,9 @@ footer .disclaimer {
 
     <div class="section-title">
 
-        <h2>TOP 10 LEADERBOARD</h2>
+        <h2>
+            TOP 10 LEADERBOARD
+        </h2>
 
         <p>
             Ranked by total verified wins.
@@ -726,7 +1001,7 @@ footer .disclaimer {
 
     <div class="leaderboard">
 
-        <!-- The Top 10 is generated automatically from rankings-data.js -->
+        <!-- Generated automatically -->
 
     </div>
 
@@ -748,7 +1023,9 @@ footer .disclaimer {
 
     <div class="section-title">
 
-        <h2>CURRENT TIER RANKINGS</h2>
+        <h2>
+            CURRENT TIER RANKINGS
+        </h2>
 
         <p>
             Every currently ranked player in the LBBW community.
@@ -758,9 +1035,7 @@ footer .disclaimer {
 
     <div class="tier-groups">
 
-        <!-- =========================
-             HT1
-        ========================= -->
+        <!-- HT1 -->
 
         <div class="tier-group ht1">
 
@@ -783,29 +1058,16 @@ footer .disclaimer {
 
             <div class="tier-players">
 
-                <div class="player-tag">
-                    Rust
-                </div>
-
-                <div class="player-tag">
-                    Dark
-                </div>
-
-                <div class="player-tag">
-                    DayTexing
-                </div>
-
-                <div class="player-tag">
-                    FluffiesMC
-                </div>
+                <div class="player-tag">Rust</div>
+                <div class="player-tag">Dark</div>
+                <div class="player-tag">DayTexing</div>
+                <div class="player-tag">FluffiesMC</div>
 
             </div>
 
         </div>
 
-        <!-- =========================
-             LT1
-        ========================= -->
+        <!-- LT1 -->
 
         <div class="tier-group lt1">
 
@@ -835,9 +1097,7 @@ footer .disclaimer {
 
         </div>
 
-        <!-- =========================
-             HT2
-        ========================= -->
+        <!-- HT2 -->
 
         <div class="tier-group ht2">
 
@@ -860,29 +1120,16 @@ footer .disclaimer {
 
             <div class="tier-players">
 
-                <div class="player-tag">
-                    c
-                </div>
-
-                <div class="player-tag">
-                    Omar
-                </div>
-
-                <div class="player-tag">
-                    welltag
-                </div>
-
-                <div class="player-tag">
-                    Thelyric
-                </div>
+                <div class="player-tag">c</div>
+                <div class="player-tag">Omar</div>
+                <div class="player-tag">welltag</div>
+                <div class="player-tag">Thelyric</div>
 
             </div>
 
         </div>
 
-        <!-- =========================
-             LT2
-        ========================= -->
+        <!-- LT2 -->
 
         <div class="tier-group lt2">
 
@@ -905,37 +1152,18 @@ footer .disclaimer {
 
             <div class="tier-players">
 
-                <div class="player-tag">
-                    DKnoxbox
-                </div>
-
-                <div class="player-tag">
-                    Carved
-                </div>
-
-                <div class="player-tag">
-                    malloy75
-                </div>
-
-                <div class="player-tag">
-                    NO one
-                </div>
-
-                <div class="player-tag">
-                    RedHeadGamer
-                </div>
-
-                <div class="player-tag">
-                    Louigi787
-                </div>
+                <div class="player-tag">DKnoxbox</div>
+                <div class="player-tag">Carved</div>
+                <div class="player-tag">malloy75</div>
+                <div class="player-tag">NO one</div>
+                <div class="player-tag">RedHeadGamer</div>
+                <div class="player-tag">Louigi787</div>
 
             </div>
 
         </div>
 
-        <!-- =========================
-             HT3
-        ========================= -->
+        <!-- HT3 -->
 
         <div class="tier-group ht3">
 
@@ -958,53 +1186,22 @@ footer .disclaimer {
 
             <div class="tier-players">
 
-                <div class="player-tag">
-                    Fluffie
-                </div>
-
-                <div class="player-tag">
-                    baloni
-                </div>
-
-                <div class="player-tag">
-                    yook
-                </div>
-
-                <div class="player-tag">
-                    sala
-                </div>
-
-                <div class="player-tag">
-                    Eytomar
-                </div>
-
-                <div class="player-tag">
-                    Void
-                </div>
-
-                <div class="player-tag">
-                    Ouch_Dude
-                </div>
-
-                <div class="player-tag">
-                    lkuder
-                </div>
-
-                <div class="player-tag">
-                    Twirly
-                </div>
-
-                <div class="player-tag">
-                    CAMDYN
-                </div>
+                <div class="player-tag">Fluffie</div>
+                <div class="player-tag">baloni</div>
+                <div class="player-tag">yook</div>
+                <div class="player-tag">sala</div>
+                <div class="player-tag">Eytomar</div>
+                <div class="player-tag">Void</div>
+                <div class="player-tag">Ouch_Dude</div>
+                <div class="player-tag">lkuder</div>
+                <div class="player-tag">Twirly</div>
+                <div class="player-tag">CAMDYN</div>
 
             </div>
 
         </div>
 
-        <!-- =========================
-             LT3
-        ========================= -->
+        <!-- LT3 -->
 
         <div class="tier-group lt3">
 
@@ -1035,9 +1232,7 @@ footer .disclaimer {
 
         </div>
 
-        <!-- =========================
-             HT4
-        ========================= -->
+        <!-- HT4 -->
 
         <div class="tier-group ht4">
 
@@ -1060,33 +1255,17 @@ footer .disclaimer {
 
             <div class="tier-players">
 
-                <div class="player-tag">
-                    Psyduck?
-                </div>
-
-                <div class="player-tag">
-                    Sans-Sama
-                </div>
-
-                <div class="player-tag">
-                    Vanta
-                </div>
-
-                <div class="player-tag">
-                    Babyradar01
-                </div>
-
-                <div class="player-tag">
-                    LJ
-                </div>
+                <div class="player-tag">Psyduck?</div>
+                <div class="player-tag">Sans-Sama</div>
+                <div class="player-tag">Vanta</div>
+                <div class="player-tag">Babyradar01</div>
+                <div class="player-tag">LJ</div>
 
             </div>
 
         </div>
 
-        <!-- =========================
-             LT4
-        ========================= -->
+        <!-- LT4 -->
 
         <div class="tier-group lt4">
 
@@ -1109,21 +1288,14 @@ footer .disclaimer {
 
             <div class="tier-players">
 
-                <div class="player-tag">
-                    Chumply
-                </div>
-
-                <div class="player-tag">
-                    Robotic
-                </div>
+                <div class="player-tag">Chumply</div>
+                <div class="player-tag">Robotic</div>
 
             </div>
 
         </div>
 
-        <!-- =========================
-             HT5
-        ========================= -->
+        <!-- HT5 -->
 
         <div class="tier-group ht5">
 
@@ -1146,21 +1318,14 @@ footer .disclaimer {
 
             <div class="tier-players">
 
-                <div class="player-tag">
-                    Unknownghost
-                </div>
-
-                <div class="player-tag">
-                    T-man3030
-                </div>
+                <div class="player-tag">Unknownghost</div>
+                <div class="player-tag">T-man3030</div>
 
             </div>
 
         </div>
 
-        <!-- =========================
-             LT5
-        ========================= -->
+        <!-- LT5 -->
 
         <div class="tier-group lt5">
 
@@ -1203,7 +1368,9 @@ footer .disclaimer {
 
     <div class="section-title">
 
-        <h2>HOW RANKINGS WORK</h2>
+        <h2>
+            HOW RANKINGS WORK
+        </h2>
 
         <p>
             Tier placement and leaderboard position are two different things.
@@ -1247,6 +1414,7 @@ footer .disclaimer {
 </footer>
 
 <script src="rankings-data.js"></script>
+
 <script>
 
 const leaderboard = document.querySelector(".leaderboard");
