@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LBBW BedWars Community</title>
 
+<link rel="icon" type="image/png" href="red-envelope.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Cinzel:wght@600;700&family=Exo+2:wght@600;700&family=Montserrat:wght@600;700&family=Orbitron:wght@600;700&family=Rajdhani:wght@600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -21,7 +23,7 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #0a0a0a;
+    background: #08090D;
     color: white;
 }
 
@@ -35,7 +37,7 @@ nav {
     left: 0;
     width: 100%;
     height: 70px;
-    background: rgba(5, 5, 5, 0.88);
+    background: #050505;
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
@@ -93,7 +95,7 @@ nav {
     background:
         linear-gradient(
             rgba(0,0,0,0.55),
-            rgba(0,0,0,0.78)
+            rgba(8,9,13,0.90)
         ),
         url("https://upload.wikimedia.org/wikipedia/commons/6/6f/Minecraft_landscape.png");
 
@@ -243,17 +245,207 @@ section {
 }
 
 /* =========================
+   BED BATTLE
+========================= */
+
+.bed-battle {
+    background: linear-gradient(
+        180deg,
+        #0b0e14 0%,
+        #10141c 100%
+    );
+    padding: 90px 7%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.bed-battle-title {
+    margin-bottom: 55px;
+}
+
+.bed-battle-title h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+.bed-battle-title p {
+    color: #999;
+    margin-top: 10px;
+}
+
+.bed-arena {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.bed-team {
+    width: 280px;
+    transition: transform 0.3s ease;
+}
+
+.bed-team:hover {
+    transform: translateY(-8px) scale(1.05);
+}
+
+.team-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.red-team .team-label {
+    color: #e32626;
+}
+
+.blue-team .team-label {
+    color: #287cff;
+}
+
+.minecraft-bed {
+    position: relative;
+    width: 190px;
+    height: 110px;
+    margin: auto;
+    animation: bedFloat 3s ease-in-out infinite;
+}
+
+.red-bed {
+    filter: drop-shadow(0 0 18px rgba(227,38,38,0.5));
+}
+
+.blue-bed {
+    filter: drop-shadow(0 0 18px rgba(40,124,255,0.5));
+}
+
+.bed-blanket {
+    position: absolute;
+    width: 125px;
+    height: 48px;
+    left: 35px;
+    top: 25px;
+    border-radius: 6px 6px 3px 3px;
+    transform: skewY(-8deg);
+}
+
+.red-bed .bed-blanket {
+    background: #d51f2f;
+}
+
+.blue-bed .bed-blanket {
+    background: #1769d1;
+}
+
+.bed-head {
+    position: absolute;
+    width: 62px;
+    height: 35px;
+    left: 15px;
+    top: 15px;
+    border-radius: 7px;
+    z-index: 2;
+    transform: skewY(-8deg);
+}
+
+.red-bed .bed-head {
+    background: #f04a4a;
+}
+
+.blue-bed .bed-head {
+    background: #4b9cff;
+}
+
+.bed-frame {
+    position: absolute;
+    width: 145px;
+    height: 15px;
+    left: 28px;
+    top: 67px;
+    background: #70421f;
+    border-radius: 2px;
+    transform: skewY(-8deg);
+}
+
+.bed-legs {
+    position: absolute;
+    width: 12px;
+    height: 28px;
+    left: 40px;
+    top: 78px;
+    background: #4b2b16;
+    box-shadow: 115px 0 #4b2b16;
+}
+
+.battle-center {
+    min-width: 100px;
+}
+
+.battle-vs {
+    font-family: 'Anton', sans-serif;
+    font-size: 42px;
+    color: white;
+}
+
+.battle-message {
+    margin-top: 10px;
+    color: #777;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@keyframes bedFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 700px) {
+
+    .bed-arena {
+        flex-direction: column;
+        gap: 45px;
+    }
+
+    .battle-center {
+        order: 2;
+    }
+
+    .red-team {
+        order: 1;
+    }
+
+    .blue-team {
+        order: 3;
+    }
+
+}
+
+/* =========================
    RANKINGS PREVIEW
 ========================= */
 
 .rankings-section {
-    background: #0a0a0a;
+    background: linear-gradient(
+        180deg,
+        #10141c 0%,
+        #111722 100%
+    );
 }
 
 .rankings-preview {
     max-width: 950px;
     margin: auto;
-    background: #111;
+    background: #11151d;
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 14px;
     overflow: hidden;
@@ -272,7 +464,7 @@ section {
 }
 
 .ranking-row.header {
-    background: #171717;
+    background: #171d28;
     color: #888;
     font-size: 12px;
     font-weight: 800;
@@ -334,7 +526,11 @@ section {
 ========================= */
 
 .testing-section {
-    background: #0d0d0d;
+    background: linear-gradient(
+        180deg,
+        #111722 0%,
+        #141922 100%
+    );
 }
 
 .testing-grid {
@@ -346,7 +542,7 @@ section {
 }
 
 .testing-card {
-    background: #141414;
+    background: #171c25;
     border: 1px solid rgba(255,255,255,0.08);
     padding: 30px;
     border-radius: 12px;
@@ -355,7 +551,7 @@ section {
 
 .testing-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(255,138,61,0.35);
 }
 
 .testing-card h3 {
@@ -374,7 +570,11 @@ section {
 ========================= */
 
 .staff-section {
-    background: #0a0a0a;
+    background: linear-gradient(
+        180deg,
+        #141922 0%,
+        #101820 100%
+    );
 }
 
 .staff-sections {
@@ -387,7 +587,7 @@ section {
 
 .staff-group {
     position: relative;
-    background: #111;
+    background: #111820;
     border-radius: 14px;
     padding: 28px;
     overflow: hidden;
@@ -427,6 +627,7 @@ section {
         border-color: white;
         box-shadow: 0 0 0 rgba(125,211,252,0);
     }
+
     50% {
         border-color: #7dd3fc;
         box-shadow: 0 0 18px rgba(125,211,252,0.35);
@@ -438,6 +639,7 @@ section {
         border-color: white;
         box-shadow: 0 0 0 rgba(125,211,252,0);
     }
+
     50% {
         border-color: #7dd3fc;
         box-shadow: 0 0 18px rgba(125,211,252,0.35);
@@ -449,6 +651,7 @@ section {
         border-color: white;
         box-shadow: 0 0 0 rgba(227,38,38,0);
     }
+
     50% {
         border-color: #e32626;
         box-shadow: 0 0 18px rgba(227,38,38,0.35);
@@ -460,6 +663,7 @@ section {
         border-color: white;
         box-shadow: 0 0 0 rgba(37,99,235,0);
     }
+
     50% {
         border-color: #2563eb;
         box-shadow: 0 0 18px rgba(37,99,235,0.35);
@@ -471,6 +675,7 @@ section {
         border-color: white;
         box-shadow: 0 0 0 rgba(168,85,247,0);
     }
+
     50% {
         border-color: #a855f7;
         box-shadow: 0 0 18px rgba(168,85,247,0.35);
@@ -482,6 +687,7 @@ section {
         border-color: white;
         box-shadow: 0 0 0 rgba(249,115,22,0);
     }
+
     50% {
         border-color: #f97316;
         box-shadow: 0 0 18px rgba(249,115,22,0.35);
@@ -498,8 +704,6 @@ section {
     letter-spacing: 1px;
     margin-bottom: 18px;
 }
-
-/* CUSTOM FONT FOR EVERY ROLE */
 
 .role-owner .role-header {
     font-family: 'Cinzel', serif;
@@ -550,7 +754,7 @@ section {
 }
 
 .staff-member {
-    background: #181818;
+    background: #181e26;
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 8px;
     padding: 12px 15px;
@@ -560,7 +764,7 @@ section {
 }
 
 .staff-member:hover {
-    background: #202020;
+    background: #202832;
     transform: translateY(-2px);
 }
 
@@ -569,7 +773,11 @@ section {
 ========================= */
 
 .rules-section {
-    background: #0d0d0d;
+    background: linear-gradient(
+        180deg,
+        #101820 0%,
+        #121a22 100%
+    );
 }
 
 .rules-grid {
@@ -581,7 +789,7 @@ section {
 }
 
 .rule {
-    background: #141414;
+    background: #171f27;
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 10px;
     padding: 22px;
@@ -605,9 +813,9 @@ section {
 .discord-section {
     text-align: center;
     background: linear-gradient(
-        135deg,
-        #101010,
-        #151515
+        180deg,
+        #121a22 0%,
+        #171827 100%
     );
 }
 
@@ -622,6 +830,191 @@ section {
     max-width: 650px;
     margin: 0 auto 30px;
     line-height: 1.7;
+}
+
+/* =========================
+   SECRET BED BATTLE
+========================= */
+
+.secret-battle {
+    text-align: center;
+    padding: 25px 20px;
+    background: #08090D;
+}
+
+.secret-battle-trigger {
+    display: inline-block;
+    color: #555;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.secret-battle-trigger:hover {
+    color: #888;
+}
+
+.secret-battle-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s ease, opacity 0.5s ease;
+}
+
+.secret-battle-content.active {
+    max-height: 400px;
+    opacity: 1;
+    margin-top: 25px;
+}
+
+.secret-battle-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.secret-battle-arena {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.secret-bed-team {
+    width: 150px;
+    transition: 0.3s;
+}
+
+.secret-bed-team:hover {
+    transform: scale(1.08);
+}
+
+.secret-team-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.secret-red {
+    color: #e32626;
+}
+
+.secret-blue {
+    color: #287cff;
+}
+
+.secret-bed {
+    position: relative;
+    width: 120px;
+    height: 75px;
+    margin: auto;
+    animation: secretBedFloat 3s ease-in-out infinite;
+}
+
+.secret-bed.red {
+    filter: drop-shadow(0 0 10px rgba(227,38,38,0.4));
+}
+
+.secret-bed.blue {
+    filter: drop-shadow(0 0 10px rgba(40,124,255,0.4));
+}
+
+.secret-bed .blanket {
+    position: absolute;
+    width: 80px;
+    height: 32px;
+    left: 25px;
+    top: 17px;
+    border-radius: 5px;
+    transform: skewY(-8deg);
+}
+
+.secret-bed.red .blanket {
+    background: #d51f2f;
+}
+
+.secret-bed.blue .blanket {
+    background: #1769d1;
+}
+
+.secret-bed .head {
+    position: absolute;
+    width: 40px;
+    height: 24px;
+    left: 10px;
+    top: 10px;
+    border-radius: 5px;
+    z-index: 2;
+    transform: skewY(-8deg);
+}
+
+.secret-bed.red .head {
+    background: #f04a4a;
+}
+
+.secret-bed.blue .head {
+    background: #4b9cff;
+}
+
+.secret-bed .frame {
+    position: absolute;
+    width: 95px;
+    height: 10px;
+    left: 20px;
+    top: 45px;
+    background: #70421f;
+    transform: skewY(-8deg);
+}
+
+.secret-bed .legs {
+    position: absolute;
+    width: 8px;
+    height: 18px;
+    left: 28px;
+    top: 52px;
+    background: #4b2b16;
+    box-shadow: 75px 0 #4b2b16;
+}
+
+.secret-vs {
+    font-family: 'Anton', sans-serif;
+    font-size: 25px;
+    color: #444;
+}
+
+.secret-message {
+    margin-top: 12px;
+    color: #444;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+@keyframes secretBedFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .secret-battle-arena {
+        gap: 15px;
+    }
+
 }
 
 /* =========================
@@ -861,6 +1254,74 @@ footer {
 </div>
 
 <!-- =========================
+     BED BATTLE
+========================= -->
+
+<section class="bed-battle">
+
+    <div class="bed-battle-title">
+
+        <h2>BED BATTLE</h2>
+
+        <p>
+            Choose your side.
+        </p>
+
+    </div>
+
+    <div class="bed-arena">
+
+        <div class="bed-team red-team">
+
+            <div class="team-label">
+                RED
+            </div>
+
+            <div class="minecraft-bed red-bed">
+
+                <div class="bed-head"></div>
+                <div class="bed-blanket"></div>
+                <div class="bed-frame"></div>
+                <div class="bed-legs"></div>
+
+            </div>
+
+        </div>
+
+        <div class="battle-center">
+
+            <div class="battle-vs">
+                VS
+            </div>
+
+            <div class="battle-message">
+                RED VS BLUE
+            </div>
+
+        </div>
+
+        <div class="bed-team blue-team">
+
+            <div class="team-label">
+                BLUE
+            </div>
+
+            <div class="minecraft-bed blue-bed">
+
+                <div class="bed-head"></div>
+                <div class="bed-blanket"></div>
+                <div class="bed-frame"></div>
+                <div class="bed-legs"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
      RANKINGS
 ========================= -->
 
@@ -963,8 +1424,6 @@ footer {
 
     <div class="staff-sections">
 
-        <!-- OWNER -->
-
         <div class="staff-group role-owner">
 
             <div class="role-header">
@@ -981,8 +1440,6 @@ footer {
             </div>
 
         </div>
-
-        <!-- CO-OWNERS -->
 
         <div class="staff-group role-co-owner">
 
@@ -1005,8 +1462,6 @@ footer {
 
         </div>
 
-        <!-- ADMINS -->
-
         <div class="staff-group role-admin">
 
             <div class="role-header">
@@ -1023,8 +1478,6 @@ footer {
             </div>
 
         </div>
-
-        <!-- DISCORD MODERATORS -->
 
         <div class="staff-group role-discord-mod">
 
@@ -1047,8 +1500,6 @@ footer {
 
         </div>
 
-        <!-- IN-GAME MODERATORS -->
-
         <div class="staff-group role-ingame-mod">
 
             <div class="role-header">
@@ -1058,55 +1509,21 @@ footer {
 
             <div class="staff-list">
 
-                <div class="staff-member">
-                    Rust
-                </div>
-
-                <div class="staff-member">
-                    Asdon505
-                </div>
-
-                <div class="staff-member">
-                    TheReddishSlime
-                </div>
-
-                <div class="staff-member">
-                    Pandaa
-                </div>
-
-                <div class="staff-member">
-                    aerie
-                </div>
-
-                <div class="staff-member">
-                    Malloy
-                </div>
-
-                <div class="staff-member">
-                    My1Legocraft
-                </div>
-
-                <div class="staff-member">
-                    DayTexing
-                </div>
-
-                <div class="staff-member">
-                    Trojan
-                </div>
-
-                <div class="staff-member">
-                    Mich
-                </div>
-
-                <div class="staff-member">
-                    FluffiesMC
-                </div>
+                <div class="staff-member">Rust</div>
+                <div class="staff-member">Asdon505</div>
+                <div class="staff-member">TheReddishSlime</div>
+                <div class="staff-member">Pandaa</div>
+                <div class="staff-member">aerie</div>
+                <div class="staff-member">Malloy</div>
+                <div class="staff-member">My1Legocraft</div>
+                <div class="staff-member">DayTexing</div>
+                <div class="staff-member">Trojan</div>
+                <div class="staff-member">Mich</div>
+                <div class="staff-member">FluffiesMC</div>
 
             </div>
 
         </div>
-
-        <!-- TIER TESTERS -->
 
         <div class="staff-group role-tester">
 
@@ -1117,45 +1534,16 @@ footer {
 
             <div class="staff-list">
 
-                <div class="staff-member">
-                    Baloni
-                </div>
-
-                <div class="staff-member">
-                    Rust
-                </div>
-
-                <div class="staff-member">
-                    Eytomar
-                </div>
-
-                <div class="staff-member">
-                    Psyduck?
-                </div>
-
-                <div class="staff-member">
-                    C
-                </div>
-
-                <div class="staff-member">
-                    Welltag
-                </div>
-
-                <div class="staff-member">
-                    CAMDYN
-                </div>
-
-                <div class="staff-member">
-                    NO one
-                </div>
-
-                <div class="staff-member">
-                    Louigi
-                </div>
-
-                <div class="staff-member">
-                    LJ
-                </div>
+                <div class="staff-member">Baloni</div>
+                <div class="staff-member">Rust</div>
+                <div class="staff-member">Eytomar</div>
+                <div class="staff-member">Psyduck?</div>
+                <div class="staff-member">C</div>
+                <div class="staff-member">Welltag</div>
+                <div class="staff-member">CAMDYN</div>
+                <div class="staff-member">NO one</div>
+                <div class="staff-member">Louigi</div>
+                <div class="staff-member">LJ</div>
 
             </div>
 
@@ -1184,113 +1572,83 @@ footer {
     <div class="rules-grid">
 
         <div class="rule">
-
             <h3>01. Be Respectful</h3>
-
             <p>
                 Treat everyone with kindness and respect.
                 Bullying, harassment and hateful language are not allowed.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>02. Keep It Family Friendly</h3>
-
             <p>
                 Keep conversations appropriate for all ages.
                 Avoid inappropriate, offensive or explicit content.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>03. No Cheating</h3>
-
             <p>
                 Hacks, cheats, unfair modifications and exploits
                 are strictly prohibited.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>04. No Spamming</h3>
-
             <p>
                 Do not flood channels with repeated messages,
                 emojis, stickers, GIFs or excessive caps.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>05. Voice Chat</h3>
-
             <p>
                 Keep voice chat respectful and appropriate.
                 Avoid shouting or disruptive noises.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>06. Use The Right Channels</h3>
-
             <p>
                 Keep discussions in the appropriate channels
                 so the server stays organized.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>07. No Unauthorized Advertising</h3>
-
             <p>
                 Do not advertise other Discord servers,
                 websites or social media without staff approval.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>08. Fair Play</h3>
-
             <p>
                 Play fairly, be a good teammate and do not
                 intentionally ruin another player's experience.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>09. Respect Privacy</h3>
-
             <p>
                 Never share another person's private information
                 without their permission.
             </p>
-
         </div>
 
         <div class="rule">
-
             <h3>10. Listen To Staff</h3>
-
             <p>
                 Follow reasonable staff instructions and handle
                 disagreements through the proper channels.
             </p>
-
         </div>
 
     </div>
@@ -1317,6 +1675,84 @@ footer {
     >
         Join Discord
     </a>
+
+</section>
+
+<!-- =========================
+     SECRET BED BATTLE
+========================= -->
+
+<section class="secret-battle">
+
+    <div
+        class="secret-battle-trigger"
+        onclick="toggleSecretBattle()"
+    >
+        ⚔ SECRET BED BATTLE
+    </div>
+
+    <div
+        class="secret-battle-content"
+        id="secretBattle"
+    >
+
+        <div class="secret-battle-title">
+            RED VS BLUE
+        </div>
+
+        <div class="secret-battle-arena">
+
+            <div class="secret-bed-team">
+
+                <div class="secret-team-label secret-red">
+                    RED
+                </div>
+
+                <div class="secret-bed red">
+
+                    <div class="head"></div>
+                    <div class="blanket"></div>
+                    <div class="frame"></div>
+                    <div class="legs"></div>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="secret-vs">
+                    VS
+                </div>
+
+                <div
+                    class="secret-message"
+                >
+                    RED VS BLUE
+                </div>
+
+            </div>
+
+            <div class="secret-bed-team">
+
+                <div class="secret-team-label secret-blue">
+                    BLUE
+                </div>
+
+                <div class="secret-bed blue">
+
+                    <div class="head"></div>
+                    <div class="blanket"></div>
+                    <div class="frame"></div>
+                    <div class="legs"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1366,6 +1802,18 @@ if (homepageRankings) {
         `;
 
     });
+
+}
+
+/* =========================
+   SECRET BED BATTLE
+========================= */
+
+function toggleSecretBattle() {
+
+    const battle = document.getElementById("secretBattle");
+
+    battle.classList.toggle("active");
 
 }
 
